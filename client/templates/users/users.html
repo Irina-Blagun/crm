@@ -1,0 +1,13 @@
+<template name="users" xmlns="http://www.w3.org/1999/html">
+    <div class="users">
+        <table class="table">
+            <tr>
+                <th>USER</th>
+                <th>ID</th>
+            </tr>
+        {{#each users}}
+            {{> userItem}}
+        {{/each}}
+        </table>
+    </div>
+</template>

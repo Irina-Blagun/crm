@@ -1,0 +1,38 @@
+<template name="addRoles">
+    <div>
+        <form class="addRoles-form">
+            <div class="form-group">
+                <label for="rolename">Должность</label>
+                <input type="text" class="form-control" id="rolename" placeholder="Должность">
+            </div>
+            <br>
+            <p>Права</p>
+            <div class="checkbox" id="flags">
+                <label for="flag">
+                    <input type="checkbox" value=2> Просмотр списка поставщиков <br>
+                    <input type="checkbox" value=4> Управление поставщиками <br>
+                    <input type="checkbox" value=8> Просмотр и управление единицами измерений <br>
+                    <input type="checkbox" value=16> Просмотр списка должностей <br>
+                    <input type="checkbox" value=32> Управление списком должностей <br>
+                    <input type="checkbox" value=64> Редактирование данных товара <br>
+                    <input type="checkbox" value=128> Просмотр наценки товара <br>
+                    <input type="checkbox" value=256> Просмотр движения товара <br>
+                    <input type="checkbox" value=512> Возможность фиксировать продажу товара <br>
+                    <input type="checkbox" value=1024> Возможность фиксировать приход <br>
+                </label>
+            </div>
+            <br>
+            <p>Возможность удаления</p>
+            <div class="radio">
+                <label for="system">
+                    <input type="radio" id="noSystem" value=0 checked>Удаление возможно
+                </label>
+                <label for="system">
+                    <input type="radio" id="yesSystem" value=1>Удаление невозможно
+                </label>
+            </div>
+            <br>
+            <a href="#"><button type="button" class="btn btn-default" id="addRoles-button">Добавить</button></a>
+        </form>
+    </div>
+</template>

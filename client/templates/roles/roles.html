@@ -1,0 +1,25 @@
+<template name="roles">
+    <div class="roles">
+        <table class="table">
+            <tr>
+                <th>Должность</th>
+                <th>Флаг</th>
+                <th>Возможность удаления</th>
+            </tr>
+            {{#each roles}}
+                {{> roleItem}}
+            {{/each}}
+        </table>
+        <br>
+        <br>
+        <a class="btn btn-default" href="roles/add" role="button">Добавить</a>
+    </div>
+</template>
+
+<template name="roleItem">
+    <tr>
+        <td>{{rolename}}</td>
+        <td>{{flag}}</td>
+        <td>{{system}}</td>
+    </tr>
+</template>
