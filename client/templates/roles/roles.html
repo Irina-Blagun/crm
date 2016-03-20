@@ -4,7 +4,7 @@
             <tr>
                 <th>Должность</th>
                 <th>Флаг</th>
-                <th>Возможность удаления</th>
+                <th>Системный</th>
             </tr>
             {{#each roles}}
                 {{> roleItem}}
@@ -18,8 +18,8 @@
 
 <template name="roleItem">
     <tr>
-        <td>{{rolename}}</td>
-        <td>{{flag}}</td>
-        <td>{{system}}</td>
+        <td><a href="roles/edit/{{_id}}">{{rolename}}</a></td>
+        <td>{{flags}}</td>
+        <td>{{systemString}}</td>
     </tr>
 </template>
