@@ -3,3 +3,9 @@ Template.roles.helpers({
         return Roles.find();
     }
 });
+
+Template.roleItem.helpers({
+    systemString: function(){
+        return this.system ? '+' : '-'
+    }
+});
