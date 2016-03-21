@@ -16,6 +16,7 @@ Template.addRoles.events({
 
 		Meteor.call('addRole', role, function(){
 			event.target.reset();
+			Router.go('roles');
 		})
 
 	}
