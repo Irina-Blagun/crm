@@ -1,7 +1,9 @@
 <template name="login">
     <form id="form-login">
-        <div><input type="email" id="email"></div>
-        <div><input type="password" id="password"></div>
+        <div><input type="email" id="email" placeholder="E-mail"></div>
+        <div><input type="password" id="password" placeholder="Пароль"></div>
         <button type="submit">Войти</button>
+        <br>
+        <a href="{{pathFor 'forgot'}}">Забыли пароль?</a>
     </form>
 </template>

@@ -1,6 +1,5 @@
 Users = Meteor.users;
 
-
 Meteor.methods({
 	'users-create': function(user, callback){
 		if (Meteor.isServer){
