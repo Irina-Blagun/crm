@@ -1,0 +1,18 @@
+.form{
+    &-group{
+        margin-bottom: 15px;
+    }
+
+    &-control{
+        display: block;
+        height: 40px;
+        width: 100%;
+
+        border: 1px solid #D6DBDF;
+        border-radius: 3px;
+
+        padding: 10px 20px;
+
+        font-size: 14px;
+    }
+}
