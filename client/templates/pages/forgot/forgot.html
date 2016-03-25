@@ -1,0 +1,19 @@
+<template name="forgot">
+    <div class="app-box login">
+        <form id="form-forgot">
+            <div class="app-box__header">
+                <h1>Восстановление пароля</h1>
+                <p>Укажите почту, указанную при регистрации</p>
+            </div>
+            <div class="app-box__content">
+                <div class="form-group">
+                    <input class="form-control" type="email" id="email" placeholder="E-mail">
+                </div>
+            </div>
+            <div class="app-box__footer">
+                <button class="btn btn-primary" type="submit">Отправить</button>
+                <a class="btn btn-light" href="{{pathFor 'login'}}">Вернуться</a>
+            </div>
+        </form>
+    </div>
+</template>
