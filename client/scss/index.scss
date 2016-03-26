@@ -12,10 +12,12 @@
 @import "basic";
 @import "grid";
 @import "utilities";
+@import "animation";
 
 /* Components */
 @import "components/buttons";
 @import "components/form";
+@import "components/notify";
 
 /* Partials */
 @import "partials/header";
