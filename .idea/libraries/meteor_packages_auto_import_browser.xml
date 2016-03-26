@@ -15,9 +15,6 @@
         <item url="file://$USER_HOME$/.meteor/packages/geojson-utils/1.0.4/web.browser/post.js" />
         <item url="file://$USER_HOME$/.meteor/packages/geojson-utils/1.0.4/web.browser/geojson-utils.js" />
         <item url="file://$USER_HOME$/.meteor/packages/geojson-utils/1.0.4/web.browser/pre.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/fastclick.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/pre.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/post.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-shim.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-sham.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/console.js" />
@@ -145,8 +142,6 @@
         <item url="file://$USER_HOME$/.meteor/packages/observe-sequence/1.0.7/web.browser/observe_sequence.js" />
         <item url="file://$USER_HOME$/.meteor/packages/mongo-id/1.0.1/web.browser/id.js" />
         <item url="file://$USER_HOME$/.meteor/packages/logging/1.0.8/web.browser/logging.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/launch-screen/1.0.4/web.browser/default-behavior.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/launch-screen/1.0.4/web.browser/mobile-launch-screen.js" />
         <item url="file://$USER_HOME$/.meteor/packages/jquery/1.11.4/web.browser/post.js" />
         <item url="file://$USER_HOME$/.meteor/packages/jquery/1.11.4/web.browser/jquery.js" />
         <item url="file://$USER_HOME$/.meteor/packages/id-map/1.0.4/web.browser/id-map.js" />
@@ -169,9 +164,6 @@
       <root url="file://$USER_HOME$/.meteor/packages/geojson-utils/1.0.4/web.browser/post.js" />
       <root url="file://$USER_HOME$/.meteor/packages/geojson-utils/1.0.4/web.browser/geojson-utils.js" />
       <root url="file://$USER_HOME$/.meteor/packages/geojson-utils/1.0.4/web.browser/pre.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/fastclick.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/pre.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/post.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-shim.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-sham.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/console.js" />
@@ -299,8 +291,6 @@
       <root url="file://$USER_HOME$/.meteor/packages/observe-sequence/1.0.7/web.browser/observe_sequence.js" />
       <root url="file://$USER_HOME$/.meteor/packages/mongo-id/1.0.1/web.browser/id.js" />
       <root url="file://$USER_HOME$/.meteor/packages/logging/1.0.8/web.browser/logging.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/launch-screen/1.0.4/web.browser/default-behavior.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/launch-screen/1.0.4/web.browser/mobile-launch-screen.js" />
       <root url="file://$USER_HOME$/.meteor/packages/jquery/1.11.4/web.browser/post.js" />
       <root url="file://$USER_HOME$/.meteor/packages/jquery/1.11.4/web.browser/jquery.js" />
       <root url="file://$USER_HOME$/.meteor/packages/id-map/1.0.4/web.browser/id-map.js" />
