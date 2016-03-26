@@ -1,3 +1,3 @@
-/**
- * Created by ilya.suhodolskiy on 23.03.16.
- */
+Meteor.publish('company', function(){
+	return Companies.find({ uid: this.userId });
+});

@@ -7,7 +7,7 @@ Template.login.events({
 
 		Meteor.loginWithPassword(email, password, function(err){
 			if (err) {
-				console.log(err);
+				throwMessage('danger', 'Неверный e-mail или пароль');
 			} else {
 				Router.go('/');
 			}

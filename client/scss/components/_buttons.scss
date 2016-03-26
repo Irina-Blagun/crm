@@ -1,0 +1,26 @@
+.btn{
+    text-decoration: none;
+    line-height: 16px;
+    font-weight: 300;
+    font-size: 14px;
+
+    border-radius: 3px;
+    padding: 12px 20px;
+    min-width: 120px;
+    border: 0;
+
+
+    cursor: pointer;
+    outline: none;
+
+    &-primary{
+        background: $brand-primary;
+        color: #fff;
+    }
+
+    &-light{
+        color: #fff;
+    }
+}
+
+// TODO: hover
