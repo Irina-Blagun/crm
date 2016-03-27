@@ -3,7 +3,7 @@ Template.users.helpers({
         return {
             collection: Users,
             rowsPerPage: 10,
-            showFilter: true,
+            showFilter: false,
             fields: [
 				{ key: 'createdAt', label: 'Регистрация' },
 				{ key: 'profile.first_name', label: 'Имя' },
