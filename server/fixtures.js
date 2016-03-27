@@ -1,5 +1,6 @@
+var now = new Date().getTime();
+
 if (Companies.find().count() === 0 && Meteor.isServer) {
-	var now = new Date().getTime();
 
 	var cid = Companies.insert({
 		name: 'Coca-Cola',
@@ -7,6 +8,26 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 		uid: null
 	});
 
+	var sid = Stores.insert({
+		name: 'ColaStore',
+		address: 'New York',
+		created: now,
+		cid: cid
+	});
+
+	Stores.insert({
+		name: 'FantaStore',
+		address: 'New York',
+		created: now,
+		cid: cid
+	});
+
+	Stores.insert({
+		name: 'SpriteStore',
+		address: 'New York',
+		created: now,
+		cid: cid
+	});
 
 	var uid = Accounts.createUser({
 		email: 'tom@cocacola.com',
@@ -17,7 +38,8 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 			path_name: 'Younger',
 			flags: 9999,
 			role: null,
-			cid: cid
+			cid: cid,
+			stores: [sid]
 		}
 	});
 
