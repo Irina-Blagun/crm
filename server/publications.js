@@ -7,7 +7,6 @@ Meteor.publish('stores', function(){
 	return Stores.find({ _id: {$in: user.profile.stores} });
 });
 
-Meteor.publish('users', function(){
-	var user = Users.findOne(this.userId);
-	return Users.find({cid: user.profile.cid}, {fields:{createdAt: 1}});
+Meteor.publish('users', function(cid){
+	return Users.find({ 'profile.cid': cid });
 });
