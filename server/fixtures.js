@@ -35,7 +35,7 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 		profile: {
 			first_name: 'Tom',
 			last_name: 'Coleman',
-			path_name: 'Younger',
+			path_name: 'Y.',
 			comp_flags: 9999,
 			flags: 9999,
 			role: null,
@@ -50,7 +50,22 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 		profile: {
 			first_name: 'Ira',
 			last_name: 'Blagun',
-			path_name: 'Olegovna',
+			path_name: 'O.',
+			comp_flags: 9999,
+			flags: 9999,
+			role: null,
+			cid: cid,
+			stores: [sid]
+		}
+	});
+
+	Accounts.createUser({
+		email: 'ilya@cocacola.com',
+		password: 'admin',
+		profile: {
+			first_name: 'Ilya',
+			last_name: 'Suhodolskiy',
+			path_name: 'V.',
 			comp_flags: 9999,
 			flags: 9999,
 			role: null,
