@@ -44,5 +44,22 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 		}
 	});
 
+	Accounts.createUser({
+		email: 'ira@cocacola.com',
+		password: 'admin',
+		profile: {
+			first_name: 'Ira',
+			last_name: 'Blagun',
+			path_name: 'Olegovna',
+			comp_flags: 9999,
+			flags: 9999,
+			role: null,
+			cid: cid,
+			stores: [sid]
+		}
+	});
+
+
+
 	Companies.update(cid, { $set: { uid: uid } });
 }
