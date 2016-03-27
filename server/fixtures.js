@@ -36,6 +36,7 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 			first_name: 'Tom',
 			last_name: 'Coleman',
 			path_name: 'Younger',
+			comp_flags: 9999,
 			flags: 9999,
 			role: null,
 			cid: cid,
