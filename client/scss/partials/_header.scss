@@ -1,4 +1,57 @@
 .header{
+    position: relative;
+
     height: $header-height;
     background: $header-background;
+
+    padding-right: 50px;
+    padding-left: 90px;
+
+    @include flex-box();
+    @include justify-content(space-between);
+    @include align-items(stretch);
+
+    &__logo{
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        height: 90px;
+        width: 90px;
+    }
+
+
+    &-nav{
+        list-style: none;
+
+        &__item{
+            display: inline-block;
+        }
+
+        &__link{
+            text-decoration: none;
+            text-align: center;
+            font-size: 22px;
+            color: #e7effe;
+
+            padding: 34px 0;
+            display: block;
+
+            height: 90px;
+            width: 60px;
+
+            background: transparent;
+
+            @include transition(background .3s, color .3s);
+
+            &:hover{
+                color: #fff;
+            }
+        }
+
+        &__item--active &__link{
+            background: #548bee;
+            color: #fff;
+        }
+    }
 }

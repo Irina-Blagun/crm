@@ -7,6 +7,7 @@
 
 /* Mixins */
 @import "mixins/flexbox";
+@import "mixins/decor";
 
 /* Core CSS */
 @import "basic";
@@ -15,6 +16,7 @@
 @import "animation";
 
 /* Components */
+@import "components/icons";
 @import "components/buttons";
 @import "components/form";
 @import "components/notify";
