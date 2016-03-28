@@ -1,4 +1,4 @@
-var now = new Date().getTime();
+var now = new Date();
 
 if (Companies.find().count() === 0 && Meteor.isServer) {
 
@@ -58,23 +58,6 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 			stores: [sid]
 		}
 	});
-
-	Accounts.createUser({
-		email: 'ilya@cocacola.com',
-		password: 'admin',
-		profile: {
-			first_name: 'Ilya',
-			last_name: 'Suhodolskiy',
-			path_name: 'V.',
-			comp_flags: 9999,
-			flags: 9999,
-			role: null,
-			cid: cid,
-			stores: [sid]
-		}
-	});
-
-
 
 	Companies.update(cid, { $set: { uid: uid } });
 }
