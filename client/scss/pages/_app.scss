@@ -19,13 +19,13 @@
         &__header{
             position: absolute;
             right: 0;
-            left: $sidebar-width;
+            left: 0;
             top: 0;
         }
 
         &__sidebar{
             position: absolute;
-            top: 0;
+            top: $header-height;
             bottom: 0;
             left: 0;
         }

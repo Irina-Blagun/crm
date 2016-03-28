@@ -3,14 +3,41 @@
     @include flex-direction(column);
     @include justify-content(space-between);
 
+    padding-top: 40px;
     width: $sidebar-width;
     height: 100%;
 
     background: $sidebar-background;
 
-    color: #fff;
+    &-nav{
+        list-style: none;
 
-    &__logo{
+        &__link{
+            text-decoration: none;
+            text-align: center;
+            font-size: 20px;
+            color: #e7effe;
 
+            display: block;
+            padding: 20px 0;
+
+            background: transparent;
+
+            @include transition(background .3s, color .3s);
+
+            &:hover{
+                color: #fff;
+            }
+        }
+
+        &__item--active &__link{
+            background: #548bee;
+            color: #fff;
+        }
+
+        &__item--disabled &__link{
+            cursor: default;
+            opacity: 0.5;
+        }
     }
 }
