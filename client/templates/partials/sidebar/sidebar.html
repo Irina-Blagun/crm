@@ -1,19 +1,26 @@
 <template name="sidebar">
     <div class="sidebar">
-        <div class="sidebar__logo">
-            Логотип
-        </div>
-        <div class="sidebar__menu">
-            <a href="{{pathFor 'profile'}}">Профиль</a>
-        </div>
-        <div class="sidebar__menu">
-            <a href="{{pathFor 'company'}}">Компания</a>
-        </div>
-        <div class="sidebar__menu">
-            <a href="{{pathFor 'users'}}">Сотрудники</a>
-        </div>
-        <div class="sidebar__settings">
-            Настройки
-        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav__item {{activeRouteClass 'dashboard'}}">
+                <a href="{{pathFor 'dashboard'}}" class="sidebar-nav__link icon-grid"></a>
+            </li>
+            <li class="sidebar-nav__item sidebar-nav__item--disabled {{activeRouteClass 'stores'}}">
+                <a href="#" class="sidebar-nav__link icon-cart"></a>
+            </li>
+            <li class="sidebar-nav__item sidebar-nav__item--disabled {{activeRouteClass 'providers'}}">
+                <a href="#" class="sidebar-nav__link icon-briefcase"></a>
+            </li>
+            <li class="sidebar-nav__item {{activeRouteClass 'users'}}">
+                <a href="{{pathFor 'users'}}" class="sidebar-nav__link icon-userlist"></a>
+            </li>
+            <li class="sidebar-nav__item sidebar-nav__item--disabled {{activeRouteClass 'chats'}}">
+                <a href="#" class="sidebar-nav__link icon-chat"></a>
+            </li>
+        </ul>
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav__item sidebar-nav__item--disabled">
+                <a href="#" class="sidebar-nav__link icon-settings"></a>
+            </li>
+        </ul>
     </div>
 </template>
