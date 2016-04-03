@@ -1,7 +1,9 @@
 <template name="modal">
     {{#if activeModal}}
-        <div class="modal">
-            {{> Template.dynamic template=activeModal}}
+        <div class="cd-modal">
+            <div class="cd-modal__container">
+                {{> Template.dynamic template=activeModal}}
+            </div>
         </div>
     {{/if}}
 </template>
