@@ -37,6 +37,34 @@
         }
     }
 
+    &-page{
+        padding: 35px 0;
+
+        &__header{
+            @include flex-box();
+            @include justify-content(space-between);
+
+            padding-bottom: 35px;
+        }
+
+        &__title{
+            line-height: 28px;
+            font-weight: 300;
+            font-size: 24px;
+        }
+
+        &__controls{
+            .btn{
+                line-height: 22px;
+            }
+        }
+
+        &__subtitle{
+            font-weight: 300;
+            color: #95A5A6;
+        }
+    }
+
     &-box{
         padding: 20px;
 
@@ -60,6 +88,97 @@
                 font-size: 16px;
                 color: #acbdce;
             }
+        }
+    }
+}
+
+
+
+.reactive-table-options {
+    padding-right: 0px;
+    margin-right: -5px;
+}
+
+.reactive-table-filter {
+    float: right;
+}
+
+.reactive-table-columns-dropdown {
+    float: right;
+}
+
+.reactive-table-columns-dropdown button {
+    float: right;
+}
+
+.reactive-table .sortable, .reactive-table-add-column {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.table > thead > tr > th.reactive-table-add-column {
+    border-bottom: none;
+}
+
+.reactive-table-navigation {
+    display: inline-block;
+    width: 100%;
+}
+
+.reactive-table-navigation .form-inline input {
+    width: 45px;
+}
+
+.reactive-table-navigation .rows-per-page {
+    float: left;
+}
+
+.reactive-table-navigation .page-number {
+    float: right;
+}
+
+.reactive-table-navigation .previous-page,
+.reactive-table-navigation .next-page {
+    font-size: 130%;
+    margin: 0 5px;
+}
+
+.reactive-table-navigation .previous-page.fa,
+.reactive-table-navigation .next-page.fa {
+    vertical-align: middle;
+}
+
+.reactive-table-navigation .previous-page:hover,
+.reactive-table-navigation .next-page:hover {
+    cursor: pointer;
+}
+
+.reactive-table .fa-sort-asc {
+    position: relative;
+    top: -2px;
+}
+
+.reactive-table .fa-sort-desc {
+    position: relative;
+    top: 2px;
+}
+
+#collectionModal {
+    .modal-body {
+        #cmForm > div:last-child {
+            padding: 15px;
+            text-align: right;
+            border-top: 1px solid #e5e5e5;
+        }
+    }
+    .modal-footer
+    {
+        form
+        {
+            display: inline-block;
         }
     }
 }
