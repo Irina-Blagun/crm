@@ -1,4 +1,6 @@
 .btn{
+    display: inline-block;
+
     text-decoration: none;
     line-height: 16px;
     font-weight: 300;
@@ -13,12 +15,12 @@
     cursor: pointer;
     outline: none;
 
-    &-primary{
+    &--primary{
         background: $brand-primary;
         color: #fff;
     }
 
-    &-light{
+    &--light{
         color: #fff;
     }
 }

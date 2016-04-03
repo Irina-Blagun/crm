@@ -1,7 +1,18 @@
 <template name="users">
-    {{> reactiveTable settings=settings}}
-</template>
+    <div class="app-page">
+        <div class="app-page__header">
+            <div>
+                <h1 class="app-page__title">Сотрудники</h1>
+                <p class="app-page__subtitle">Список сотрудников магазина</p>
 
-<template name="user">
-    <p>{{_id}}</p>
+                {{> modal}}
+            </div>
+            <div class="app-page__controls">
+                <button class="modal btn btn--primary" data-modal-template="usersAdd">Modal Two</button>
+            </div>
+        </div>
+        <div class="app-page__content">
+            {{> reactiveTable settings=settings}}
+        </div>
+    </div>
 </template>

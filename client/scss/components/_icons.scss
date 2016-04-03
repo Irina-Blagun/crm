@@ -23,6 +23,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-0c:before {
+    content: "\e908";
+}
+.icon-chat:before {
+    content: "\e907";
+}
 .icon-briefcase:before {
     content: "\e903";
 }
@@ -43,7 +49,4 @@
 }
 .icon-grid:before {
     content: "\e902";
-}
-.icon-chat:before {
-    content: "\e907";
 }
