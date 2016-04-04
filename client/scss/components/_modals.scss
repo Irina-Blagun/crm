@@ -1,0 +1,53 @@
+.cd-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(16,63,110,.3);
+  z-index: 5;
+  overflow: auto;
+  cursor: pointer;
+
+  &__container{
+    background: #fff;
+    max-width: 420px;
+    margin: 100px auto;
+    border-radius: 3px;
+    box-shadow: 0 4px 12px 0 rgba(15,63,110,0.3);
+    cursor: auto;
+  }
+
+  &__title{
+    font-size: 20px;
+  }
+
+  &__header{
+    position: relative;
+    font-size: 20px;
+    color: rgba(52,73,94,100);
+    padding: 18px 60px 18px 30px;
+    border-bottom: 1px solid rgba(236,240,241,100);
+    line-height: 23px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 18px;
+    right: 30px;
+    width: 22px;
+    height: 22px;
+    border-radius: 2px;
+    background: #ECF0F1;
+    font-size: 8px;
+    padding: 7px;
+    cursor: pointer;
+  }
+
+  &__content,
+  &__footer{
+    margin: 20px 30px;
+  }
+}
+
+
