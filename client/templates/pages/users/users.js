@@ -15,14 +15,10 @@ Template.users.helpers({
     }
 });
 
-Template.usersTableActions.onCreated(function(){
-    console.log(this.data);
-});
-
 Template.usersTableActions.events({
     'click .btn': function(){
         Session.set('modal', {
-            name: 'usersAdd',
+            name: 'usersEdit',
             data: {
                 _id: this._id
             }
