@@ -54,6 +54,7 @@ minifier-js@1.1.9
 minimongo@1.0.12
 modules@0.5.1
 modules-runtime@0.6.1
+momentjs:moment@2.12.0
 mongo@1.1.5
 mongo-id@1.0.2
 npm-bcrypt@0.7.8_2

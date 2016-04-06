@@ -4,6 +4,7 @@ Template.users.helpers({
             collection: Users,
             rowsPerPage: 10,
             showFilter: false,
+			showNavigation: 'auto',
             fields: [
 				{ key: 'createdAt', label: 'Регистрация' },
 				{ key: 'profile.first_name', label: 'Имя' },

@@ -1,0 +1,50 @@
+.table{
+    width: 100%;
+
+    thead{
+        border-bottom: 1px solid #ecf0f1;
+
+        th{
+            padding: 10px 20px;
+            font-weight: 300;
+            text-align: left;
+            color: #95A5A6;
+        }
+    }
+
+    tbody{
+        td{
+            padding: 15px 20px;
+        }
+    }
+
+    th,
+    td{
+        &:first-child{
+            padding-left: 0;
+        }
+
+        &:last-child{
+            padding-right: 0;
+        }
+    }
+}
+
+.reactive-table-navigation{
+    @include flex-box();
+    @include justify-content(space-between);
+
+    padding-top: 30px;
+
+    .form-inline{
+        label{
+            @include flex-box();
+            @include align-items(center);
+
+            .form-control{
+                margin: 0 5px;
+                min-width: 65px;
+            }
+        }
+    }
+}
