@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45a134a9-7a85-4c5d-b108-f5bf42f7343b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/pages/users/usersModalRemove.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/pages/users/usersModalRemove.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/scss/components/_buttons.scss" afterPath="$PROJECT_DIR$/client/scss/components/_buttons.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/scss/components/_icons.scss" afterPath="$PROJECT_DIR$/client/scss/components/_icons.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/scss/components/_modals.scss" afterPath="$PROJECT_DIR$/client/scss/components/_modals.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/pages/users/users.html" afterPath="$PROJECT_DIR$/client/templates/pages/users/users.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/pages/users/users.js" afterPath="$PROJECT_DIR$/client/templates/pages/users/users.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/pages/users/usersModalAdd.html" afterPath="$PROJECT_DIR$/client/templates/pages/users/usersModalAdd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/flags.md" afterPath="$PROJECT_DIR$/docs/flags.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/collections/users.js" afterPath="$PROJECT_DIR$/lib/collections/users.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.html" afterPath="$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.html" />
     </list>
     <ignored path="0c.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,6 +23,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="usersModalEdit.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="usersModalEdit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="usersModalRemove.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalRemove.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -43,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flags.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="flags.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/flags.md">
           <provider editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
             <state split_layout="FIRST">
@@ -83,17 +93,7 @@
         <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalAdd.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-16.875">
-              <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="usersModalEdit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.875">
-              <caret line="18" column="133" selection-start-line="18" selection-start-column="133" selection-end-line="18" selection-end-column="133" />
+              <caret line="27" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="28" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -184,7 +184,6 @@
         <option value="$PROJECT_DIR$/client/templates/components/modal/modal.js" />
         <option value="$PROJECT_DIR$/client/templates/components/modal/modal.html" />
         <option value="$PROJECT_DIR$/client/templates/layout/base.js" />
-        <option value="$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.html" />
         <option value="$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.js" />
         <option value="$PROJECT_DIR$/client/scss/components/_buttons.scss" />
         <option value="$PROJECT_DIR$/client/templates/pages/users/users.js" />
@@ -196,6 +195,7 @@
         <option value="$PROJECT_DIR$/client/scss/components/_modals.scss" />
         <option value="$PROJECT_DIR$/client/scss/components/_icons.scss" />
         <option value="$PROJECT_DIR$/docs/flags.md" />
+        <option value="$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.html" />
       </list>
     </option>
   </component>
@@ -876,14 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31716418">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/collections/users.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -956,22 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.875">
-          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.875">
-          <caret line="18" column="133" selection-start-line="18" selection-start-column="133" selection-end-line="18" selection-end-column="133" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/scss/components/_icons.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.625">
@@ -998,6 +974,30 @@
       </provider>
       <provider selected="true" editor-type-id="MultiMarkdownFxPreviewEditor">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.875">
+          <caret line="27" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="28" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/pages/users/usersModalEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
