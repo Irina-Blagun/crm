@@ -3,29 +3,27 @@
         <h1 class="cd-modal__title">Добавление сотрудника</h1>
         <a class="cd-modal__close icon-close"></a>
     </div>
-    <div class="cd-modal__content">
-        <form id="form-usersAdd">
-            <div class="app-box__content">
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input class="form-control" type="email" id="email" placeholder="E-mail" required>
-                </div>
-                <div class="form-group">
-                    <label for="fio">ФИО</label>
-                    <input class="form-control" type="text" id="fio" placeholder="ФИО" required>
-                </div>
-                <div class="form-group">
-                    <label for="role">Должность</label>
-                    <input class="form-control" type="text" id="role" placeholder="Должность" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Мобильный телефон</label>
-                    <input class="form-control" type="tel" id="phone" placeholder="Мобильный телефон" required>
-                </div>
+    <form id="form-usersAdd">
+        <div class="cd-modal__content">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input class="form-control" type="email" id="email" placeholder="E-mail" required>
             </div>
-            <div class="cd-modal__footer">
-                <button class="btn btn--success" type="submit">Добавить</button>
+            <div class="form-group">
+                <label for="fio">ФИО</label>
+                <input class="form-control" type="text" id="fio" placeholder="ФИО" required>
             </div>
-        </form>
-    </div>
+            <div class="form-group">
+                <label for="role">Должность</label>
+                <input class="form-control" type="text" id="role" placeholder="Должность" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Мобильный телефон</label>
+                <input class="form-control" type="tel" id="phone" placeholder="Мобильный телефон" required>
+            </div>
+        </div>
+        <div class="cd-modal__footer">
+            <button class="btn btn--success" type="submit">Добавить</button>
+        </div>
+    </form>
 </template>
