@@ -1,0 +1,31 @@
+<template name="usersEdit">
+    <div class="cd-modal__header">
+        <h1 class="cd-modal__title">Редактирование данных</h1>
+        <a class="cd-modal__close icon-close"></a>
+    </div>
+    <div class="cd-modal__content">
+        <form id="form-usersEdit">
+            <div class="app-box__content">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input class="form-control" type="email" id="email" value="{{user.emails.[0].address}}" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <label for="fio">ФИО</label>
+                    <input class="form-control" type="text" id="fio"  value="{{user.profile.last_name}} {{user.profile.first_name}} {{user.profile.path_name}}" placeholder="ФИО" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Должность</label>
+                    <input class="form-control" type="text" id="role" value="{{user.profile.role}}" placeholder="Должность" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Мобильный телефон</label>
+                    <input class="form-control" type="tel" id="phone" value="{{user.profile.phone}}" placeholder="Мобильный телефон" required>
+                </div>
+            </div>
+            <div class="cd-modal__footer">
+                <button class="btn btn--primary" type="submit">Изменить</button>
+            </div>
+        </form>
+    </div>
+</template>
