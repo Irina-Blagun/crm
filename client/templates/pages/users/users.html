@@ -8,7 +8,7 @@
                 {{> modal}}
             </div>
             <div class="app-page__controls">
-                <button class="modal btn btn--primary" data-modal-template="usersAdd">Modal Two</button>
+                <button class="modal btn btn--primary" data-modal-template="usersAdd">Добавить</button>
             </div>
         </div>
         <div class="app-page__content">
@@ -18,5 +18,6 @@
 </template>
 
 <template name="usersTableActions">
-    <button class="btn btn--primary">Редактировать</button>
+    <button class="btn btn--primary" id="edit">Редактировать</button>
+    <button class="btn btn--danger" id="remove">Удалить</button>
 </template>
