@@ -1,0 +1,33 @@
+.loading{
+    position: relative;
+    height: 100%;
+
+    &:before,
+    &:after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border: 2px solid;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+
+        margin-top: -15px;
+        margin-left: -15px;
+    }
+
+    &:before{
+        border-color: #103f6e;
+        opacity: .3;
+    }
+
+    &:after{
+        border-color: transparent;
+        border-bottom-color: #103f6e;
+        -webkit-animation: rotate 1s infinite linear;
+        animation: rotate 1s infinite linear;
+
+
+    }
+}

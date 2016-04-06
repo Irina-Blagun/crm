@@ -61,7 +61,9 @@
         <item url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/stubs.js" />
         <item url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/css.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/momentjs_moment/2.12.0/web.browser/moment.js" />
         <item url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/buffer.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/momentjs_moment/2.12.0/web.browser/meteor/export.js" />
         <item url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/server.js" />
         <item url="file://$USER_HOME$/.meteor/packages/modules-runtime/0.6.1/web.browser/modules-runtime.js" />
         <item url="file://$USER_HOME$/.meteor/packages/modules-runtime/0.6.1/web.browser/modules-runtime-tests.js" />
@@ -325,7 +327,9 @@
       <root url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/stubs.js" />
       <root url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/css.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/momentjs_moment/2.12.0/web.browser/moment.js" />
       <root url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/buffer.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/momentjs_moment/2.12.0/web.browser/meteor/export.js" />
       <root url="file://$USER_HOME$/.meteor/packages/modules/0.5.1/web.browser/server.js" />
       <root url="file://$USER_HOME$/.meteor/packages/modules-runtime/0.6.1/web.browser/modules-runtime.js" />
       <root url="file://$USER_HOME$/.meteor/packages/modules-runtime/0.6.1/web.browser/modules-runtime-tests.js" />
