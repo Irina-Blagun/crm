@@ -11,8 +11,10 @@ Template.usersAdd.events({
                 last_name: fio[0],
                 path_name: fio[2],
                 flags: 1000,
+                //role: template.find('#role').value,
                 role: template.find('#role').value,
-                phone: template.find('#phone').value
+                phone: template.find('#phone').value,
+                cid: Meteor.companyId()
             }
         };
 
