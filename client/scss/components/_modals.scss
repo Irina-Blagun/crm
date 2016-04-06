@@ -44,15 +44,13 @@
     cursor: pointer;
   }
 
-  &__content,
-  &__footer{
-    margin: 20px 30px;
-  }
+    &__content{
+        padding: 20px 30px;
+    }
 
-  &__footer{
-    padding-bottom: 30px;
-  }
-
+    &__footer{
+        padding: 0 30px 20px;
+    }
 }
 
 
