@@ -1,8 +1,24 @@
 Template.usersEdit.helpers({
-   user: function(){
-       return Users.findOne({_id:this._id});
-   }
+    user: function(){
+        return Users.findOne({_id:this._id});
+    }
+    //,
+    //roles: function(){
+    //    return [
+    //        'Директор',
+    //        'Продавец',
+    //        'Бухгалтер'
+    //    ]
+    //}
 });
+//
+//Handlebars.registerHelper('selected', function(option, value){
+//    if (option === value) {
+//        return ' selected';
+//    } else {
+//        return ''
+//    }
+//});
 
 Template.usersEdit.events({
     'submit #form-usersEdit': function(event, template){
@@ -21,7 +37,7 @@ Template.usersEdit.events({
         };
 
         Meteor.call('users-update', this._id, user, function(){
-            alert('update')
+            Session.set('modal', null);
         })
     }
 });
