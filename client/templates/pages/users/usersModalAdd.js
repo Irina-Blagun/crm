@@ -1,8 +1,9 @@
 Template.usersAdd.events({
-    'submit #form-usersAdd': function(event, template){
+    'click button': function(event, template){
+        event.preventDefault();
+
         var fio = template.find('#fio').value;
         fio = fio.split(' ');
-
 
         var user = {
             email: template.find('#email').value,
@@ -11,7 +12,6 @@ Template.usersAdd.events({
                 last_name: fio[0],
                 path_name: fio[2],
                 flags: 1000,
-                //role: template.find('#role').value,
                 role: template.find('#role').value,
                 phone: template.find('#phone').value,
                 cid: Meteor.companyId()
@@ -19,8 +19,7 @@ Template.usersAdd.events({
         };
 
         Meteor.call('users-create', user, function(){
-            $('#form-usersAdd')[0].reset();
-            Router.go('users');
+            Session.set('modal', null);
         })
     }
 });
