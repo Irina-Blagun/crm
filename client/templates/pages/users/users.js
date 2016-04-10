@@ -12,7 +12,7 @@ Template.users.helpers({
 				{ key: 'profile', label: 'ФИО', fn: function(value){
                     return `${value.last_name} ${value.first_name} ${value.path_name}`
                 } },
-				{ key: 'profile.comp_flags', label: 'Права', hidden: !Meteor.userCheckAccess(-1) },
+				{ key: 'profile.flags', label: 'Права', hidden: !Meteor.userCheckAccess(2) },
 				{ key: 'profile.role', label: 'Должность' },
                 { label: '', tmpl: Template.usersTableActions }
 			]
@@ -25,7 +25,7 @@ Template.usersTableActions.events({
         Session.set('modal', {
             name: 'usersEdit',
             data: {
-                _id: this._id
+                user: this
             }
         });
     },
