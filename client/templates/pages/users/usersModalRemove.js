@@ -5,9 +5,11 @@ Template.usersRemove.helpers({
 });
 
 Template.usersRemove.events({
-    'click #remove': function(){
+    'click #remove': function(event, template){
+        event.preventDefault();
+
         Meteor.call('users-remove', this._id, function(){
-            alert('remove');
+            Session.set('modal', null);
         })
     }
 });

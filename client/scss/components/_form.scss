@@ -6,6 +6,18 @@
             display: inline-block;
             margin-bottom: 5px;
         }
+
+        select {
+            /*for WebKit*/
+            -webkit-appearance: none;
+            /* for FF */
+            -moz-appearance: none;
+            text-indent: 0.01px;
+            text-overflow: '';
+            /* for IE */
+            -ms-appearance: none;
+            appearance: none!important;
+        }
     }
 
     &-control{
