@@ -1,29 +1,8 @@
 Template.usersEdit.helpers({
-    user: function(){
-        //return Users.findOne({_id:this._id});
-        user = Users.findOne({_id:this._id});
-        return user;
-    },
     allStores: function(){
         return Stores.find();
     }
 });
-    //,
-    //roles: function(){
-    //    return [
-    //        'Директор',
-    //        'Продавец',
-    //        'Бухгалтер'
-    //    ]
-    //}
-//
-//Handlebars.registerHelper('selected', function(option, value){
-//    if (option === value) {
-//        return ' selected';
-//    } else {
-//        return ''
-//    }
-//});
 
 Template.usersEdit.events({
     'submit #form-usersEdit': function(event, template){
@@ -38,22 +17,38 @@ Template.usersEdit.events({
             'profile.first_name': fio[1],
             'profile.last_name': fio[0],
             'profile.path_name': fio[2],
-            'profile.flags': 0,
             'profile.role': template.find('#role').value,
             'profile.phone': template.find('#phone').value,
-            'profile.stores': stores
+            'profile.stores': stores,
+            'profile.flags': 0
         };
 
-        Meteor.call('users-update', this._id, user, function(){
+		template.findAll('input[name=flag]').forEach(function(flag){
+			if(flag.checked){
+				user['profile.flags'] += Number(flag.value);
+			}
+		});
+
+        Meteor.call('users-update', this.user._id, user, function(){
             Session.set('modal', null);
         })
     }
 });
 
-Template.usersEdit.rendered = function(){
-    var flags = user.profile.flags;
-    this.findAll('input[name=flag]').forEach(function(checkbox){
-        var flag = Number(checkbox.value);
-        checkbox.checked = (flags & flag) === flag;
-    });
+Template.usersEdit.rendered = function() {
+	const user = this.data.user;
+	if(!user.profile) return;
+
+	if(user.profile.flags > 0){
+		this.findAll('input[name=flag]').forEach(function(checkbox) {
+			var flag = Number(checkbox.value);
+			checkbox.checked = (user.profile.flags & flag) === flag;
+		});
+	}
+
+	if(user.profile.stores && user.profile.stores.length){
+		this.findAll("input[name=stores]").forEach(function(store){
+			store.checked = user.profile.stores.some(function(s){ return store.value === s });
+		});
+	}
 };

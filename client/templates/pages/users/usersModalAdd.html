@@ -15,12 +15,7 @@
             </div>
             <div class="form-group">
                 <label for="role">Должность</label>
-                <select class="form-control" id="role" required>
-                    <option disabled selected>Выберите должность</option>
-                    <option value="Директор">Директор</option>
-                    <option value="Продавец">Продавец</option>
-                    <option value="Бухгалтер">Бухгалтер</option>
-                </select>
+                <input class="form-control" type="text" id="role" value="{{user.profile.role}}" placeholder="Должность" required>
             </div>
             <div class="form-group">
                 <label for="stores">Магазины</label>
@@ -34,38 +29,38 @@
             </div>
             <div class="form-group">
                 <label for="phone">Мобильный телефон</label>
-                <input class="form-control" type="tel" id="phone" placeholder="+375 (XX) XXX-XX-XX" pattern="^\+375\s\(\d{2}\)\s\d{3}[-]\d{2}[-]\d{2}$" required>
+                <input class="form-control" type="tel" id="phone" placeholder="+375xxxxxxxxx" pattern="^\+375\d{9}$" required>
             </div>
             <div class="form-group">
                 <label for="flag">Права</label>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="1"> Просмотр сотрудников
+                        <input name="flag" type="checkbox" value="2"> Просмотр сотрудников
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="2"> Просмотр движения товаров
+                        <input name="flag" type="checkbox" value="4"> Просмотр движения товаров
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="4"> Добавление, редактирование и удаление категорий и товаров
+                        <input name="flag" type="checkbox" value="8"> Добавление, редактирование и удаление категорий и товаров
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="8"> Фиксирование движения товаров
+                        <input name="flag" type="checkbox" value="16"> Фиксирование движения товаров
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="16"> Редактирование информации о сотрудниках
+                        <input name="flag" type="checkbox" value="32"> Редактирование информации о сотрудниках
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="32"> Добавление, редактирование и удаление пользователей, магазинов и поставщиков
+                        <input name="flag" type="checkbox" value="64"> Добавление, редактирование и удаление пользователей, магазинов и поставщиков
                     </label>
                 </div>
             </div>

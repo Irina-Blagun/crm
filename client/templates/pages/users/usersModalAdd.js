@@ -4,6 +4,10 @@ Template.usersAdd.helpers({
     }
 });
 
+Template.usersAdd.onCreated = function(x,y){
+	console.log(this.allStores);
+};
+
 Template.usersAdd.events({
     'click button': function(event, template){
         event.preventDefault();
@@ -19,11 +23,11 @@ Template.usersAdd.events({
                 first_name: fio[1],
                 last_name: fio[0],
                 path_name: fio[2],
-                flags: 0,
                 role: template.find('#role').value,
                 phone: template.find('#phone').value,
                 cid: Meteor.companyId(),
-                stores: stores
+                stores: stores,
+                flags: 0
             }
         };
 
