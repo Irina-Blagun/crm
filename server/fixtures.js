@@ -40,6 +40,8 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 			flags: 9999,
 			role: null,
 			cid: cid,
+			deleted: false,
+			delete_date: null,
 			stores: [sid]
 		}
 	});
@@ -55,6 +57,8 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 			flags: 9999,
 			role: null,
 			cid: cid,
+			deleted: false,
+			delete_date: null,
 			stores: [sid]
 		}
 	});

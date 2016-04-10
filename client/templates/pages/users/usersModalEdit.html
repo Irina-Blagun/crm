@@ -14,17 +14,55 @@
                 <input class="form-control" type="text" id="fio"  value="{{user.profile.last_name}} {{user.profile.first_name}} {{user.profile.path_name}}" placeholder="ФИО" required>
             </div>
             <div class="form-group">
+                <label for="role">Должность</label>
+                <input class="form-control" type="text" id="role" value="{{user.profile.role}}" placeholder="Должность" required>
+            </div>
+            <div class="form-group">
+                <label for="stores">Магазины</label>
+                {{#each allStores}}
+                    <div class="checkbox" id="sid">
+                        <label>
+                            <input type="checkbox" name="stores" value="{{_id}}"> {{name}}
+                        </label>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="form-group">
                 <label for="phone">Мобильный телефон</label>
                 <input class="form-control" type="tel" id="phone" value="{{user.profile.phone}}" placeholder="Мобильный телефон" required>
             </div>
             <div class="form-group">
-                <label for="role">Должность</label>
-                <select class="form-control" name="role" id="role">
-                    <option disabled selected>{{user.profile.role}}</option>
-                    <option value="Директор">Директор</option>
-                    <option value="Продавец">Продавец</option>
-                    <option value="Бухгалтер">Бухгалтер</option>
-                </select>
+                <label for="flag">Права</label>
+                <div class="checkbox">
+                    <label>
+                        <input name="flag" type="checkbox" value="1"> Просмотр сотрудников
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="flag" type="checkbox" value="2"> Просмотр движения товаров
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="flag" type="checkbox" value="4"> Добавление, редактирование и удаление категорий и товаров
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="flag" type="checkbox" value="8"> Фиксирование движения товаров
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="flag" type="checkbox" value="16"> Редактирование информации о сотрудниках
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="flag" type="checkbox" value="32"> Добавление, редактирование и удаление пользователей, магазинов и поставщиков
+                    </label>
+                </div>
             </div>
         </div>
         <div class="cd-modal__footer">
