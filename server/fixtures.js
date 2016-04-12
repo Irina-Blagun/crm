@@ -12,21 +12,27 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 		name: 'ColaStore',
 		address: 'New York',
 		created: now,
-		cid: cid
+		cid: cid,
+		deleted: false,
+		delete_date: null
 	});
 
 	Stores.insert({
 		name: 'FantaStore',
 		address: 'New York',
 		created: now,
-		cid: cid
+		cid: cid,
+		deleted: false,
+		delete_date: null
 	});
 
 	Stores.insert({
 		name: 'SpriteStore',
 		address: 'New York',
 		created: now,
-		cid: cid
+		cid: cid,
+		deleted: false,
+		delete_date: null
 	});
 
 	var uid = Accounts.createUser({
