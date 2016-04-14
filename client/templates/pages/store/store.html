@@ -8,9 +8,12 @@
                 {{> modal}}
             </div>
             <div class="app-page__controls">
-                <button class="modal btn btn--primary" data-modal-template="storesAdd">Добавить</button>
+                {{#if access 2}}
+                    <button class="modal btn btn--primary" data-modal-template="storesAdd">Добавить</button>
+                {{/if}}
             </div>
         </div>
+
         <div class="app-page__content">
 
             {{> reactiveTable collection=stores settings=settings}}

@@ -4,3 +4,8 @@ Template.base.events({
 		Session.set('modal', { name: name });
 	}
 });
+
+Handlebars.registerHelper('access', function(flag){
+	return Meteor.userCheckAccess(flag);
+});
+
