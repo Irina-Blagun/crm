@@ -1,0 +1,17 @@
+<template name="providersAdd">
+    <div class="cd-modal__header">
+        <h1 class="cd-modal__title">Добавление поставщика</h1>
+        <a class="cd-modal__close icon-close"></a>
+    </div>
+    <form id="form-providersAdd">
+        <div class="cd-modal__content">
+            <div class="form-group">
+                <label for="name">Название</label>
+                <input class="form-control" type="text" id="name" value="{{provider.name}}" placeholder="Название" required>
+            </div>
+        </div>
+        <div class="cd-modal__footer">
+            <button class="btn btn--success" type="submit">Добавить</button>
+        </div>
+    </form>
+</template>

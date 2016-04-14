@@ -35,6 +35,11 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 		delete_date: null
 	});
 
+	Providers.insert({
+		name: 'ООО "Обои"'
+	});
+
+
 	var uid = Accounts.createUser({
 		email: 'tom@cocacola.com',
 		password: 'admin',

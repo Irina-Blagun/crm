@@ -24,3 +24,7 @@ Meteor.publish('user', function(){
 			{fields: {'createdAt': 1}});
 	}
 });
+
+Meteor.publish('providers', function(){
+	return Providers.find();
+});
