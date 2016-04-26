@@ -15,6 +15,11 @@
     cursor: pointer;
     outline: none;
 
+    &[disabled]{
+        cursor: default;
+        opacity: 0.8;
+    }
+
     &--primary{
         background: $brand-primary;
         color: #fff;

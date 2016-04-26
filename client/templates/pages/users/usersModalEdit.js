@@ -35,12 +35,12 @@ Template.usersEdit.events({
     }
 });
 
-Template.usersEdit.rendered = function() {
+Template.usersEdit.rendered = function(){
 	const user = this.data.user;
 	if(!user.profile) return;
 
 	if(user.profile.flags > 0){
-		this.findAll('input[name=flag]').forEach(function(checkbox) {
+		this.findAll('input[name=flag]').forEach(function(checkbox){
 			var flag = Number(checkbox.value);
 			checkbox.checked = (user.profile.flags & flag) === flag;
 		});
