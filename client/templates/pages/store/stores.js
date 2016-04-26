@@ -16,8 +16,14 @@ Template.stores.helpers({
     }
 });
 
+Template.stores.events({
+    'click .reactive-table tbody tr': function(event){
+        console.log(this);
+    }
+});
+
 Template.storesTableActions.events({
-    'click .btn': function(){
+    'click #edit': function(){
         Session.set('modal', {
             name: 'storesEdit',
             data: {

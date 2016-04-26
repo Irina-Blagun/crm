@@ -1,0 +1,21 @@
+<template name="unitsEdit">
+    <div class="cd-modal__header">
+        <h1 class="cd-modal__title">Добавление единицы измерения</h1>
+        <a class="cd-modal__close icon-close"></a>
+    </div>
+    <form id="form-unitsEdit">
+        <div class="cd-modal__content">
+            <div class="form-group">
+                <label for="name">Единица измерения</label>
+                <input class="form-control" type="text" id="name" value="{{unit.name}}" placeholder="Значение" required>
+            </div>
+            <div class="form-group">
+                <label for="short_name">Сокращенное название</label>
+                <input class="form-control" type="text" id="short_name" value="{{unit.short_name}}" placeholder="шт." required>
+            </div>
+        </div>
+        <div class="cd-modal__footer">
+            <button class="btn btn--primary" type="submit">Изменить</button>
+        </div>
+    </form>
+</template>

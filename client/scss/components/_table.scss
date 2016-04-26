@@ -28,6 +28,10 @@
             padding-right: 0;
         }
     }
+
+    tr.row--selected{
+        background: lightyellow;
+    }
 }
 
 .reactive-table-navigation{

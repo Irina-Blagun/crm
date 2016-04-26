@@ -14,6 +14,9 @@
                 <input class="form-control" type="text" id="address" value="{{store.address}}" placeholder="Адрес" required>
             </div>
         </div>
+        {{#each users}}
+            <p>{{_id}}</p>
+        {{/each}}
         <div class="cd-modal__footer">
             <button class="btn btn--primary" type="submit">Изменить</button>
         </div>
