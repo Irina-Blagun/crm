@@ -8,7 +8,7 @@ Template.accountingComing.events({
         var product = {
             'count': count,
             'price': {
-                'purchase_price': template.find('#purchase_price').value,
+                'purchase_price': Number(template.find('#purchase_price').value),
                 'markup': this.product.price.markup,
                 'price': accounting.unformat(template.find('#price').value),
                 'total_amount': total_amount
@@ -18,10 +18,10 @@ Template.accountingComing.events({
         var accountOperation = {
             'type': 'Приход',
             'name': template.find('#name').value,
-            'count': template.find('#count').value,
+            'count': Number(template.find('#count').value),
             'provider': template.find('#provider').value,
             'price': {
-                'purchase_price': template.find('#purchase_price').value,
+                'purchase_price': Number(template.find('#purchase_price').value),
                 'markup': this.product.price.markup,
                 'price': accounting.unformat(template.find('#price').value),
                 'total_amount': accounting.unformat(template.find('#total_amount').value)
@@ -37,13 +37,8 @@ Template.accountingComing.events({
 
         Meteor.call('accounting-create', accountOperation, function(){
             Session.set('modal', null);
+            //location.reload();
         });
-
-        //console.log(count);
-        //console.log(template.find('#purchase_price').value);
-        //console.log(this.product.price.markup);
-        //console.log(accounting.unformat(template.find('#price').value));
-        //console.log(total_amount);
     },
     'input input': function(event, template){
         template.find('#price').value = accounting.formatNumber(Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(this.product.price.markup)), 2, " ");
@@ -56,6 +51,6 @@ Template.accountingComing.helpers({
         return Units.findOne({id: this.unit});
     },
     providers: function(){
-        return Providers.find();
+        return Providers.find({deleted: false});
 }
 });

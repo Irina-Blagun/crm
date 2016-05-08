@@ -7,8 +7,8 @@ Template.productsAdd.events({
             'count': 0,
             'unit': template.find('#unit').value,
             'price': {
-                'purchase_price': template.find('#purchase_price').value,
-                'markup': template.find('#markup').value,
+                'purchase_price': Number(template.find('#purchase_price').value),
+                'markup': Number(template.find('#markup').value),
                 'price': accounting.unformat(template.find('#price').value),
                 'total_amount': 0
             }
