@@ -7,7 +7,7 @@ Template.productsEdit.events({
             'unit': template.find('#unit').value,
             'price': {
                 'purchase_price': this.product.price.purchase_price,
-                'markup': template.find('#markup').value,
+                'markup': Number(template.find('#markup').value),
                 'price': price,
                 'total_amount': total_amount
             }

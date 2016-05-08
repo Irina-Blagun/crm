@@ -200,6 +200,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller_client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.12/web.browser/lib/wait_list.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/chart_chart/1.0.1-beta.4/web.browser/packages/chart:chart.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -401,6 +402,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller_client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.12/web.browser/lib/wait_list.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.12/web.browser/lib/controller.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/chart_chart/1.0.1-beta.4/web.browser/packages/chart:chart.js" />
     </CLASSES>
     <SOURCES />
   </library>
