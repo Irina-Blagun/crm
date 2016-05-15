@@ -8,17 +8,13 @@
                 {{> modal}}
             </div>
             <div class="app-page__controls">
-                <button class="modal btn btn--primary" data-modal-template="providersAdd">Добавить</button>
+                <button class="modal btn btn--success" data-modal-template="providersAdd">Добавить</button>
+                <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
+                <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
             </div>
         </div>
-        <div class="app-page__content">
-
+        <div class="app-page__content" id="providers">
             {{> reactiveTable collection=providers settings=settings}}
         </div>
     </div>
-</template>
-
-<template name="providersTableActions">
-    <button class="btn btn--primary" id="edit">Редактировать</button>
-    <button class="btn btn--danger" id="remove">Удалить</button>
 </template>

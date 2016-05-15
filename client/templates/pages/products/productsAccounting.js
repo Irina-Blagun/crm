@@ -1,6 +1,7 @@
 Template.productsAccounting.helpers({
     products: function(){
-        return Products.find()
+        var store = localStorage.getItem('item');
+        return Products.find({sid: store})
     },
     accounting: function(){
         var selectedItem = Session.get('selectedItem');
@@ -40,7 +41,10 @@ Template.productsAccounting.helpers({
             showNavigation: 'auto',
             fields: [
                 { key: 'type', label: 'Тип' },
-                { key: 'created', label: 'Дата', sortOrder: 0, sortDirection: 'descending' },
+                { key: 'created', label: 'Дата', sortOrder: 0, sortDirection: 'descending', fn: function(value){
+                        return moment(value).format('LL');
+                    }
+                },
                 { key: 'name', label: 'Наименование' },
                 { label: 'Поставщик', tmpl: Template.providersForTable },
                 { key: 'count', label: 'Количество' },
@@ -70,11 +74,24 @@ Template.productsAccounting.events({
     },
     'click #edit': function(){
         var selectedItem = Session.get('selectedItem');
+        var product = Products.findOne({_id: selectedItem._id});
         if(selectedItem) {
             Session.set('modal', {
                 name: 'productsEdit',
                 data: {
-                    product: Session.get('selectedItem')
+                    _id: product._id,
+                    name: product.name,
+                    count: product.count,
+                    unit: product.unit,
+                    price: {
+                        purchase_price: product.price.purchase_price,
+                        markup: product.price.markup,
+                        price: product.price.price,
+                        total_amount: product.price.total_amount
+                    },
+                    created: product.created,
+                    creator: product.creator,
+                    sid: product.sid
                 }
             });
         }
@@ -92,7 +109,7 @@ Template.productsAccounting.events({
     },
     'click #removeAccounting': function(){
         var selectedItemAcc = Session.get('selectedItemAcc');
-        if(selectedItemAcc) {
+        if (selectedItemAcc) {
             Session.set('modal', {
                 name: 'accountingRemove',
                 data: {
@@ -100,12 +117,12 @@ Template.productsAccounting.events({
                 }
             });
         }
-        console.log(selectedItemAcc)
     },
     'click #products .reactive-table tbody tr': function(){
             var selectedItem = Session.get('selectedItem');
             if (selectedItem && selectedItem._id == this._id) {
                 Session.set('selectedItem', null);
+                Session.set('selectedItemAcc', null);
             } else {
                 Session.set('selectedItem', this);
             }
@@ -120,11 +137,48 @@ Template.productsAccounting.events({
     },
     'click #accountingComing': function(){
         var selectedItem = Session.get('selectedItem');
+        var product = Products.findOne({_id: selectedItem._id});
         if(selectedItem) {
             Session.set('modal', {
                 name: 'accountingComing',
                 data: {
-                    product: Session.get('selectedItem')
+                    _id: product._id,
+                    name: product.name,
+                    count: product.count,
+                    unit: product.unit,
+                    price: {
+                        purchase_price: product.price.purchase_price,
+                        markup: product.price.markup,
+                        price: product.price.price,
+                        total_amount: product.price.total_amount
+                    },
+                    created: product.created,
+                    creator: product.creator,
+                    sid: product.sid
+                }
+            });
+        }
+    },
+    'click #accountingSale': function(){
+        var selectedItem = Session.get('selectedItem');
+        var product = Products.findOne({_id: selectedItem._id});
+        if(selectedItem) {
+            Session.set('modal', {
+                name: 'accountingSale',
+                data: {
+                    _id: product._id,
+                    name: product.name,
+                    count: product.count,
+                    unit: product.unit,
+                    price: {
+                        purchase_price: product.price.purchase_price,
+                        markup: product.price.markup,
+                        price: product.price.price,
+                        total_amount: product.price.total_amount
+                    },
+                    created: product.created,
+                    creator: product.creator,
+                    sid: product.sid
                 }
             });
         }

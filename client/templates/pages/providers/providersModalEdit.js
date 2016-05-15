@@ -14,7 +14,7 @@ Template.providersEdit.events({
             }
         };
 
-        Meteor.call('providers-update', this.provider._id, provider, function(){
+        Meteor.call('providers-update', this._id, provider, function(){
             Session.set('modal', null);
         })
     }
