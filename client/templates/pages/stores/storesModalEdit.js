@@ -12,7 +12,7 @@ Template.storesEdit.events({
             'short_name': short_name.toUpperCase()
         };
 
-        Meteor.call('stores-update', this.store._id, store, function(){
+        Meteor.call('stores-update', this._id, store, function(){
             Session.set('modal', null);
         })
     }

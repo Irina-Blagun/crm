@@ -1,3 +1,10 @@
 .idea
 .meteor
 .DS_Store
+.idea/workspace.xml
+
+.DS_Store
+
+.idea/0c.iml
+
+.idea/libraries/meteor_packages_auto_import_browser.xml

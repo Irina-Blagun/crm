@@ -6,20 +6,20 @@ Template.productsEdit.events({
             'name': template.find('#name').value,
             'unit': template.find('#unit').value,
             'price': {
-                'purchase_price': this.product.price.purchase_price,
+                'purchase_price': this.price.purchase_price,
                 'markup': Number(template.find('#markup').value),
                 'price': price,
                 'total_amount': total_amount
             }
         };
 
-        Meteor.call('products-update', this.product._id, product, function(){
+        Meteor.call('products-update', this._id, product, function(){
             Session.set('modal', null);
         })
     },
     'input input': function(event, template){
-        price = Number(this.product.price.purchase_price) + Number(this.product.price.purchase_price) / 100 * Number(template.find('#markup').value);
-        total_amount = price * this.product.count;
+        price = Number(this.price.purchase_price) + Number(this.price.purchase_price) / 100 * Number(template.find('#markup').value);
+        total_amount = price * this.count;
     }
 });
 

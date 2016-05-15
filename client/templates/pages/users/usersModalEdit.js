@@ -36,7 +36,8 @@ Template.usersEdit.events({
 });
 
 Template.usersEdit.rendered = function(){
-	const user = this.data.user;
+	const user = Users.findOne({_id: this.data._id});
+
 	if(!user.profile) return;
 
 	if(user.profile.flags > 0){

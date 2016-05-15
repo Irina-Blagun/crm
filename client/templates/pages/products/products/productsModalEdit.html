@@ -7,7 +7,7 @@
         <div class="cd-modal__content">
             <div class="form-group">
                 <label for="name">Наименование</label>
-                <input class="form-control" type="text" id="name" value="{{product.name}}" placeholder="Наименование" required>
+                <input class="form-control" type="text" id="name" value="{{name}}" placeholder="Наименование" required>
             </div>
             <div class="form-group">
                 <label for="unit">Единица измерения</label>
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label for="markup">Наценка (%)</label>
-                <input class="form-control" type="text" id="markup" value="{{product.price.markup}}" placeholder="10000" pattern="[0-9]{0,15}" required>
+                <input class="form-control" type="text" id="markup" value="{{price.markup}}" placeholder="10000" pattern="[0-9]{0,15}" required>
             </div>
         </div>
         <div class="cd-modal__footer">

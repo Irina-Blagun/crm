@@ -7,7 +7,7 @@
         <div class="cd-modal__content">
             <div class="form-group">
                 <label for="name">Наименование</label>
-                <input class="form-control" type="text" id="name" value="{{product.name}}" placeholder="Наименование" disabled required>
+                <input class="form-control" type="text" id="name" value="{{name}}" placeholder="Наименование" disabled required>
             </div>
             <div class="form-group">
                 <label for="provider">Поставщик</label>
@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label for="purchase_price">Закупочная стоимость (бел.руб.)</label>
-                <input class="form-control" type="text" id="purchase_price" value="{{product.price.purchase_price}}" placeholder="10 000.00" pattern="[0-9]{0,15}" required>
+                <input class="form-control" type="text" id="purchase_price" value="{{price.purchase_price}}" placeholder="10 000.00" pattern="[0-9]{0,15}" required>
             </div>
             <div class="form-group">
                 <label for="price">Цена</label>
@@ -33,13 +33,6 @@
                 <label for="total_amount">Общая сумма</label>
                 <input class="form-control" type="text" id="total_amount" disabled required>
             </div>
-            <br>
-            <br>
-            {{#if product}}
-                <div class="form-group">
-                    <p>В наличии {{product.count}} {{unit.short_name}}</p>
-                </div>
-            {{/if}}
         </div>
         <div class="cd-modal__footer">
             <button class="btn btn--success" type="submit">Приход</button>
