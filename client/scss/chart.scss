@@ -1,0 +1,62 @@
+@mixin pathseries($length, $delay, $strokecolor) {
+  stroke-dasharray: $length;
+  stroke-dashoffset: $length;
+  animation: draw 5s $delay ease both;
+  fill: none;
+  stroke: $strokecolor;
+  opacity: 0.8;
+}
+
+.ct-series-a .ct-line, .ct-series-a .ct-point{
+  stroke: rgb(98,153,248);
+}
+
+.ct-series-a {
+  @include pathseries(2000, 0s, rgb(98,153,248));
+}
+//
+//.ct-series-b {
+//  @include pathseries(1665, 0.25s, $color5);
+//}
+//
+//.ct-series-c {
+//  @include pathseries(1644, 0.5s, $color2);
+//}
+//
+//.ct-series-d {
+//  @include pathseries(1540, 0.75s, $color4);
+//}
+//
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.ct-chart {
+    width: 1100px;
+    max-width: 1100px;
+    height: 400px;
+    margin: 100px auto;
+    svg {
+      width: 100%;
+    };
+  }
+
+.ct-grid{
+    stroke: rgb(222,223,224);
+    stroke-dasharray: 0px;
+    stroke-width: 0.5px;
+}
+
+.ct-label{
+    color: rgb(102,102,102);
+    padding-top: 14px;
+}
+
+.ct-label.ct-horizontal.ct-end {
+    transform: translate(-50%,0);
+    display: block;
+    text-align: center;
+    font-size: 14px;
+}

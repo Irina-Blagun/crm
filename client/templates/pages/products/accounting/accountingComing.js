@@ -17,7 +17,7 @@ Template.accountingComing.events({
 
         var accountOperation = {
             'type': 'Приход',
-            'name': template.find('#name').value,
+            'product_id': this._id,
             'count': Number(template.find('#count').value),
             'provider': template.find('#provider').value,
             'price': {
