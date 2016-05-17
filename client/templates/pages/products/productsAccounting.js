@@ -6,7 +6,7 @@ Template.productsAccounting.helpers({
     accounting: function(){
         var selectedItem = Session.get('selectedItem');
         if(selectedItem) {
-            return Accounting.find({name: Session.get('selectedItem').name})
+            return Accounting.find({product_id: Session.get('selectedItem')._id})
         } else {
             return []
         }
@@ -42,10 +42,9 @@ Template.productsAccounting.helpers({
             fields: [
                 { key: 'type', label: 'Тип' },
                 { key: 'created', label: 'Дата', sortOrder: 0, sortDirection: 'descending', fn: function(value){
-                        return moment(value).format('LL');
+                        return moment(value).format('LLL');
                     }
                 },
-                { key: 'name', label: 'Наименование' },
                 { label: 'Поставщик', tmpl: Template.providersForTable },
                 { key: 'count', label: 'Количество' },
                 { key: 'price.purchase_price', label: 'Закупочная цена' },

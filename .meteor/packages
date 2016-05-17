@@ -25,3 +25,7 @@ standard-minifier-js
 momentjs:moment
 risul:accounting
 chart:chart
+rzymek:moment-locale-ru
+mfpierre:chartist-js
+tsega:bootstrap3-datetimepicker
+twbs:bootstrap

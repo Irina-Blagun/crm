@@ -17,7 +17,7 @@ Template.accountingSale.events({
 
         var accountOperation = {
             'type': 'Продажа',
-            'name': template.find('#name').value,
+            'product_id': this._id,
             'count': Number(template.find('#count').value),
             'provider': '',
             'price': {
