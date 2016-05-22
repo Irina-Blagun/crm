@@ -29,7 +29,7 @@ Template.usersEdit.events({
 			}
 		});
 
-        Meteor.call('users-update', this.user._id, user, function(){
+        Meteor.call('users-update', this._id, user, function(){
             Session.set('modal', null);
         })
     }

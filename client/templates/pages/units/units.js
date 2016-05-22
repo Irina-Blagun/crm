@@ -9,28 +9,59 @@ Template.units.helpers({
             showNavigation: 'auto',
             fields: [
                 { key: 'name', label: 'Единица измерения' },
-                { key: 'short_name', label: 'Сокращенное название' },
-                { label: '', tmpl: Template.unitsTableActions }
-            ]
+                { key: 'short_name', label: 'Сокращенное название' }
+            ],
+            rowClass: function(unit){
+                var selectedUnit = Session.get('selectedUnit');
+                if(selectedUnit && selectedUnit._id == unit._id){
+                    return 'row--selected'
+                }
+            }
         };
+    },
+    buttonStateDisabled: function(){
+        return !Session.get('selectedUnit') && 'disabled'
     }
 });
 
-Template.unitsTableActions.events({
-    'click .btn': function(){
-        Session.set('modal', {
-            name: 'unitsEdit',
-            data: {
-                unit: this
-            }
-        });
+Template.units.events({
+    'click #add': function () {
+        Session.set('selectedUnit', null);
     },
-    'click #remove': function(){
-        Session.set('modal', {
-            name: 'unitsRemove',
-            data: {
-                _id: this._id
-            }
-        });
+    'click #edit': function () {
+        var selectedUnit = Session.get('selectedUnit');
+        var unit = Units.findOne({_id: selectedUnit._id});
+        if (selectedUnit) {
+            Session.set('modal', {
+                name: 'unitsEdit',
+                data: {
+                    _id: unit._id,
+                    name: unit.name,
+                    short_name: unit.short_name
+                }
+            });
+        }
+    },
+    'click #remove': function () {
+        var selectedUnit = Session.get('selectedUnit');
+        var unit = Units.findOne({_id: selectedUnit._id});
+        if (selectedUnit) {
+            Session.set('modal', {
+                name: 'unitsRemove',
+                data: {
+                    _id: unit._id,
+                    name: unit.name,
+                    short_name: unit.short_name
+                }
+            });
+        }
+    },
+    'click #units .reactive-table tbody tr': function(){
+        var selectedUnit = Session.get('selectedUnit');
+        if (selectedUnit && selectedUnit._id == this._id) {
+            Session.set('selectedUnit', null);
+        } else {
+            Session.set('selectedUnit', this);
+        }
     }
 });

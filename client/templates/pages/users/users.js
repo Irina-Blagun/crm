@@ -8,16 +8,22 @@ Template.users.helpers({
             showFilter: false,
 			showNavigation: 'auto',
             fields: [
-				{ key: 'createdAt', label: 'Регистрация', fn: function(value){
-					    return moment(value).format('DD MMM YYYY, HH:MM:SS')
-				    }
-                },
-				{ key: 'profile', label: 'ФИО', fn: function(value){
+				{ key: 'profile', label: 'ФИО', sortOrder: 0, sortDirection: 'ascending', fn: function(value){
                         return `${value.last_name} ${value.first_name} ${value.path_name}`
                     }
                 },
-				{ key: 'profile.flags', label: 'Права', hidden: !Meteor.userCheckAccess(2) },
-				{ key: 'profile.role', label: 'Должность' }
+                { key: 'profile.role', label: 'Должность' },
+                { key: 'emails', label: 'E-mail', fn: function(value){
+                        return `${value[0].address}`
+                    }
+                },
+                { key: 'profile.flags', label: 'Права', hidden: !Meteor.userCheckAccess(2) },
+                { key: 'profile.stores', label: 'Магазины', tmpl: Template.userStores },
+                { key: 'createdAt', label: 'Дата регистрации', fn: function(value){
+                        //return moment(value).format('DD MMM YYYY, HH:MM')
+                        return moment(value).format('LLL')
+                    }
+                }
 			],
             rowClass: function(user){
                 var selectedUser = Session.get('selectedUser');
@@ -66,11 +72,28 @@ Template.users.events({
     },
     'click #remove': function () {
         var selectedUser = Session.get('selectedUser');
+        var user = Users.findOne({_id: selectedUser._id});
         if (selectedUser) {
             Session.set('modal', {
                 name: 'usersRemove',
                 data: {
-                    user: Session.get('selectedUser')
+                    _id: user._id,
+                    createdAt: user.createdAt,
+                    emails:[{
+                        address: user.emails[0].address
+                    }],
+                    profile:{
+                        first_name: user.profile.first_name,
+                        last_name: user.profile.last_name,
+                        path_name: user.profile.path_name,
+                        role: user.profile.role,
+                        phone: user.profile.phone,
+                        sid: user.profile.sid,
+                        stores: user.profile.stores,
+                        flags: user.profile.flags,
+                        deleted: user.profile.deleted,
+                        delete_date: user.profile.delete_date
+                    }
                 }
             });
         }
@@ -82,5 +105,11 @@ Template.users.events({
         } else {
             Session.set('selectedUser', this);
         }
+    }
+});
+
+Template.userStores.helpers({
+    store: function(){
+        return Stores.find()
     }
 });

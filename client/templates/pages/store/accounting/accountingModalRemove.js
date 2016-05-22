@@ -10,11 +10,12 @@ Template.accountingRemove.events({
 
 Template.accountingRemove.helpers({
     type: function() {
+
         var type = this.accounting.type;
 
-        if(type = 'Приход'){
-            type = 'приходе (поступлении) '
-        } else if(type = 'Продажа'){
+        if(type == 'Приход'){
+            type = 'поступлении'
+        } else if(type == 'Продажа'){
             type = 'продаже'
         }
         return type

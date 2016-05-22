@@ -11,14 +11,22 @@
   stroke: rgb(98,153,248);
 }
 
-.ct-series-a {
+.ct-series-b .ct-line, .ct-series-b .ct-point{
+  stroke: rgb(248, 188, 113);
+}
+
+.ct-series .ct-bar, .ct-series .ct-bar{
+  stroke: rgb(98,153,248);
+}
+
+.ct-series {
   @include pathseries(2000, 0s, rgb(98,153,248));
 }
-//
+////
 //.ct-series-b {
-//  @include pathseries(1665, 0.25s, $color5);
+//  @include pathseries(1665, 0.25s, rgb(248, 188, 113));
 //}
-//
+
 //.ct-series-c {
 //  @include pathseries(1644, 0.5s, $color2);
 //}
@@ -54,9 +62,35 @@
     padding-top: 14px;
 }
 
-.ct-label.ct-horizontal.ct-end {
+.ct-chart-line .ct-label.ct-horizontal.ct-end {
     transform: translate(-50%,0);
     display: block;
     text-align: center;
     font-size: 14px;
+}
+
+.ct-chart-bar .ct-label.ct-horizontal.ct-end {
+  font-size: 14px;
+}
+
+.ct-chart-bar .ct-line .ct-bar {
+  stroke-width: 60px
+}
+
+
+.tooltip {
+  position: absolute;
+  z-index: 1;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  border-radius: 3px;
+  text-align: center;
+  pointer-events: none;
+  color: white;
+  transition: opacity .1s ease-out;
+}
+
+.tooltip.tooltip-hidden {
+  opacity: 0;
 }

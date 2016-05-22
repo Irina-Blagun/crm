@@ -3,7 +3,7 @@
         <div class="app-page__header">
             <div>
                 <h1 class="app-page__title">Сотрудники</h1>
-                <p class="app-page__subtitle">Список сотрудников магазина</p>
+                <p class="app-page__subtitle">Список сотрудников предприятия</p>
 
                 {{> modal}}
             </div>
@@ -17,4 +17,11 @@
             {{> reactiveTable collection=users settings=settings}}
         </div>
     </div>
+</template>
+
+<template name="userStores">
+    {{#each store}}
+        <p>{{name}}</p>
+    {{/each}}
+    {{store}}
 </template>

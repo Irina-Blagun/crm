@@ -2,6 +2,8 @@ Template.accountingSale.events({
     'click button': function(event, template) {
         event.preventDefault();
 
+        var store = localStorage.getItem('item');
+
         var count = Number(this.count) - Number(template.find('#count').value),
             total_amount = Number(this.price.total_amount) - accounting.unformat(template.find('#total_amount').value);
 
@@ -25,7 +27,8 @@ Template.accountingSale.events({
                 'markup': this.price.markup,
                 'price': this.price.price,
                 'total_amount': accounting.unformat(template.find('#total_amount').value)
-            }
+            },
+            'sid': store
         };
 
         Meteor.call('products-update', this._id, product);

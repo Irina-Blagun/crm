@@ -2,15 +2,21 @@ Template.accountingComing.events({
     'click button': function(event, template) {
         event.preventDefault();
 
+        var store = localStorage.getItem('item');
+
+        //var count = Number(template.find('#count').value) + Number(this.count),
+        //    total_amount = Number(accounting.unformat(template.find('#price').value)) * Number(count);
+
         var count = Number(template.find('#count').value) + Number(this.count),
-            total_amount = Number(accounting.unformat(template.find('#price').value)) * Number(count);
+            total_amount = price * Number(count);
+
 
         var product = {
             'count': count,
             'price': {
                 'purchase_price': Number(template.find('#purchase_price').value),
                 'markup': this.price.markup,
-                'price': accounting.unformat(template.find('#price').value),
+                'price': price,
                 'total_amount': total_amount
             }
         };
@@ -23,9 +29,10 @@ Template.accountingComing.events({
             'price': {
                 'purchase_price': Number(template.find('#purchase_price').value),
                 'markup': this.price.markup,
-                'price': accounting.unformat(template.find('#price').value),
-                'total_amount': accounting.unformat(template.find('#total_amount').value)
-            }
+                'price': price,
+                'total_amount': totalAmountAcc
+            },
+            'sid': store
         };
 
         Meteor.call('products-update', this._id, product);
@@ -36,8 +43,10 @@ Template.accountingComing.events({
         });
     },
     'input input': function(event, template){
-        template.find('#price').value = accounting.formatNumber(Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(this.price.markup)), 2, " ");
-        template.find('#total_amount').value = accounting.formatNumber((Number(accounting.unformat(template.find('#price').value)) * Number(template.find('#count').value)), 2, " ");
+        price = Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(this.price.markup));
+        totalAmountAcc = Number(template.find('#purchase_price').value) * Number(template.find('#count').value);
+        //template.find('#price').value = accounting.formatNumber(Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(this.price.markup)), 2, " ");
+        //template.find('#total_amount').value = accounting.formatNumber((Number(accounting.unformat(template.find('#price').value)) * Number(template.find('#count').value)), 2, " ");
     }
 });
 
