@@ -8,7 +8,18 @@ Template.providers.helpers({
             showFilter: false,
             showNavigation: 'auto',
             fields: [
-                { key: 'name', label: 'Наименование' }
+                { key: 'name', label: 'Наименование', sortOrder: 0, sortDirection: 'ascending' },
+                { key: 'address', label: 'Адрес'},
+                { key: 'unp', label: 'УНП' },
+                { key: 'phone', label: 'Телефон' },
+                { key: 'email', label: 'E-mail', hidden: !Meteor.userCheckAccess(2) },
+                { key: 'bank.name', label: 'Наименование банка', hidden: !Meteor.userCheckAccess(2) },
+                { key: 'bank.address', label: 'Адрес банка', hidden: !Meteor.userCheckAccess(2) },
+                { key: 'created', label: 'Дата добавления', fn: function(value){
+                        //return
+                        return moment(value).format('LLL')
+                    }
+                }
             ],
             rowClass: function(provider){
                 var selectedProvider = Session.get('selectedProvider');

@@ -9,7 +9,12 @@ Template.stores.helpers({
             showNavigation: 'auto',
             fields: [
                 { key: 'name', label: 'Магазин' },
-                { key: 'address', label: 'Адрес' }
+                { key: 'address', label: 'Адрес' },
+                { key: 'created', label: 'Дата создания', fn: function(value){
+                        //return moment(value).format('DD MMM YYYY, HH:MM')
+                        return moment(value).format('LLL')
+                    }
+                }
             ],
             rowClass: function(store){
                 var selectedStore = Session.get('selectedStore');
@@ -50,11 +55,20 @@ Template.stores.events({
     },
     'click #remove': function () {
         var selectedStore = Session.get('selectedStore');
+        var store = Stores.findOne({_id: selectedStore._id});
         if (selectedStore) {
             Session.set('modal', {
                 name: 'storesRemove',
                 data: {
-                    store: Session.get('selectedStore')
+                    _id: store._id,
+                    name: store.name,
+                    address: store.address,
+                    short_name: store.short_name,
+                    created: store.created,
+                    creator: store.creator,
+                    cid: store.sid,
+                    deleted: store.deleted,
+                    delete_date: store.delete_date
                 }
             });
         }
@@ -65,11 +79,18 @@ Template.stores.events({
             Session.set('selectedStore', null);
         } else {
             Session.set('selectedStore', this);
+            Session.set('selectedItem', null);
+            Session.set('selectedItemAcc', null);
         }
     },
     'click #productsAccounting': function(){
         var name = Session.get('selectedStore').name;
         localStorage.setItem('item', Session.get('selectedStore')._id);
         Router.go('productsAccounting', {name: name})
+    },
+    'click #sales': function () {
+        var name = Session.get('selectedStore').name;
+        localStorage.setItem('item', Session.get('selectedStore')._id);
+        Router.go('storeSales', {name: name})
     }
 });

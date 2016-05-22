@@ -9,19 +9,16 @@
             </div>
             <div class="app-page__controls">
                 {{#if access 2}}
-                    <button class="modal btn btn--primary" data-modal-template="unitsAdd">Добавить</button>
+                    <button class="modal btn btn--success" data-modal-template="unitsAdd" id="add">Добавить</button>
+                    <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
+                    <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
                 {{/if}}
             </div>
         </div>
 
-        <div class="app-page__content">
+        <div class="app-page__content" id="units">
 
             {{> reactiveTable collection=units settings=settings}}
         </div>
     </div>
-</template>
-
-<template name="unitsTableActions">
-    <button class="btn btn--primary" id="edit">Редактировать</button>
-    <button class="btn btn--danger" id="remove">Удалить</button>
 </template>

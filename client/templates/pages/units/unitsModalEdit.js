@@ -7,7 +7,7 @@ Template.unitsEdit.events({
             'short_name': template.find('#short_name').value
         };
 
-        Meteor.call('units-update', this.unit._id, unit, function(){
+        Meteor.call('units-update', this._id, unit, function(){
             Session.set('modal', null);
         })
     }

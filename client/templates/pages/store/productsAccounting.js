@@ -18,11 +18,15 @@ Template.productsAccounting.helpers({
             showNavigation: 'auto',
             fields: [
                 { key: 'name', label: 'Наименование' },
-                { key: 'count', label: 'Количество' },
-                { label: 'Ед.изм.', tmpl: Template.unitsForTable, sortable: false },
+                { key: 'count', label: 'Количество в наличии' },
+                { key: 'unit', label: 'Ед.изм.', sortable: false, fn: function(value){
+                        //var unit = Units.findOne({_id: value});
+                        //return unit.short_name
+                    }
+                },
+                { key: 'price.purchase_price', label: 'Закупочная цена', hidden: !Meteor.userCheckAccess(1) },
+                { key: 'price.markup', label: 'Наценка', hidden: !Meteor.userCheckAccess(1) },
                 { key: 'price.price', label: 'Цена за ед. с нац.' },
-                { key: 'price.purchase_price', label: 'Закупочная цена' },
-                { key: 'price.markup', label: 'Наценка' },
                 { key: 'price.total_amount', label: 'Общая стоимость' },
                 { key: 'created', hidden: true, sortOrder: 0, sortDirection: 'descending' }
             ],
@@ -42,14 +46,24 @@ Template.productsAccounting.helpers({
             fields: [
                 { key: 'type', label: 'Тип' },
                 { key: 'created', label: 'Дата', sortOrder: 0, sortDirection: 'descending', fn: function(value){
-                        return moment(value).format('LLL');
+                        //return moment(value).format('DD MMM YYYY, HH:MM')
+                        return moment(value).format('LLL')
                     }
                 },
-                { label: 'Поставщик', tmpl: Template.providersForTable },
-                { key: 'count', label: 'Количество' },
-                { key: 'price.purchase_price', label: 'Закупочная цена' },
-                { key: 'price.total_amount', label: 'Общая стоимость' },
-                { label: 'Провёл', tmpl: Template.creatorsForTable }
+                { key: 'provider', label: 'Поставщик', hidden: !Meteor.userCheckAccess(1), fn: function(value){
+                        if(value) {
+                            var provider = Providers.findOne({_id: value});
+                            return provider.name
+                        }
+                    }
+                },
+                { key: 'count', label: 'Количество', hidden: !Meteor.userCheckAccess(1) },
+                { key: 'price.total_amount', label: 'Общая стоимость', hidden: !Meteor.userCheckAccess(1) },
+                { key: 'creator', label: 'Провёл', fn: function(value){
+                        var user = Users.findOne({_id: value});
+                        return `${user.profile.last_name} ${user.profile.first_name} ${user.profile.path_name}`
+                    }
+                }
             ],
             rowClass: function(itemAcc){
                 var selectedItemAcc = Session.get('selectedItemAcc');
@@ -97,11 +111,24 @@ Template.productsAccounting.events({
     },
     'click #remove': function(){
         var selectedItem = Session.get('selectedItem');
+        var product = Products.findOne({_id: selectedItem._id});
         if(selectedItem) {
             Session.set('modal', {
                 name: 'productsRemove',
                 data: {
-                    product: Session.get('selectedItem')
+                    _id: product._id,
+                    name: product.name,
+                    count: product.count,
+                    unit: product.unit,
+                    price: {
+                        purchase_price: product.price.purchase_price,
+                        markup: product.price.markup,
+                        price: product.price.price,
+                        total_amount: product.price.total_amount
+                    },
+                    created: product.created,
+                    creator: product.creator,
+                    sid: product.sid
                 }
             });
         }
@@ -181,23 +208,5 @@ Template.productsAccounting.events({
                 }
             });
         }
-    }
-});
-
-Template.unitsForTable.helpers({
-    units: function() {
-        return Units.find({_id: this.unit});
-    }
-});
-
-Template.providersForTable.helpers({
-    providers: function(){
-        return Providers.find({_id: this.provider});
-    }
-});
-
-Template.creatorsForTable.helpers({
-    creators: function(){
-        return Users.find({_id: this.creator});
     }
 });
