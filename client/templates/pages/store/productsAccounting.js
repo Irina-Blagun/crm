@@ -20,8 +20,11 @@ Template.productsAccounting.helpers({
                 { key: 'name', label: 'Наименование' },
                 { key: 'count', label: 'Количество в наличии' },
                 { key: 'unit', label: 'Ед.изм.', sortable: false, fn: function(value){
-                        //var unit = Units.findOne({_id: value});
-                        //return unit.short_name
+					if(value){
+						var unit = Units.findOne({_id: value});
+						return unit && unit.short_name
+					}
+
                     }
                 },
                 { key: 'price.purchase_price', label: 'Закупочная цена', hidden: !Meteor.userCheckAccess(1) },
@@ -88,6 +91,7 @@ Template.productsAccounting.events({
     'click #edit': function(){
         var selectedItem = Session.get('selectedItem');
         var product = Products.findOne({_id: selectedItem._id});
+
         if(selectedItem) {
             Session.set('modal', {
                 name: 'productsEdit',

@@ -1,3 +1,7 @@
+Meteor.startup(function(){
+	process.env.MAIL_URL = 'smtp://postmaster@sandbox770aa37c7d9544ebb0be26ae6542c686.mailgun.org:0e7c26ab2cb1b1e29571d76c9c8d854c@smtp.mailgun.org:587';
+});
+
 Meteor.publish('company', function(cid){
 	return Companies.find({ _id: cid });
 });

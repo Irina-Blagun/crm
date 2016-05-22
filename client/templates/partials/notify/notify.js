@@ -11,7 +11,7 @@ Template.message.rendered = function() {
 		Notify.update(message._id, {$set: {seen: true}});
 	});
 
-	Meteor.setTimeout(function(){
-		Blaze.remove(this.view);
-	}, 3000);
+	$('#notify-message--' + this.data._id).fadeOut(3000, function(){
+		Notify.update(message._id, {$set: {seen: true}});
+	});
 };
