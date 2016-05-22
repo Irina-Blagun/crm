@@ -1,0 +1,41 @@
+<template name="providersEdit">
+    <div class="cd-modal__header">
+        <h1 class="cd-modal__title">Редактирование данных</h1>
+        <a class="cd-modal__close icon-close"></a>
+    </div>
+    <form id="form-providersEdit">
+        <div class="cd-modal__content">
+            <div class="form-group">
+                <label for="name">Название</label>
+                <input class="form-control" type="text" id="name" value="{{name}}" placeholder="Название" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Адрес</label>
+                <input class="form-control" type="text" id="address" value="{{address}}" placeholder="Минск, ул.Притыцкого, 20" required>
+            </div>
+            <div class="form-group">
+                <label for="unp">УНП</label>
+                <input class="form-control" type="text" id="unp" value="{{unp}}" placeholder="xxxxxxxxx" pattern="\d{9}$" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input class="form-control" type="email" id="email" value="{{email}}" placeholder="E-mail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Мобильный телефон</label>
+                <input class="form-control" type="tel" id="phone" value="{{phone}}" placeholder="+375xxxxxxxxx" pattern="^\+375\d{9}$" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Название банка</label>
+                <input class="form-control" type="text" id="bank_name" value="{{bank.name}}" placeholder="Название" pattern="[А-ЯЁ][а-яё]+" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Адрес банка</label>
+                <input class="form-control" type="text" id="bank_address" value="{{bank.address}}" placeholder="Минск, ул.Притыцкого, 20" required>
+            </div>
+        </div>
+        <div class="cd-modal__footer">
+            <button class="btn btn--primary" type="submit">Изменить</button>
+        </div>
+    </form>
+</template>

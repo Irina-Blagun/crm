@@ -1,0 +1,24 @@
+<template name="units">
+    <div class="app-page">
+        <div class="app-page__header">
+            <div>
+                <h1 class="app-page__title">Единицы измерения</h1>
+                <p class="app-page__subtitle">Список единиц измерения</p>
+
+                {{> modal}}
+            </div>
+            <div class="app-page__controls">
+                {{#if access 2}}
+                    <button class="modal btn btn--success" data-modal-template="unitsAdd" id="add">Добавить</button>
+                    <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
+                    <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="app-page__content" id="units">
+
+            {{> reactiveTable collection=units settings=settings}}
+        </div>
+    </div>
+</template>

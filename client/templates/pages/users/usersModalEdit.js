@@ -29,18 +29,19 @@ Template.usersEdit.events({
 			}
 		});
 
-        Meteor.call('users-update', this.user._id, user, function(){
+        Meteor.call('users-update', this._id, user, function(){
             Session.set('modal', null);
         })
     }
 });
 
-Template.usersEdit.rendered = function() {
-	const user = this.data.user;
+Template.usersEdit.rendered = function(){
+	const user = Users.findOne({_id: this.data._id});
+
 	if(!user.profile) return;
 
 	if(user.profile.flags > 0){
-		this.findAll('input[name=flag]').forEach(function(checkbox) {
+		this.findAll('input[name=flag]').forEach(function(checkbox){
 			var flag = Number(checkbox.value);
 			checkbox.checked = (user.profile.flags & flag) === flag;
 		});

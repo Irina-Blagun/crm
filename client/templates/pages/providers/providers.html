@@ -1,0 +1,20 @@
+<template name="providers">
+    <div class="app-page">
+        <div class="app-page__header">
+            <div>
+                <h1 class="app-page__title">Компании</h1>
+                <p class="app-page__subtitle">Список поставщиков предприятия</p>
+
+                {{> modal}}
+            </div>
+            <div class="app-page__controls">
+                <button class="modal btn btn--success" data-modal-template="providersAdd">Добавить</button>
+                <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
+                <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
+            </div>
+        </div>
+        <div class="app-page__content" id="providers">
+            {{> reactiveTable collection=providers settings=settings}}
+        </div>
+    </div>
+</template>

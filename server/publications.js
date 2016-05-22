@@ -11,7 +11,7 @@ Meteor.publish('stores', function(){
 
 Meteor.publish('allStores', function(){
 	var user = Users.findOne(this.userId);
-	return Stores.find({cid: user.profile.cid});
+	return Stores.find({cid: user.profile.cid, deleted: false});
 });
 
 Meteor.publish('users', function(cid){
@@ -23,4 +23,20 @@ Meteor.publish('user', function(){
 		return Meteor.users.find({_id: this.userId},
 			{fields: {'createdAt': 1}});
 	}
+});
+
+Meteor.publish('providers', function(){
+	return Providers.find();
+});
+
+Meteor.publish('units', function(){
+	return Units.find();
+});
+
+Meteor.publish('products', function(){
+	return Products.find();
+});
+
+Meteor.publish('accounting', function(){
+	return Accounting.find();
 });

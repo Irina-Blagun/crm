@@ -1,0 +1,25 @@
+<template name="stores">
+    <div class="app-page">
+        <div class="app-page__header">
+            <div>
+                <h1 class="app-page__title">Магазины</h1>
+                <p class="app-page__subtitle">Список магазинов компании</p>
+
+                {{> modal}}
+            </div>
+            <div class="app-page__controls">
+                {{#if access 2}}
+                    <button class="btn btn--success" id="sales" disabled="{{buttonStateDisabled}}">Продажи</button>
+                    <button class="btn btn--success" id="productsAccounting" disabled="{{buttonStateDisabled}}">Товары и учёт</button>
+                    <button class="modal btn btn--success" data-modal-template="storesAdd" id="add">Добавить</button>
+                    <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
+                    <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="app-page__content" id="stores">
+            {{> reactiveTable collection=stores settings=settings}}
+        </div>
+    </div>
+</template>

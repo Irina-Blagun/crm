@@ -7,15 +7,15 @@
         <div class="cd-modal__content">
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input class="form-control" type="email" id="email" value="{{user.emails.[0].address}}" placeholder="E-mail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                <input class="form-control" type="email" id="email" value="{{emails.[0].address}}" placeholder="E-mail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
             </div>
             <div class="form-group">
                 <label for="fio">ФИО</label>
-                <input class="form-control" type="text" id="fio"  value="{{user.profile.last_name}} {{user.profile.first_name}} {{user.profile.path_name}}" placeholder="ФИО" pattern="[А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+$" required>
+                <input class="form-control" type="text" id="fio"  value="{{profile.last_name}} {{profile.first_name}} {{profile.path_name}}" placeholder="ФИО" pattern="[А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+$" required>
             </div>
             <div class="form-group">
                 <label for="role">Должность</label>
-                <input class="form-control" type="text" id="role" value="{{user.profile.role}}" placeholder="Должность" required>
+                <input class="form-control" type="text" id="role" value="{{profile.role}}" placeholder="Должность" required>
             </div>
             <div class="form-group">
                 <label for="stores">Магазины</label>
@@ -29,38 +29,38 @@
             </div>
             <div class="form-group">
                 <label for="phone">Мобильный телефон</label>
-                <input class="form-control" type="tel" id="phone" value="{{user.profile.phone}}" placeholder="+375xxxxxxxxx" pattern="^\+375\d{9}$" required>
+                <input class="form-control" type="tel" id="phone" value="{{profile.phone}}" placeholder="+375xxxxxxxxx" pattern="^\+375\d{9}$" required>
             </div>
             <div class="form-group">
                 <label for="flag">Права</label>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="2"> Просмотр сотрудников
+                        <input name="flag" type="checkbox" value="1"> Просмотр сотрудников
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="4"> Просмотр движения товаров
+                        <input name="flag" type="checkbox" value="2"> Просмотр движения товаров
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="8"> Добавление, редактирование и удаление категорий и товаров
+                        <input name="flag" type="checkbox" value="4"> Добавление, редактирование и удаление категорий и товаров
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="16"> Фиксирование движения товаров
+                        <input name="flag" type="checkbox" value="8"> Фиксирование движения товаров
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="32"> Редактирование информации о сотрудниках
+                        <input name="flag" type="checkbox" value="16"> Редактирование информации о сотрудниках
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="64"> Добавление, редактирование и удаление пользователей, магазинов и поставщиков
+                        <input name="flag" type="checkbox" value="32"> Добавление, редактирование и удаление пользователей, магазинов и поставщиков
                     </label>
                 </div>
             </div>

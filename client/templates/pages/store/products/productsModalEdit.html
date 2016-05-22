@@ -1,0 +1,29 @@
+<template name="productsEdit">
+    <div class="cd-modal__header">
+        <h1 class="cd-modal__title">Редактирование товара</h1>
+        <a class="cd-modal__close icon-close"></a>
+    </div>
+    <form id="form-productsEdit">
+        <div class="cd-modal__content">
+            <div class="form-group">
+                <label for="name">Наименование</label>
+                <input class="form-control" type="text" id="name" value="{{name}}" placeholder="Наименование" required>
+            </div>
+            <div class="form-group">
+                <label for="unit">Единица измерения</label>
+                <select class="form-control" id="unit" required>
+                    {{#each units}}
+                        <option value="{{_id}}">{{short_name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="markup">Наценка (%)</label>
+                <input class="form-control" type="text" id="markup" value="{{price.markup}}" placeholder="10000" pattern="[0-9]{0,15}" required>
+            </div>
+        </div>
+        <div class="cd-modal__footer">
+            <button class="btn btn--primary" type="submit">Изменить</button>
+        </div>
+    </form>
+</template>

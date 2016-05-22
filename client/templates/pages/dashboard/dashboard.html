@@ -5,8 +5,35 @@
                 <h1 class="app-page__title">Панель управления</h1>
             </div>
             <div class="app-content__controls">
-
+                <p id="exit">Выйти</p>
             </div>
+        </div>
+        <div>
+            <div class="container">
+                <div class='col-sm-3'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" id="fromDate"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-sm-3'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input type='text' class="form-control" id="toDate"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <button id="monthes">По месяцам</button>
+                <button id="allTime">За всё время</button>
+            </div>
+            <div class="ct-chart ct-golden-section"></div>
         </div>
     </div>
 </template>
