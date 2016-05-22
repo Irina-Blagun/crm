@@ -25,6 +25,6 @@ Template.productsEdit.events({
 
 Template.productsEdit.helpers({
     units: function(){
-        return Units.find();
+        return Units.find({_id: this.unit});
     }
 });

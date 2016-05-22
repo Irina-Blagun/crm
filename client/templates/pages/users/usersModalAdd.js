@@ -42,3 +42,8 @@ Template.usersAdd.events({
         })
     }
 });
+
+
+function checkFields(keys, fields){
+	
+}

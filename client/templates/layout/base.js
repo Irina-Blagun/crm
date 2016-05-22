@@ -8,4 +8,3 @@ Template.base.events({
 Handlebars.registerHelper('access', function(flag){
 	return Meteor.userCheckAccess(flag);
 });
-
