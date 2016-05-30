@@ -1,0 +1,16 @@
+<template name="store">
+    <div class="app app-base layout-full" role="application">
+        <div class="app-base__header">
+            {{> header}}
+        </div>
+        <div class="app-base__sidebar">
+            {{> sidebar}}
+        </div>
+        <div class="app-base__content app-base__content--store">
+            {{> yield}}
+        </div>
+        <div class="app-base__notify">
+            {{> notify}}
+        </div>
+    </div>
+</template>
