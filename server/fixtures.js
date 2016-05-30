@@ -2,6 +2,11 @@ var now = new Date();
 
 if (Companies.find().count() === 0 && Meteor.isServer) {
 
+	Tree.insert({
+		text: 'Первая тестовая категория',
+		parent: "#"
+	});
+
 	var cid = Companies.insert({
 		name: '0c',
 		created: now,
