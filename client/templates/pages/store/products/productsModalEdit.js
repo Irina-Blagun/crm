@@ -1,6 +1,20 @@
 Template.productsEdit.events({
+    'input input': function(event, template){
+        generalPrice = Number(this.price.purchase_price) + Number(this.price.purchase_price) / 100 * Number(template.find('#markup').value);
+        total_amount = generalPrice * this.count;
+    },
     'submit #form-productsEdit': function(event, template){
         event.preventDefault();
+
+        console.log(generalPrice, total_amount);
+
+        if(generalPrice == 0){
+            generalPrice = this.price.price
+        }
+
+        if(total_amount == 0){
+            total_amount = this.price.total_amount
+        }
 
         var product = {
             'name': template.find('#name').value,
@@ -8,7 +22,7 @@ Template.productsEdit.events({
             'price': {
                 'purchase_price': this.price.purchase_price,
                 'markup': Number(template.find('#markup').value),
-                'price': price,
+                'price': generalPrice,
                 'total_amount': total_amount
             }
         };
@@ -16,15 +30,17 @@ Template.productsEdit.events({
         Meteor.call('products-update', this._id, product, function(){
             Session.set('modal', null);
         })
-    },
-    'input input': function(event, template){
-        price = Number(this.price.purchase_price) + Number(this.price.purchase_price) / 100 * Number(template.find('#markup').value);
-        total_amount = price * this.count;
     }
 });
 
 Template.productsEdit.helpers({
     units: function(){
-        return Units.find({_id: this.unit});
+        generalPrice = 0;
+        total_amount = 0;
+        return Units.find();
     }
+});
+
+Handlebars.registerHelper('selected', function(value){
+    return this._id == value ? 'selected' : ''
 });

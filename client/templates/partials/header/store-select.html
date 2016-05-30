@@ -1,5 +1,10 @@
 <template name="storeSelect">
     <div class="store-select">
-        <a class="store-select__toggle">{{storeSelected}}</a>
+        <select class="form-control" id="store-select" required>
+            {{#each stores}}
+                    <option value='{{_id}}' {{selected storeSelected}}>{{name}}</option>
+            {{/each}}
+        </select>
     </div>
 </template>
+

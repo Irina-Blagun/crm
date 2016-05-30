@@ -8,6 +8,8 @@
                 {{> modal}}
             </div>
             <div class="app-page__controls">
+                <button class="modal btn btn--success" id="edit" disabled="{{buttonStateDisabled}}">Движение</button>
+                // bar приходы и расходы товара за период
                 <button class="modal btn btn--success" data-modal-template="productsAdd" id="add">Добавить</button>
                 <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
                 <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
@@ -29,6 +31,7 @@
                 <p class="app-page__subtitle">Приход и расход товара</p>
             </div>
             <div class="app-page__controls">
+                <button class="btn btn--success" id="productOrder" disabled="{{buttonStateDisabled}}">Заказ</button>
                 <button class="btn btn--primary" id="accountingComing" disabled="{{buttonStateDisabled}}">Приход</button>
                 <button class="btn btn--primary" id="accountingSale" disabled="{{buttonStateDisabled}}">Продажа</button>
                 <button class="btn btn--danger" id="removeAccounting" disabled="{{buttonStateDisabledAcc}}">Удалить</button>

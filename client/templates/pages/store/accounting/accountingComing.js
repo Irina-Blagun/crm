@@ -2,8 +2,6 @@ Template.accountingComing.events({
     'click button': function(event, template) {
         event.preventDefault();
 
-        var store = localStorage.getItem('item');
-
         //var count = Number(template.find('#count').value) + Number(this.count),
         //    total_amount = Number(accounting.unformat(template.find('#price').value)) * Number(count);
 
@@ -30,23 +28,20 @@ Template.accountingComing.events({
                 'purchase_price': Number(template.find('#purchase_price').value),
                 'markup': this.price.markup,
                 'price': price,
-                'total_amount': totalAmountAcc
+                'total_amount': accounting.unformat(totalAmountAcc)
             },
-            'sid': store
+            'sid': this.sid
         };
 
         Meteor.call('products-update', this._id, product);
 
         Meteor.call('accounting-create', accountOperation, function(){
             Session.set('modal', null);
-            //location.reload();
         });
     },
     'input input': function(event, template){
         price = Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(this.price.markup));
         totalAmountAcc = Number(template.find('#purchase_price').value) * Number(template.find('#count').value);
-        //template.find('#price').value = accounting.formatNumber(Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(this.price.markup)), 2, " ");
-        //template.find('#total_amount').value = accounting.formatNumber((Number(accounting.unformat(template.find('#price').value)) * Number(template.find('#count').value)), 2, " ");
     }
 });
 

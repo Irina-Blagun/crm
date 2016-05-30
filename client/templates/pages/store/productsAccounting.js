@@ -1,7 +1,11 @@
 Template.productsAccounting.helpers({
     products: function(){
-        var store = localStorage.getItem('item');
-        return Products.find({sid: store})
+        var user = Users.findOne({_id: Meteor.userId()});
+        if(Session.get('store') || localStorage.getItem('store') !== {$in: user.profile.stores}) {
+            return Products.find({sid: Session.get('store') || localStorage.getItem('store')})
+        } else {
+            return
+        }
     },
     accounting: function(){
         var selectedItem = Session.get('selectedItem');
@@ -20,11 +24,10 @@ Template.productsAccounting.helpers({
                 { key: 'name', label: 'Наименование' },
                 { key: 'count', label: 'Количество в наличии' },
                 { key: 'unit', label: 'Ед.изм.', sortable: false, fn: function(value){
-					if(value){
-						var unit = Units.findOne({_id: value});
-						return unit && unit.short_name
-					}
-
+                        if(value){
+                            var unit = Units.findOne({_id: value});
+                            return unit && unit.short_name
+                        }
                     }
                 },
                 { key: 'price.purchase_price', label: 'Закупочная цена', hidden: !Meteor.userCheckAccess(1) },
@@ -195,6 +198,30 @@ Template.productsAccounting.events({
         if(selectedItem) {
             Session.set('modal', {
                 name: 'accountingSale',
+                data: {
+                    _id: product._id,
+                    name: product.name,
+                    count: product.count,
+                    unit: product.unit,
+                    price: {
+                        purchase_price: product.price.purchase_price,
+                        markup: product.price.markup,
+                        price: product.price.price,
+                        total_amount: product.price.total_amount
+                    },
+                    created: product.created,
+                    creator: product.creator,
+                    sid: product.sid
+                }
+            });
+        }
+    },
+    'click #productOrder': function(){
+        var selectedItem = Session.get('selectedItem');
+        var product = Products.findOne({_id: selectedItem._id});
+        if(selectedItem) {
+            Session.set('modal', {
+                name: 'ordersProductsAdd',
                 data: {
                     _id: product._id,
                     name: product.name,

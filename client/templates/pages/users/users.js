@@ -17,8 +17,9 @@ Template.users.helpers({
                         return `${value[0].address}`
                     }
                 },
-                { key: 'profile.flags', label: 'Права', hidden: !Meteor.userCheckAccess(2) },
-                { key: 'profile.stores', label: 'Магазины', tmpl: Template.userStores },
+                // { key: 'profile.flags', label: 'Права', hidden: !Meteor.userCheckAccess(2) },
+                { key: 'profile.flags', label: 'Права', hidden: true },
+                { key: 'profile.stores', label: 'Магазины', tmpl: Template.userStores, hidden: true },
                 { key: 'createdAt', label: 'Дата регистрации', fn: function(value){
                         //return moment(value).format('DD MMM YYYY, HH:MM')
                         return moment(value).format('LLL')
@@ -108,8 +109,10 @@ Template.users.events({
     }
 });
 
+
 Template.userStores.helpers({
-    store: function(){
-        return Stores.find()
+    stores: function () {
+        var stores = this.profile.stores;
+        return Stores.find({_id: {$in: stores}}).fetch();
     }
 });

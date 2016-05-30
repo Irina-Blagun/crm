@@ -28,6 +28,7 @@ chart:chart
 rzymek:moment-locale-ru
 mfpierre:chartist-js
 tsega:bootstrap3-datetimepicker
-twbs:bootstrap
+# twbs:bootstrap
 fatstar415:chart
 mrt:chartjs
+random
