@@ -12,6 +12,7 @@ Template.productsAdd.events({
                 'price': accounting.unformat(template.find('#price').value),
                 'total_amount': 0
             },
+            'category': Session.get('category'),
             'sid': localStorage.getItem('store')
         };
 
