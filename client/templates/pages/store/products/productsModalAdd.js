@@ -12,7 +12,7 @@ Template.productsAdd.events({
                 'price': accounting.unformat(template.find('#price').value),
                 'total_amount': 0
             },
-            'sid': localStorage.getItem('item')
+            'sid': localStorage.getItem('store')
         };
 
         Meteor.call('products-create', product, function(){

@@ -3,7 +3,7 @@ Template.sidebar.helpers({
 		var args = Array.prototype.slice.call(arguments, 0);
 		args.pop();
 
-		var active = args.some(function(name){
+		var active = args.length && args.some(function(name){
 			return Router.current() && Router.current().route.getName() === name
 		});
 

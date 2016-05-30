@@ -1,6 +1,7 @@
 Template.stores.helpers({
     stores: function(){
-        return Stores.find({deleted: false})
+        var user = Users.findOne({_id: Meteor.userId()});
+        return Stores.find({deleted: false, _id: {$in: user.profile.stores}})
     },
     settings: function(){
         return {
@@ -11,7 +12,6 @@ Template.stores.helpers({
                 { key: 'name', label: 'Магазин' },
                 { key: 'address', label: 'Адрес' },
                 { key: 'created', label: 'Дата создания', fn: function(value){
-                        //return moment(value).format('DD MMM YYYY, HH:MM')
                         return moment(value).format('LLL')
                     }
                 }
@@ -82,15 +82,5 @@ Template.stores.events({
             Session.set('selectedItem', null);
             Session.set('selectedItemAcc', null);
         }
-    },
-    'click #productsAccounting': function(){
-        var name = Session.get('selectedStore').name;
-        localStorage.setItem('item', Session.get('selectedStore')._id);
-        Router.go('productsAccounting', {name: name})
-    },
-    'click #sales': function () {
-        var name = Session.get('selectedStore').name;
-        localStorage.setItem('item', Session.get('selectedStore')._id);
-        Router.go('storeSales', {name: name})
     }
 });

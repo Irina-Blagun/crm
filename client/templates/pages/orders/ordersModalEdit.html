@@ -1,0 +1,21 @@
+<template name="ordersEdit">
+    <div class="cd-modal__header">
+        <h1 class="cd-modal__title">Редактирование заказа</h1>
+        <a class="cd-modal__close icon-close"></a>
+    </div>
+    <form id="form-ordersEdit">
+        <div class="cd-modal__content">
+            <div class="form-group">
+                <label for="provider">Поставщик</label>
+                <select class="form-control" id="provider" required>
+                    {{#each providers}}
+                        <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="cd-modal__footer">
+            <button class="btn btn--primary" type="submit">Изменить</button>
+        </div>
+    </form>
+</template>

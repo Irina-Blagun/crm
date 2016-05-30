@@ -65,11 +65,25 @@ Template.providers.events({
     },
     'click #remove': function () {
         var selectedProvider = Session.get('selectedProvider');
+        var provider = Providers.findOne({_id: selectedProvider._id});
         if (selectedProvider) {
             Session.set('modal', {
                 name: 'providersRemove',
                 data: {
-                    provider: Session.get('selectedProvider')
+                    _id: provider._id,
+                    name: provider.name,
+                    address: provider.address,
+                    unp: provider.unp,
+                    email: provider.email,
+                    phone: provider.phone,
+                    bank:{
+                        name: provider.bank.name,
+                        address: provider.bank.address
+                    },
+                    created: provider.created,
+                    cid: provider.cid,
+                    deleted: provider.deleted,
+                    delete_date: provider.delete_date
                 }
             });
         }

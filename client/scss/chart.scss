@@ -15,8 +15,12 @@
   stroke: rgb(248, 188, 113);
 }
 
-.ct-series .ct-bar, .ct-series .ct-bar{
+.ct-series-a .ct-bar, .ct-series-a .ct-bar{
   stroke: rgb(98,153,248);
+}
+
+.ct-series-b .ct-bar, .ct-series-b .ct-bar{
+  stroke: rgb(248, 188, 113);
 }
 
 .ct-series {
@@ -82,15 +86,26 @@
   position: absolute;
   z-index: 1;
   padding: 5px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.4);
   opacity: 1;
   border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
   text-align: center;
   pointer-events: none;
-  color: white;
+  color: black;
   transition: opacity .1s ease-out;
 }
 
 .tooltip.tooltip-hidden {
   opacity: 0;
+}
+
+.tooltip-line {
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0.4;
+}
+
+.tooltip-bar {
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0.4;
 }
