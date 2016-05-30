@@ -7,13 +7,15 @@
             </div>
         </div>
         <div class="container">
-            <div class='col-sm-3'>
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" id="fromDate"/>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+            <div class="row">
+                <div class='col-sm-4'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" id="fromDate"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -21,6 +23,8 @@
         <div class="app-page__content" id="stores">
             {{> reactiveTable collection=accounting settings=settings}}
         </div>
-        <p>Сумма за день = {{resultSum}} Br</p>
+        <div class="summ">
+            Сумма за день <span class="summ-count">{{resultSum}}</span> Br
+        </div>
     </div>
 </template>
