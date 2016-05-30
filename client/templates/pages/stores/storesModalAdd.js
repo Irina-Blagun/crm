@@ -14,6 +14,6 @@ Template.storesAdd.events({
 
         Meteor.call('stores-create', store, function(){
             Session.set('modal', null);
-        })
+        });
     }
 });

@@ -3,14 +3,22 @@ Template.enroll.events({
 		event.preventDefault();
 
 		var password = template.find('#password').value;
-		// TODO: Сделать ввод повторого пароля(2-ое поле)
 
-		alert(password);
+		var password2 = template.find('#password2').value;
 
-		Accounts.resetPassword(this.token, password, function(err){
-			if(err){
-				// TODO: Обработать ошибку
-			}
-		});
+		if(password == '' && password2 == ''){
+			throwMessage('danger', 'Пароль не введён');
+		} else if(password !== password2) {
+			throwMessage('danger', 'Пароли не совпадают');
+		} else {
+			Accounts.resetPassword(this.token, password, function(err){
+				if(err){
+					throwMessage('danger', 'Пароль не установлен');
+				} else {
+					throwMessage('success', 'Пароль установлен');
+					Router.go('/')
+				}
+			});
+		}
 	}
 });

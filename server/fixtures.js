@@ -3,9 +3,17 @@ var now = new Date();
 if (Companies.find().count() === 0 && Meteor.isServer) {
 
 	var cid = Companies.insert({
-		name: 'Coca-Cola',
+		name: '0c',
 		created: now,
-		uid: null
+		uid: null,
+		email: '0c.company.sales@gmail.com',
+		address: 'г.Минск, ул.Немига, 22',
+		unp: 896596857,
+		phone: '+375296379686',
+		bank: {
+			name: 'Беларусбанк, отделение №510/316',
+			address: 'ул.Максима Танка, 34'
+		}
 	});
 
 	var sid = Stores.insert({
@@ -59,6 +67,23 @@ if (Companies.find().count() === 0 && Meteor.isServer) {
 
 	Accounts.createUser({
 		email: 'ira@cocacola.com',
+		password: 'admin',
+		profile: {
+			first_name: 'Ira',
+			last_name: 'Blagun',
+			path_name: 'O.',
+			comp_flags: 9999,
+			flags: 9999,
+			role: null,
+			cid: cid,
+			deleted: false,
+			delete_date: null,
+			stores: [sid]
+		}
+	});
+
+	Accounts.createUser({
+		email: 'tom@cocacola.com',
 		password: 'admin',
 		profile: {
 			first_name: 'Ira',

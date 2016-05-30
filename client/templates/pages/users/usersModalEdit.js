@@ -42,14 +42,28 @@ Template.usersEdit.rendered = function(){
 
 	if(user.profile.flags > 0){
 		this.findAll('input[name=flag]').forEach(function(checkbox){
-			var flag = Number(checkbox.value);
-			checkbox.checked = (user.profile.flags & flag) === flag;
+            if(Meteor.isCompanyAdmin() && Meteor.userId() == user._id){
+                checkbox.checked = true;
+                checkbox.disabled = true;
+            } else {
+                var flag = Number(checkbox.value);
+                checkbox.checked = (user.profile.flags & flag) === flag;
+            }
 		});
 	}
 
 	if(user.profile.stores && user.profile.stores.length){
+        var _userId = Meteor.userId();
 		this.findAll("input[name=stores]").forEach(function(store){
-			store.checked = user.profile.stores.some(function(s){ return store.value === s });
+            console.log(_userId, user._id);
+			if(Meteor.isCompanyAdmin() && Meteor.userId() == user._id){
+                store.checked = true;
+                store.disabled = true;
+            } else {
+                store.checked = user.profile.stores.some(function (s) {
+                    return store.value === s
+                });
+            }
 		});
 	}
 };

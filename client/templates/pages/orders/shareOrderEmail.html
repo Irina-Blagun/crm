@@ -1,0 +1,29 @@
+<template name="shareOrderEmail">
+    <p>Заявка на заказ товара для поставщика {{providers}}</p>
+    <br>
+    <b>Компания</b>
+    <p>Название "{{company.name}}"</p>
+    <b>Магазин</b>
+    <p>Название "{{store.name}}"</p>
+    <p>Адрес "{{store.address}}"</p>
+    <br>
+    <br>
+    <table border="1" style="border-collapse: collapse" cellpadding="5px">
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th>Количество</th>
+                <th>Комментарий</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each product}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td align="center">{{this.count}}</td>
+                <td>{{this.comment}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</template>

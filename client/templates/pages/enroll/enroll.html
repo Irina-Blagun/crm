@@ -1,7 +1,22 @@
 <template name="enroll">
-    <form id="form-enroll">
-        <div><input type="password" id="password"></div>
-        <div><input type="password"></div>
-        <button type="submit">Ok</button>
-    </form>
+    <div class="app-box login">
+        <form id="form-enroll">
+            <div class="app-box__header">
+                <h1>Установление пароля</h1>
+                <p>Введите пароль для своего аккаунта</p>
+            </div>
+            <div class="app-box__content">
+                <div class="form-group">
+                    <input class="form-control" type="password" id="password" placeholder="Пароль" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" id="password2" placeholder="Подтвердите пароль" required>
+                </div>
+            </div>
+            <div class="app-box__footer">
+                <button class="btn btn--primary" type="submit">Далее</button>
+                <a class="btn btn--light" href="{{pathFor 'login'}}">Отмена</a>
+            </div>
+        </form>
+    </div>
 </template>

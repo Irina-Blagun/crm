@@ -13,13 +13,22 @@
             <li class="sidebar-nav__item {{activeRouteClass 'users'}}">
                 <a href="{{pathFor 'users'}}" class="sidebar-nav__link icon-userlist"></a>
             </li>
-            <li class="sidebar-nav__item sidebar-nav__item--disabled {{activeRouteClass 'chats'}}">
-                <a href="#" class="sidebar-nav__link icon-chat"></a>
+            <li class="sidebar-nav__item {{activeRouteClass 'productsAccounting'}}">
+                <a href="{{pathFor 'productsAccounting'}}" class="sidebar-nav__link icon-chat"></a>
+            </li>
+            <li class="sidebar-nav__item {{activeRouteClass 'orders'}}">
+                <a href="{{pathFor 'orders'}}" class="sidebar-nav__link icon-settings"></a>
+            </li>
+            <li class="sidebar-nav__item {{activeRouteClass 'units'}}">
+                <a href="{{pathFor 'units'}}" class="sidebar-nav__link icon-settings"></a>
+            </li>
+            <li class="sidebar-nav__item {{activeRouteClass 'sales'}}">
+                <a href="{{pathFor 'storeSales'}}" class="sidebar-nav__link icon-settings"></a>
             </li>
         </ul>
         <ul class="sidebar-nav">
-            <li class="sidebar-nav__item sidebar-nav__item--disabled">
-                <a href="#" class="sidebar-nav__link icon-settings"></a>
+            <li class="sidebar-nav__item {{activeRouteClass 'account'}}">
+                <a href="{{pathFor 'account'}}" class="sidebar-nav__link icon-settings"></a>
             </li>
         </ul>
     </div>

@@ -5,7 +5,7 @@ Template.usersAdd.helpers({
 });
 
 Template.usersAdd.onCreated = function(x,y){
-	console.log(this.allStores);
+
 };
 
 Template.usersAdd.events({

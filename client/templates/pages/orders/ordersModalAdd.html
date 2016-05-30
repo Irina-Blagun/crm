@@ -1,0 +1,21 @@
+<template name="ordersAdd">
+    <div class="cd-modal__header">
+        <h1 class="cd-modal__title">Добавление заказа</h1>
+        <a class="cd-modal__close icon-close"></a>
+    </div>
+    <form id="form-ordersAdd">
+        <div class="cd-modal__content">
+            <div class="form-group">
+                <label for="unit">Поставщик</label>
+                <select class="form-control" id="provider" required>
+                    {{#each providers}}
+                        <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="cd-modal__footer">
+            <button class="btn btn--success" type="submit">Добавить</button>
+        </div>
+    </form>
+</template>

@@ -1,0 +1,21 @@
+<template name="account">
+    <div class="app-page">
+        <div class="app-page__header">
+            <div>
+                <h1 class="app-page__title">Личная информация</h1>
+                <p class="app-page__subtitle">***</p>
+                {{> modal}}
+            </div>
+            <div class="app-page__controls">
+                <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
+            </div>
+        </div>
+        <div class="app-page__content" id="users">
+            <p>ФИО: {{user.profile.last_name}} {{user.profile.first_name}} {{user.profile.path_name}}</p>
+            <br>
+            <p>Должность: {{user.profile.role}}</p>
+            <br>
+            <p>Телефон: {{user.profile.phone}}</p>
+        </div>
+    </div>
+</template>
