@@ -511,7 +511,7 @@ function drawChartBar(series, series1, labels) {
 	setTimeout (
 		function() {
 			var path = document.querySelector('.ct-series path');
-			var length = path.getTotalLength();
+			// var length = path.getTotalLength();
 		},
 		3000);
 
@@ -567,7 +567,7 @@ function drawChart(series, series2, labels){
 	setTimeout (
 		function() {
 			var path = document.querySelector('.ct-series path');
-			var length = path.getTotalLength();
+			// var length = path.getTotalLength();
 		},
 		3000);
 
