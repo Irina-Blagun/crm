@@ -164,3 +164,37 @@
     height: 90px;
     line-height: 60px;
 }
+
+.page-number{
+    @include flex-box();
+
+    .previous-page,
+    .next-page{
+        border: 1px solid #D6DBDF;
+        height: 40px;
+        border-radius: 3px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    span{
+        display: none;
+    }
+}
+
+.rows-per-page{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.summ{
+    font-size: 18px;
+
+    text-align: center;
+    padding-top: 75px;
+
+    &-count{
+        font-size: 22px;
+        font-weight: 600;
+    }
+}

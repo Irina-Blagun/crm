@@ -23,31 +23,55 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-close:before {
+@font-face {
+    font-family: 'icomoon';
+    src:    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.eot?gfvagu');
+    src:    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.eot?gfvagu#iefix') format('embedded-opentype'),
+    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.ttf?gfvagu') format('truetype'),
+    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.woff?gfvagu') format('woff'),
+    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.svg?gfvagu#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon-ic_credit_card_black_24px:before {
     content: "\e900";
 }
-.icon-settings:before {
+.icon-ic_receipt_black_24px:before {
     content: "\e901";
 }
-.icon-userlist:before {
+.icon-ic_shop_black_24px:before {
     content: "\e902";
 }
-.icon-grid:before {
+.icon-ic_timer_black_24px:before {
     content: "\e903";
 }
-.icon-briefcase:before {
+.icon-close:before {
     content: "\e904";
 }
-.icon-alert:before {
+.icon-settings:before {
     content: "\e905";
 }
-.icon-cart:before {
+.icon-userlist:before {
     content: "\e906";
 }
-.icon-user:before {
+.icon-grid:before {
     content: "\e907";
 }
-.icon-chat:before {
+.icon-briefcase:before {
     content: "\e908";
 }
+.icon-alert:before {
+    content: "\e909";
+}
+.icon-cart:before {
+    content: "\e90a";
+}
+.icon-user:before {
+    content: "\e90b";
+}
+.icon-chat:before {
+    content: "\e90c";
+}
+
 
