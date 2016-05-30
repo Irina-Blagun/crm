@@ -11,6 +11,10 @@ Meteor.startup(function(){
 		};
 });
 
+Meteor.publish('tree', function(){
+	return Tree.find();
+});
+
 Meteor.publish('company', function(cid){
 	return Companies.find({ _id: cid });
 });

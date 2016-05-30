@@ -241,3 +241,42 @@ Template.productsAccounting.events({
         }
     }
 });
+
+
+globalDep = new Tracker.Dependency();
+
+Template.productsAccounting.onRendered(function(){
+	this.$('#tree').jstree({
+		core: {
+			data: function(node, cb){
+				globalDep.depend();
+				console.log('----- node', node);
+
+				var nodes = Tree.find({ sid: Session.get('store') }).fetch();
+
+				cb(nodes.map(function(node){
+					node.id = node._id;
+					console.log(node);
+					return node
+				}));
+			},
+			check_callback : true
+		},
+		plugins : ['contextmenu', 'dnd', 'search']
+	}).bind("select_node.jstree", function (e, data) {
+		Session.set('category', data.node.id);
+	}).bind("create_node.jstree", function (e, data) {
+		console.log(Session.get('store'));
+		Meteor.call('category-create', data, Session.get('store'));
+	}).bind("rename_node.jstree", function (e, data) {
+		Meteor.call('category-rename', data);
+	}).bind("delete_node.jstree", function (e, data) {
+		if(data.node.children.length){
+			return false;
+		}
+
+		Meteor.call('category-remove', data.node.id);
+	}).bind("move_node.jstree", function (e, data) {
+		Meteor.call('category-move', data);
+	});
+});
