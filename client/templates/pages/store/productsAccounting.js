@@ -2,7 +2,7 @@ Template.productsAccounting.helpers({
     products: function(){
         var user = Users.findOne({_id: Meteor.userId()});
         if(Session.get('store') || localStorage.getItem('store') !== {$in: user.profile.stores}) {
-            return Products.find({sid: Session.get('store') || localStorage.getItem('store')})
+            return Products.find({category: Session.get('category'), sid: Session.get('store') || localStorage.getItem('store')})
         } else {
             return
         }
