@@ -1,49 +1,61 @@
 <template name="productsAccounting">
-    <div class="app-page">
-
-        <div id="tree" class="app-page__tree">
-
+    <div class="app-page app-store">
+        <div class="app-store__categories">
+            <h2 className="app-store__categories-title">Категории</h2>
+            <div id="tree"></div>
         </div>
+        <div class="app-page__box app-page__box--top">
+            <div class="app-page__header">
+                <div>
+                    <h1 class="app-page__title">Товары</h1>
+                    <p class="app-page__subtitle">Список товаров магазина</p>
 
-        <div class="app-page__header">
-            <div>
-                <h1 class="app-page__title">Товары</h1>
-                <p class="app-page__subtitle">Список товаров магазина</p>
-
-                {{> modal}}
+                    {{> modal}}
+                </div>
+                <div class="app-page__controls">
+                    <button class="modal btn btn--success" id="edit" disabled="{{buttonStateDisabled}}">Движение</button>
+                    <button class="modal btn btn--success" data-modal-template="productsAdd" id="add">Добавить</button>
+                    <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
+                    <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
+                </div>
             </div>
-            <div class="app-page__controls">
-                <button class="modal btn btn--success" id="edit" disabled="{{buttonStateDisabled}}">Движение</button>
-                // bar приходы и расходы товара за период
-                <button class="modal btn btn--success" data-modal-template="productsAdd" id="add">Добавить</button>
-                <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
-                <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
-            </div>
-        </div>
-        <div class="app-page__content" id="products">
-            {{> reactiveTable collection=products settings=settingsProducts}}
-        </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <div class="app-page__header">
-            <div>
-                <h1 class="app-page__title">Учёт</h1>
-                <p class="app-page__subtitle">Приход и расход товара</p>
-            </div>
-            <div class="app-page__controls">
-                <button class="btn btn--success" id="productOrder" disabled="{{buttonStateDisabled}}">Заказ</button>
-                <button class="btn btn--primary" id="accountingComing" disabled="{{buttonStateDisabled}}">Приход</button>
-                <button class="btn btn--primary" id="accountingSale" disabled="{{buttonStateDisabled}}">Продажа</button>
-                <button class="btn btn--danger" id="removeAccounting" disabled="{{buttonStateDisabledAcc}}">Удалить</button>
+            <div class="app-page__content" id="products">
+                {{> reactiveTable collection=products settings=settingsProducts}}
             </div>
         </div>
-        <div class="app-page__content" id="accounting">
-            {{> reactiveTable collection=accounting settings=settingsAccounting}}
+        <div class="app-page__box app-page__box--bottom">
+            <div class="app-page__header">
+                <div>
+                    <h1 class="app-page__title">Учёт</h1>
+                    <p class="app-page__subtitle">Приход и расход товара</p>
+                </div>
+                <div class="app-page__controls">
+                    <button class="btn btn--success" id="productOrder" disabled="{{buttonStateDisabled}}">Заказ</button>
+                    <button class="btn btn--primary" id="accountingComing" disabled="{{buttonStateDisabled}}">Приход</button>
+                    <button class="btn btn--primary" id="accountingSale" disabled="{{buttonStateDisabled}}">Продажа</button>
+                    <button class="btn btn--danger" id="removeAccounting" disabled="{{buttonStateDisabledAcc}}">Удалить</button>
+                </div>
+            </div>
+            <div class="app-page__content" id="accounting">
+                {{> reactiveTable collection=accounting settings=settingsAccounting}}
+            </div>
         </div>
     </div>
 </template>
+    <!--<div class="app-page">-->
+
+        <!--<div id="tree" class="app-page__tree">-->
+
+        <!--</div>-->
+
+
+
+
+        <!--<br>-->
+        <!--<br>-->
+        <!--<br>-->
+        <!--<br>-->
+        <!--<br>-->
+
+
+    <!--</div>-->
