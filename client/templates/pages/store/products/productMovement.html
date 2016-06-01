@@ -4,32 +4,36 @@
         <a class="cd-modal__close icon-close"></a>
     </div>
     <form id="form-movement">
-        <div class="app-page__content">
+        <div class="cd-modal__content">
             <div class="row">
-                <div class="col-xs-3">
+                <div class="col-xs-6">
                     <div class='input-group date' id='datetimepicker1'>
                         <input type='text' class="form-control" id="fromDate"/>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
                     </div>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-6">
                     <div class='input-group date' id='datetimepicker2'>
                         <input type='text' class="form-control" id="toDate"/>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="ct-chart ct-chart-bar ct-golden-section"></div>
+            <div class="ct-chart ct-chart-bar ct-golden-section"></div>
+            <div class="chart-legend">
+                <div class="chart-legend__item">
+                    <div class="chart-legend__item-color" style="background: #F9C990"></div>
+                    <span class="chart-legend__item-text">Сумма продаж</span>
+                </div>
+                <div class="chart-legend__item">
+                    <div class="chart-legend__item-color" style="background: #86AFF9"></div>
+                    <span class="chart-legend__item-text">Сумма приходов</span>
                 </div>
             </div>
         </div>
-        <p>Оранжевая линия - Сумма продаж</p>
-        <p>Голубая линия - Сумма приходов</p>
     </form>
 </template>

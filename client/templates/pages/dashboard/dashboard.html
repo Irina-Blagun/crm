@@ -6,36 +6,44 @@
             </div>
         </div>
         <div class="app-page__content">
-            <div class="row">
+            <div class="row" style="height: 60px">
                 <div class="col-xs-3">
                     <div class='input-group date first' id='datetimepicker1'>
                         <input type='text' class="form-control" id="fromDate"/>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
                     </div>
                 </div>
                 <div class="col-xs-3">
                     <div class='input-group date' id='datetimepicker2'>
                         <input type='text' class="form-control" id="toDate"/>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6">
+                    <div class="chart-title">Работа предприятия (6 месяцев)</div>
                     <div class="ct-chart ct-chart-line ct-golden-section"></div>
+                    <div class="chart-legend">
+                        <div class="chart-legend__item">
+                            <div class="chart-legend__item-color" style="background: #F9C990"></div>
+                            <span class="chart-legend__item-text">Сумма продаж</span>
+                        </div>
+                        <div class="chart-legend__item">
+                            <div class="chart-legend__item-color" style="background: #86AFF9"></div>
+                            <span class="chart-legend__item-text">Сумма приходов</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-6">
+                    <div class="chart-title">Все магазины (сегодня)</div>
                     <div class="ct-chart ct-chart-bar ct-golden-section"></div>
                 </div>
             </div>
         </div>
-        <p>Работа предприятия (6 месяцев)</p>
-        <p>Оранжевая линия - Сумма продаж</p>
-        <p>Голубая линия - Сумма приходов</p>
-        <p>Все магазины (сегодня)</p>
     </div>
 </template>
