@@ -27,7 +27,6 @@ Template.storeSales.helpers({
             showFilter: false,
             showNavigation: 'auto',
             fields: [
-                { key: 'type', label: 'Тип' },
                 { key: 'product_id', label: 'Наименование товара', fn: function(value){
                         var product = Products.findOne({_id: value});
                         return product.name
@@ -62,8 +61,8 @@ Template.storeSales.rendered = function(){
             var month = date.getUTCMonth();
             var day = date.getUTCDate();
 
-            var fromDate = new Date(year, month, day, 0, 0, 0);
-            var toDate = new Date(year, month, day, 23, 59, 59);
+            var fromDate = new Date(year, month, day+1, 0, 0, 0);
+            var toDate = new Date(year, month, day+1, 23, 59, 59);
 
             Session.set('fromDate', fromDate);
             Session.set('toDate', toDate);
@@ -80,8 +79,8 @@ Template.storeSales.rendered = function(){
                 var month = dateCal.getUTCMonth();
                 var day = dateCal.getUTCDate();
 
-                var fromDate = new Date(year, month, day, 0, 0, 0);
-                var toDate = new Date(year, month, day, 23, 59, 59);
+                var fromDate = new Date(year, month, day+1, 0, 0, 0);
+                var toDate = new Date(year, month, day+1, 23, 59, 59);
 
                 Session.set('fromDate', fromDate);
                 Session.set('toDate', toDate);

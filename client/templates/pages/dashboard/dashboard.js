@@ -171,7 +171,7 @@ Template.dashboard.rendered = function() {
 				format: 'DD MMMM YYYY',
 				showTodayButton: true,
 				//showClear: true,
-				defaultDate: new Date(),
+				// defaultDate: new Date(),
 				maxDate: new Date(),
 				minDate: dateMin
 			});
@@ -223,8 +223,9 @@ Template.dashboard.rendered = function() {
 
 				if (data.length == 0) {
 					results.push(0);
+					results.push(0);
 					results.push(summ);
-					monthe.push('В выбранный период прибыли не было', '');
+					monthe.push('', 'Учётных операций не было', '');
 				}
 
 				var data2 = Accounting.find({type: 'Продажа', created: {$lt: toDate, $gte: fromDateMonth}}, {
@@ -278,7 +279,7 @@ Template.dashboard.rendered = function() {
 				format: 'DD MMMM YYYY',
 				showTodayButton: true,
 				//showClear: true,
-				defaultDate: new Date(),
+				// defaultDate: new Date(),
 				maxDate: new Date()
 			});
 			$("#datetimepicker2").on("dp.change", function (e) {
@@ -328,8 +329,9 @@ Template.dashboard.rendered = function() {
 
 				if (data.length == 0) {
 					results.push(0);
+					results.push(0);
 					results.push(summ);
-					monthe.push('В выбранный период прибыли не было', '');
+					monthe.push('', 'Учётных операций не было', '');
 				}
 
 				var data2 = Accounting.find({type: 'Продажа', created: {$lt: toDate, $gte: fromDateMonth}}, {
@@ -498,9 +500,14 @@ function drawChartBar(series, series1, labels) {
 			})
 		],
 		seriesBarDistance: 40,
+		chartPadding: {
+			right: 30,
+			top: 30,
+			left: -80
+		},
 		axisY: {
 			onlyInteger: true,
-			offset: 200,
+			offset: 190,
 			divisor: 1000000,
 			labelInterpolationFnc: function(value) {
 				value = accounting.formatNumber(value, 0, " ");
@@ -539,33 +546,34 @@ function drawChartBar(series, series1, labels) {
 
 function drawChart(series, series2, labels){
 	new Chartist.Line('.ct-chart', {
-			labels: labels,
-			series: [
-				series,
-				series2
-			]
-		}, {
+		labels: labels,
+		series: [
+			series,
+			series2
+		]
+	}, {
 		fullWidth: true,
 		chartPadding: {
 			right: 80,
-			top: 30
+			top: 30,
+			left: -40
 		},
 		axisY: {
 			onlyInteger: true,
-			offset: 200,
+			offset: 140,
 			divisor: 1000000,
-			labelInterpolationFnc: function(value) {
+			labelInterpolationFnc: function (value) {
 				value = accounting.formatNumber(value, 0, " ");
 				return value + ' Br'
+			}
 		}
-	}
 		//,
 		//lineSmooth: Chartist.Interpolation.simple({
 		//	divisor: 2
 		//})
 	});
-	setTimeout (
-		function() {
+	setTimeout(
+		function () {
 			var path = document.querySelector('.ct-series path');
 			// var length = path.getTotalLength();
 		},

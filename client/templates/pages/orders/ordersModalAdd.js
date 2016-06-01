@@ -5,7 +5,7 @@ Template.ordersAdd.events({
         var randomNumber = Math.floor(Math.random()*11098765668);
 
         var order = {
-            'number': randomNumber,
+            'number': randomNumber.toString(),
             'provider': template.find('#provider').value,
             'status': 0,
             'sid': localStorage.getItem('store')

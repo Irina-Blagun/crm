@@ -19,7 +19,7 @@ Template.users.helpers({
                 },
                 // { key: 'profile.flags', label: 'Права', hidden: !Meteor.userCheckAccess(2) },
                 { key: 'profile.flags', label: 'Права', hidden: true },
-                { key: 'profile.stores', label: 'Магазины', tmpl: Template.userStores, hidden: true },
+                { key: 'profile.stores', label: 'Магазины', tmpl: Template.userStores, hidden: false },
                 { key: 'createdAt', label: 'Дата регистрации', fn: function(value){
                         //return moment(value).format('DD MMM YYYY, HH:MM')
                         return moment(value).format('LLL')

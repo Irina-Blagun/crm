@@ -3,7 +3,7 @@
         <h1 class="cd-modal__title">Добавление товара</h1>
         <a class="cd-modal__close icon-close"></a>
     </div>
-    <form id="form-productsAdd">
+    <form id="form-productsAdd" class="validate-form">
         <div class="cd-modal__content">
             <div class="form-group">
                 <label for="name">Наименование</label>
@@ -17,17 +17,9 @@
                     {{/each}}
                 </select>
             </div>
-            <!--<div class="form-group">-->
-                <!--<label for="provider">Поставщик</label>-->
-                <!--<select class="form-control" id="provider" required>-->
-                    <!--{{#each providers}}-->
-                        <!--<option value="{{_id}}">{{name}}</option>-->
-                    <!--{{/each}}-->
-                <!--</select>-->
-            <!--</div>-->
             <div class="form-group">
                 <label for="purchase_price">Закупочная стоимость (бел.руб.)</label>
-                <input class="form-control" type="text" id="purchase_price" placeholder="10000.00" pattern="[0-9]{0,15}" required>
+                <input class="form-control" type="text" id="purchase_price" placeholder="10000.00" pattern="\d*\.?\d*" required>
             </div>
             <div class="form-group">
                 <label for="markup">Наценка (%)</label>
