@@ -15,15 +15,8 @@
             </div>
         </div>
         <div class="app-page__content" id="orders">
-            {{> reactiveTable collection=orders settings=settingsOrders}}
+            {{> reactiveTable collection=orders settings=settingsOrders rowsPerPage=4}}
         </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
         <div class="app-page__header">
             <div>
                 <h1 class="app-page__title">Товары</h1>
@@ -35,7 +28,7 @@
             </div>
         </div>
         <div class="app-page__content" id="ordersProducts">
-            {{> reactiveTable collection=ordersProducts settings=settingsOrdersProducts}}
+            {{> reactiveTable collection=ordersProducts settings=settingsOrdersProducts rowsPerPage=4}}
         </div>
     </div>
 </template>
