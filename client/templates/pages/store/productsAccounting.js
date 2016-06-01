@@ -247,6 +247,7 @@ Template.productsAccounting.events({
         if(selectedItem) {
             Session.set('modal', {
                 name: 'movement',
+				width: 600,
                 data: {
                     _id: product._id,
                     name: product.name,

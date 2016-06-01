@@ -46,6 +46,7 @@
 
     &-page{
         padding: 35px 0;
+        height: 100%;
 
         &__header{
             @include flex-box();
@@ -196,5 +197,53 @@
     &-count{
         font-size: 22px;
         font-weight: 600;
+    }
+}
+
+.chart-title{
+    text-align: center;
+    font-size: 14px;
+    color: #b9b9b9;
+}
+
+.chart-legend{
+    @include flex-box();
+    @include justify-content(center);
+    padding-top: 20px;
+
+    &__item{
+        margin: 0 10px;
+        @include flex-box();
+        @include align-items(center);
+
+        padding-left: 25px;
+
+        &-text{
+            font-size: 13px;
+            &:before{
+                content: '- ';
+            }
+        }
+
+        &-color{
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+    }
+}
+
+.reactive-table-filter{
+    position: absolute;
+    right: -15px;
+    top: 37px;
+
+    .reactive-table-input{
+        height: 46px !important;
+    }
+
+    span{
+        display: none;
     }
 }

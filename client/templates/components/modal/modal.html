@@ -1,7 +1,7 @@
 <template name="modal">
     {{#if modal}}
         <div class="cd-modal">
-            <div class="cd-modal__container">
+            <div class="cd-modal__container" style="max-width: {{modal.width}}px">
                 {{> Template.dynamic template=modal.name data=modal.data}}
             </div>
         </div>

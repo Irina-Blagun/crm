@@ -23,23 +23,13 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-@font-face {
-    font-family: 'icomoon';
-    src:    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.eot?gfvagu');
-    src:    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.eot?gfvagu#iefix') format('embedded-opentype'),
-    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.ttf?gfvagu') format('truetype'),
-    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.woff?gfvagu') format('woff'),
-    url('https://i.icomoon.io/public/temp/8f8e06bd54/UntitledProject/icomoon.svg?gfvagu#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .icon-ic_credit_card_black_24px:before {
     content: "\e900";
 }
 .icon-ic_receipt_black_24px:before {
     content: "\e901";
 }
+
 .icon-ic_shop_black_24px:before {
     content: "\e902";
 }
