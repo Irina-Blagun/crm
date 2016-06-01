@@ -1,34 +1,38 @@
 <template name="orders">
     <div class="app-page">
-        <div class="app-page__header">
-            <div>
-                <h1 class="app-page__title">Заказы</h1>
-                <p class="app-page__subtitle">Список заказов</p>
+        <div class="app-page__box app-page__box--top">
+            <div class="app-page__header">
+                <div>
+                    <h1 class="app-page__title">Заказы</h1>
+                    <p class="app-page__subtitle">Список заказов</p>
 
-                {{> modal}}
+                    {{> modal}}
+                </div>
+                <div class="app-page__controls">
+                    <button class="btn btn--success" id="orderClose" disabled="{{buttonStateDisabledStatus}}">Закрыть</button>
+                    <button class="modal btn btn--success" data-modal-template="ordersAdd" id="add">Добавить</button>
+                    <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabledStatus}}">Редактировать</button>
+                    <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
+                </div>
             </div>
-            <div class="app-page__controls">
-                <button class="btn btn--success" id="orderClose" disabled="{{buttonStateDisabledStatus}}">Закрыть</button>
-                <button class="modal btn btn--success" data-modal-template="ordersAdd" id="add">Добавить</button>
-                <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabledStatus}}">Редактировать</button>
-                <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
-            </div>
-        </div>
-        <div class="app-page__content" id="orders">
-            {{> reactiveTable collection=orders settings=settingsOrders rowsPerPage=4}}
-        </div>
-        <div class="app-page__header">
-            <div>
-                <h1 class="app-page__title">Товары</h1>
-                <p class="app-page__subtitle">Список товаров в заказе</p>
-            </div>
-            <div class="app-page__controls">
-                <button class="btn btn--primary" id="editOrdersProduct" disabled="{{buttonStateDisabledOP}}">Редактировать</button>
-                <button class="btn btn--danger" id="removeOrdersProduct" disabled="{{buttonStateDisabledOP}}">Удалить</button>
+            <div class="app-page__content" id="orders">
+                {{> reactiveTable collection=orders settings=settingsOrders rowsPerPage=4}}
             </div>
         </div>
-        <div class="app-page__content" id="ordersProducts">
-            {{> reactiveTable collection=ordersProducts settings=settingsOrdersProducts rowsPerPage=4}}
+        <div class="app-page__box app-page__box--bottom">
+            <div class="app-page__header">
+                <div>
+                    <h1 class="app-page__title">Товары</h1>
+                    <p class="app-page__subtitle">Список товаров в заказе</p>
+                </div>
+                <div class="app-page__controls">
+                    <button class="btn btn--primary" id="editOrdersProduct" disabled="{{buttonStateDisabledOP}}">Редактировать</button>
+                    <button class="btn btn--danger" id="removeOrdersProduct" disabled="{{buttonStateDisabledOP}}">Удалить</button>
+                </div>
+            </div>
+            <div class="app-page__content" id="ordersProducts">
+                {{> reactiveTable collection=ordersProducts settings=settingsOrdersProducts rowsPerPage=4}}
+            </div>
         </div>
     </div>
 </template>

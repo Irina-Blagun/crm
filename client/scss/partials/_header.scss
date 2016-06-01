@@ -11,6 +11,15 @@
     &__logo{
         background: darken($header-background, 3%);
         width: 90px;
+
+        @include flex-box();
+        @include align-items(center);
+        @include justify-content(center);
+    }
+
+    .logotype{
+        width: 31px;
+        height: 32px;
     }
 
     &__container{
