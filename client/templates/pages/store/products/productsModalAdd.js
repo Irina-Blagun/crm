@@ -16,9 +16,15 @@ Template.productsAdd.events({
             'sid': localStorage.getItem('store')
         };
 
-        Meteor.call('products-create', product, function(){
-            Session.set('modal', null);
-        })
+            if (document.forms[0].checkValidity()) {
+                Meteor.call('products-create', product, function(){
+                    Session.set('modal', null);
+                });
+                throwMessage('success', 'Товар добавлен');
+            } else {
+                throwMessage('danger', 'Не все поля заполнены корректно');
+            }
+
     },
     'input input': function(event, template){
         template.find('#price').value = accounting.formatNumber(Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(template.find('#markup').value)), 2, " ");

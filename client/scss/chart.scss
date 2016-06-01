@@ -84,10 +84,10 @@
   position: absolute;
   z-index: 1;
   padding: 5px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 1);
   opacity: 1;
   border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 1);
   text-align: center;
   pointer-events: none;
   color: black;
@@ -98,24 +98,26 @@
   opacity: 0;
 }
 
-.tooltip-line {
-  background: rgba(255, 255, 255, 0.4);
-  opacity: 0.4;
-}
+//.tooltip-line {
+//  background: rgba(255, 255, 255, 0.4);
+//  opacity: 0.4;
+//}
 
-.tooltip-bar {
-  background: rgba(255, 255, 255, 0.4);
-  opacity: 0.4;
-}
+//.tooltip-bar {
+//  background: rgba(255, 255, 255, 0.4);
+//  opacity: 0.4;
+//}
 
 .input-group.date{
     position: relative;
+    width: 74%;
+    top: 64px;
 
     .input-group-addon{
         position: absolute;
         left: 0;
         top: 0;
-        width: 100%;
+        width: 80%;
         height: 100%;
     }
 
@@ -147,5 +149,14 @@
     .next:before{
         content: '>';
     }
+
 }
 
+.first{
+  margin-left: 98px;
+}
+
+.two{
+  position: absolute;
+  margin-right: 0
+}

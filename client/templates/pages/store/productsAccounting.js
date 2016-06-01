@@ -18,7 +18,7 @@ Template.productsAccounting.helpers({
     settingsProducts: function(){
         return {
             rowsPerPage: 5,
-            showFilter: false,
+            showFilter: true,
             showNavigation: 'auto',
             fields: [
                 { key: 'name', label: 'Наименование' },
@@ -239,6 +239,31 @@ Template.productsAccounting.events({
                 }
             });
         }
+    },
+    'click #movement': function(){
+        var selectedItem = Session.get('selectedItem');
+        var product = Products.findOne({_id: selectedItem._id});
+        localStorage.setItem('product', product._id);
+        if(selectedItem) {
+            Session.set('modal', {
+                name: 'movement',
+                data: {
+                    _id: product._id,
+                    name: product.name,
+                    count: product.count,
+                    unit: product.unit,
+                    price: {
+                        purchase_price: product.price.purchase_price,
+                        markup: product.price.markup,
+                        price: product.price.price,
+                        total_amount: product.price.total_amount
+                    },
+                    created: product.created,
+                    creator: product.creator,
+                    sid: product.sid
+                }
+            });
+        }
     }
 });
 
@@ -262,7 +287,7 @@ Template.productsAccounting.onRendered(function(){
 			},
 			check_callback : true
 		},
-		plugins : ['contextmenu', 'dnd', 'search']
+		plugins : ['contextmenu', 'dnd', 'search', 'sort']
 	}).bind("select_node.jstree", function (e, data) {
 		Session.set('category', data.node.id);
 	}).bind("create_node.jstree", function (e, data) {
