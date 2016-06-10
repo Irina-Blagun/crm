@@ -4,6 +4,7 @@ Template.storesRemove.events({
 
         Meteor.call('stores-remove', this._id, function(){
             Session.set('modal', null);
+            throwMessage('success', 'Магазин удалён');
         })
     }
 });

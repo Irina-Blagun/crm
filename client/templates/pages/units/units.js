@@ -8,7 +8,7 @@ Template.units.helpers({
             showFilter: false,
             showNavigation: 'auto',
             fields: [
-                { key: 'name', label: 'Единица измерения' },
+                { key: 'name', label: 'Единица измерения', sortOrder: 0, sortDirection: 'ascending' },
                 { key: 'short_name', label: 'Сокращенное название' }
             ],
             rowClass: function(unit){

@@ -18,8 +18,13 @@ Template.accountEdit.events({
             'profile.phone': template.find('#phone').value
         };
 
-        Meteor.call('users-update', this._id, user, function(){
-            Session.set('modal', null);
-        })
+        if (document.forms[0].checkValidity()) {
+            Meteor.call('users-update', this._id, user, function(){
+                Session.set('modal', null);
+                throwMessage('success', 'Данные изменены');
+            });
+        } else {
+            throwMessage('danger', 'Не все поля заполнены корректно');
+        }
     }
 });

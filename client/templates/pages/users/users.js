@@ -1,6 +1,6 @@
 Template.users.helpers({
     users: function(){
-        return Users.find()
+        return Users.find({'profile.deleted': false})
     },
 	settings: function(){
         return {
@@ -18,9 +18,10 @@ Template.users.helpers({
                     }
                 },
                 // { key: 'profile.flags', label: 'Права', hidden: !Meteor.userCheckAccess(2) },
+                { key: 'profile.phone', label: 'Телефон', sortable: false },
                 { key: 'profile.flags', label: 'Права', hidden: true },
                 { key: 'profile.stores', label: 'Магазины', tmpl: Template.userStores, hidden: false },
-                { key: 'createdAt', label: 'Дата регистрации', fn: function(value){
+                { key: 'createdAt', label: 'Дата регистрации', sortByValue: true, fn: function(value){
                         //return moment(value).format('DD MMM YYYY, HH:MM')
                         return moment(value).format('LLL')
                     }
@@ -113,6 +114,6 @@ Template.users.events({
 Template.userStores.helpers({
     stores: function () {
         var stores = this.profile.stores;
-        return Stores.find({_id: {$in: stores}}).fetch();
+        return Stores.find({deleted: false, _id: {$in: stores}}).fetch();
     }
 });

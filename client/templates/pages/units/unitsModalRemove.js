@@ -4,6 +4,7 @@ Template.unitsRemove.events({
 
         Meteor.call('units-remove', this._id, function(){
             Session.set('modal', null);
+            throwMessage('success', 'Единица измерения удалена');
         })
     }
 });

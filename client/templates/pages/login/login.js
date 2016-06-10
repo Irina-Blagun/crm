@@ -9,6 +9,7 @@ Template.login.events({
 			if (err) {
 				throwMessage('danger', 'Неверный e-mail или пароль');
 			} else {
+				// localStorage.setItem('money', 'old');
 				Router.go('/');
 			}
 		});

@@ -22,18 +22,27 @@ Template.productsAccounting.helpers({
             showNavigation: 'auto',
             fields: [
                 { key: 'name', label: 'Наименование' },
-                { key: 'count', label: 'Количество в наличии' },
-                { key: 'unit', label: 'Ед.изм.', sortable: false, fn: function(value){
+                { key: 'count', label: 'Кол-во в наличии' },
+                { key: 'unit', label: 'Ед. изм.', sortable: false, fn: function(value){
                         if(value){
                             var unit = Units.findOne({_id: value});
                             return unit && unit.short_name
                         }
                     }
                 },
-                { key: 'price.purchase_price', label: 'Закупочная цена', hidden: !Meteor.userCheckAccess(1) },
-                { key: 'price.markup', label: 'Наценка', hidden: !Meteor.userCheckAccess(1) },
-                { key: 'price.price', label: 'Цена за ед. с нац.' },
-                { key: 'price.total_amount', label: 'Общая стоимость' },
+                { key: 'price.purchase_price', label: 'Закупочная цена', hidden: !Meteor.userCheckAccess(1), fn: function(value){
+                        return accounting.formatNumber(Number(value), 0, ' ')
+                    }
+                },
+                { key: 'price.markup', label: 'Наценка', sortByValue: true, hidden: !Meteor.userCheckAccess(1) },
+                { key: 'price.price', label: 'Цена', fn: function(value){
+                        return accounting.formatNumber(Number(value), 0, ' ')
+                    }
+                },
+                { key: 'price.total_amount', label: 'Общая стоимость', sortByValue: true, fn: function(value){
+                        return accounting.formatNumber(Number(value), 0, ' ')
+                    }
+                },
                 { key: 'created', hidden: true, sortOrder: 0, sortDirection: 'descending' }
             ],
             rowClass: function(item){
@@ -51,10 +60,10 @@ Template.productsAccounting.helpers({
             showNavigation: 'auto',
             fields: [
                 { key: 'type', label: 'Тип' },
-                { key: 'created', label: 'Дата', sortOrder: 0, sortDirection: 'descending', fn: function(value){
-                        //return moment(value).format('DD MMM YYYY, HH:MM')
-                        return moment(value).format('LLL')
-                    }
+                { key: 'created', label: 'Дата', sortOrder: 0, sortDirection: 'descending', sortByValue: true, fn: function(value){
+                    //     return moment(value).format('DD MMM YYYY, HH:MM')
+                        return moment(value).format('LLL');
+                }
                 },
                 { key: 'provider', label: 'Поставщик', hidden: !Meteor.userCheckAccess(1), fn: function(value){
                         if(value) {
@@ -64,7 +73,10 @@ Template.productsAccounting.helpers({
                     }
                 },
                 { key: 'count', label: 'Количество', hidden: !Meteor.userCheckAccess(1) },
-                { key: 'price.total_amount', label: 'Общая стоимость', hidden: !Meteor.userCheckAccess(1) },
+                { key: 'price.total_amount', label: 'Общая стоимость', sortByValue: true, fn: function(value){
+                        return accounting.formatNumber(Number(value), 0, ' ')
+                    }
+                },
                 { key: 'creator', label: 'Провёл', fn: function(value){
                         var user = Users.findOne({_id: value});
                         return `${user.profile.last_name} ${user.profile.first_name} ${user.profile.path_name}`
@@ -265,6 +277,10 @@ Template.productsAccounting.events({
                 }
             });
         }
+    },
+    'click #tree': function(){
+        Session.set('selectedItem', null);
+        Session.set('selectedItemAcc', null);
     }
 });
 
@@ -276,19 +292,49 @@ Template.productsAccounting.onRendered(function(){
 		core: {
 			data: function(node, cb){
 				globalDep.depend();
-				console.log('----- node', node);
 
 				var nodes = Tree.find({ sid: Session.get('store') }).fetch();
 
 				cb(nodes.map(function(node){
 					node.id = node._id;
-					console.log(node);
 					return node
 				}));
 			},
 			check_callback : true
 		},
-		plugins : ['contextmenu', 'dnd', 'search', 'sort']
+		plugins : ['contextmenu', 'dnd', 'search', 'sort'],
+        "contextmenu":{
+            "items": function($node) {
+                var tree = $("#tree").jstree(true);
+                return {
+                    "Create": {
+                        "separator_before": false,
+                        "separator_after": false,
+                        "label": "Добавить",
+                        "action": function (obj) {
+                            $node = tree.create_node($node);
+                            tree.edit($node);
+                        }
+                    },
+                    "Rename": {
+                        "separator_before": false,
+                        "separator_after": false,
+                        "label": "Переименовать",
+                        "action": function (obj) {
+                            tree.edit($node);
+                        }
+                    },
+                    "Remove": {
+                        "separator_before": false,
+                        "separator_after": false,
+                        "label": "Удалить",
+                        "action": function (obj) {
+                            tree.delete_node($node);
+                        }
+                    }
+                };
+            }
+        }
 	}).bind("select_node.jstree", function (e, data) {
 		Session.set('category', data.node.id);
 	}).bind("create_node.jstree", function (e, data) {

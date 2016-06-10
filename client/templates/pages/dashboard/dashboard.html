@@ -5,6 +5,7 @@
                 <h1 class="app-page__title">Панель управления</h1>
             </div>
         </div>
+        <br>
         <div class="app-page__content">
             <div class="row" style="height: 60px">
                 <div class="col-xs-3">
@@ -26,22 +27,35 @@
             </div>
             <div class="row">
                 <div class="col-xs-6">
-                    <div class="chart-title">Работа предприятия (6 месяцев)</div>
+                    <div class="chart-title">Работа предприятия (5 месяцев)</div>
                     <div class="ct-chart ct-chart-line ct-golden-section"></div>
                     <div class="chart-legend">
-                        <div class="chart-legend__item">
-                            <div class="chart-legend__item-color" style="background: #F9C990"></div>
-                            <span class="chart-legend__item-text">Сумма продаж</span>
-                        </div>
                         <div class="chart-legend__item">
                             <div class="chart-legend__item-color" style="background: #86AFF9"></div>
                             <span class="chart-legend__item-text">Сумма приходов</span>
                         </div>
+                        <div class="chart-legend__item">
+                            <div class="chart-legend__item-color" style="background: #F9C990"></div>
+                            <span class="chart-legend__item-text">Сумма продаж</span>
+                        </div>
+                    </div>
+                    <div class="summ" style="padding-top: 40px;">
+                        <span style="font-weight: 400; font-size: 18px;" class="summ-count">{{sum}}</span>
                     </div>
                 </div>
                 <div class="col-xs-6">
-                    <div class="chart-title">Все магазины (сегодня)</div>
+                    <div class="chart-title_bar">Все магазины (сегодня)</div>
                     <div class="ct-chart ct-chart-bar ct-golden-section"></div>
+                    <div class="chart-legend-bar">
+                        <div class="chart-legend__item">
+                            <div class="chart-legend__item-color" style="background: #86AFF9"></div>
+                            <span class="chart-legend__item-text">Сумма приходов</span>
+                        </div>
+                        <div class="chart-legend__item">
+                            <div class="chart-legend__item-color" style="background: #F9C990"></div>
+                            <span class="chart-legend__item-text">Сумма продаж</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

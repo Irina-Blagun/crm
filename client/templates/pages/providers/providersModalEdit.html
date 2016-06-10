@@ -7,15 +7,15 @@
         <div class="cd-modal__content">
             <div class="form-group">
                 <label for="name">Название</label>
-                <input class="form-control" type="text" id="name" value="{{name}}" placeholder="Название" required>
+                <input class="form-control" type="text" id="name" value="{{name}}" placeholder="Название" disabled required>
             </div>
             <div class="form-group">
                 <label for="name">Адрес</label>
-                <input class="form-control" type="text" id="address" value="{{address}}" placeholder="Минск, ул.Притыцкого, 20" required>
+                <input class="form-control" type="text" id="address" value="{{address}}" placeholder="Минск, ул.Притыцкого, 20" pattern="[а-яА-Я_,.-\s]{3,40}\s(ул.|пр-т)\s[а-яА-Я0-9_,-\s]{3,40}" required>
             </div>
             <div class="form-group">
                 <label for="unp">УНП</label>
-                <input class="form-control" type="text" id="unp" value="{{unp}}" placeholder="xxxxxxxxx" pattern="\d{9}$" required>
+                <input class="form-control" type="text" id="unp" value="{{unp}}" placeholder="xxxxxxxxx" pattern="\d{9}$" disabled required>
             </div>
             <div class="form-group">
                 <label for="email">E-mail</label>
@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="name">Адрес банка</label>
-                <input class="form-control" type="text" id="bank_address" value="{{bank.address}}" placeholder="Минск, ул.Притыцкого, 20" required>
+                <input class="form-control" type="text" id="bank_address" value="{{bank.address}}" placeholder="Минск, ул.Притыцкого, 20" pattern="[а-яА-Я_,.-\s]{3,40}\s(ул.|пр-т)\s[а-яА-Я0-9_,-\s]{3,40}" required>
             </div>
         </div>
         <div class="cd-modal__footer">

@@ -4,6 +4,7 @@ Template.providersRemove.events({
 
         Meteor.call('providers-remove', this._id, function(){
             Session.set('modal', null);
+            throwMessage('success', 'Поставщик удалён');
         })
     }
 });

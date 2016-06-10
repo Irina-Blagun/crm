@@ -13,10 +13,14 @@
                     {{> modal}}
                 </div>
                 <div class="app-page__controls" style="padding-right: 225px;">
-                    <button class="btn btn--success" id="movement" disabled="{{buttonStateDisabled}}">Движение</button>
-                    <button class="modal btn btn--success" data-modal-template="productsAdd" id="add">Добавить</button>
-                    <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
-                    <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
+                    {{#if access 64}}
+                        <button class="btn btn--success" id="movement" disabled="{{buttonStateDisabled}}">Движение</button>
+                    {{/if}}
+                    {{#if access 8}}
+                        <button class="modal btn btn--success" data-modal-template="productsAdd" id="add">Добавить</button>
+                        <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
+                        <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>
+                    {{/if}}
                 </div>
             </div>
             <div class="app-page__content" id="products">
@@ -30,10 +34,18 @@
                     <p class="app-page__subtitle">Приход и расход товара</p>
                 </div>
                 <div class="app-page__controls">
-                    <button class="btn btn--success" id="productOrder" disabled="{{buttonStateDisabled}}">Заказ</button>
-                    <button class="btn btn--primary" id="accountingComing" disabled="{{buttonStateDisabled}}">Приход</button>
-                    <button class="btn btn--primary" id="accountingSale" disabled="{{buttonStateDisabled}}">Продажа</button>
-                    <button class="btn btn--danger" id="removeAccounting" disabled="{{buttonStateDisabledAcc}}">Удалить</button>
+                    {{#if access 16}}
+                        <button class="btn btn--success" id="productOrder" disabled="{{buttonStateDisabled}}">Заказ</button>
+                    {{/if}}
+                    {{#if access 128}}
+                        <button class="btn btn--primary" id="accountingComing" disabled="{{buttonStateDisabled}}">Приход</button>
+                    {{/if}}
+                    {{#if access 256}}
+                        <button class="btn btn--primary" id="accountingSale" disabled="{{buttonStateDisabled}}">Продажа</button>
+                    {{/if}}
+                    {{#if admin}}
+                        <button class="btn btn--danger" id="removeAccounting" disabled="{{buttonStateDisabledAcc}}">Удалить</button>
+                    {{/if}}
                 </div>
             </div>
             <div class="app-page__content" id="accounting">
@@ -42,20 +54,3 @@
         </div>
     </div>
 </template>
-    <!--<div class="app-page">-->
-
-        <!--<div id="tree" class="app-page__tree">-->
-
-        <!--</div>-->
-
-
-
-
-        <!--<br>-->
-        <!--<br>-->
-        <!--<br>-->
-        <!--<br>-->
-        <!--<br>-->
-
-
-    <!--</div>-->

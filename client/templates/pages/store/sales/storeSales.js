@@ -3,8 +3,6 @@ Template.storeSales.helpers({
         return Stores.findOne({_id: Session.get('store') || localStorage.getItem('store')})
     },
     accounting: function(){
-        console.log(Session.get('store') || localStorage.getItem('store'));
-        console.log(Session.get('toDate'));
         var result = Accounting.find({sid: Session.get('store') || localStorage.getItem('store'), type: 'Продажа', created: {$lt: Session.get('toDate'), $gte: Session.get('fromDate')}});
         return result
     },
@@ -32,11 +30,11 @@ Template.storeSales.helpers({
                         return product.name
                     }
                 },
-                { key: 'price.total_amount', label: 'Cумма', fn: function(value){
+                { key: 'price.total_amount', label: 'Cумма', sortByValue: true, fn: function(value){
                     return accounting.formatNumber(value, 0, " ")
                 }
                 },
-                { key: 'created', label: 'Дата', sortOrder: 0, sortDirection: 'descending', hidden: false, fn: function(value){
+                { key: 'created', label: 'Дата', sortOrder: 0, sortDirection: 'ascending', sortByValue: true, hidden: false, fn: function(value){
                         return moment(value).format('LLL')
                     }
                 }
@@ -61,8 +59,8 @@ Template.storeSales.rendered = function(){
             var month = date.getUTCMonth();
             var day = date.getUTCDate();
 
-            var fromDate = new Date(year, month, day+1, 0, 0, 0);
-            var toDate = new Date(year, month, day+1, 23, 59, 59);
+            var fromDate = new Date(year, month, day, 0, 0, 0);
+            var toDate = new Date(year, month, day, 23, 59, 59);
 
             Session.set('fromDate', fromDate);
             Session.set('toDate', toDate);

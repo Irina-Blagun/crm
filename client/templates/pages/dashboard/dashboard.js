@@ -1,3 +1,16 @@
+Template.dashboard.helpers({
+	sum: function () {
+		var sumComingSale = Session.get('sum');
+		if(sumComingSale > 0) {
+			return 'Прибыль за выбранный период = ' + accounting.formatNumber(sumComingSale, 0, ' ') + ' Br'
+		} else if(sumComingSale < 0) {
+			return 'Убыток за выбранный период = ' + accounting.formatNumber(sumComingSale*[-1], 0, ' ') + ' Br'
+		} else {
+			return 
+		}
+	}
+});
+
 Template.dashboard.rendered = function() {
 
 	toDate = new Date();
@@ -18,6 +31,14 @@ Template.dashboard.rendered = function() {
 				["created", "asc"]
 			]
 		}).fetch();
+
+		var summComing = 0;
+		var resultComingSale = [];
+
+		data.forEach(function(item, i) {
+			summComing += item.price.total_amount
+		});
+		resultComingSale.push(summComing);
 
 		var results = [];
 		var summ = 0;
@@ -54,12 +75,21 @@ Template.dashboard.rendered = function() {
 			var a = monthName[monthes[i]];
 			monthe.push(a);
 		}
-
+	
 		var data2 = Accounting.find({type: 'Продажа', created: {$lt: toDate, $gte: fromDateMonth}}, {
 			sort: [
 				["created", "asc"]
 			]
 		}).fetch();
+
+		var summSale = 0;
+		data2.forEach(function(item, i) {
+			summSale += item.price.total_amount
+		});
+		resultComingSale.push(summSale);
+
+		var sumComingSale = resultComingSale[1] - resultComingSale[0];
+		Session.set('sum', sumComingSale);
 
 		var results2 = [];
 		var summ2 = 0;
@@ -265,6 +295,22 @@ Template.dashboard.rendered = function() {
 					return currentMonth;
 				}, null);
 
+				var summComing = 0;
+				var resultComingSale = [];
+
+				data.forEach(function(item, i) {
+					summComing += item.price.total_amount
+				});
+				resultComingSale.push(summComing);
+				var summSale = 0;
+				data2.forEach(function(item, i) {
+					summSale += item.price.total_amount
+				});
+				resultComingSale.push(summSale);
+
+				var sumComingSale = resultComingSale[1] - resultComingSale[0];
+				Session.set('sum', sumComingSale);
+
 				drawChart(results, results2, monthe);
 			});
 		});
@@ -371,6 +417,22 @@ Template.dashboard.rendered = function() {
 					return currentMonth;
 				}, null);
 
+				var summComing = 0;
+				var resultComingSale = [];
+
+				data.forEach(function(item, i) {
+					summComing += item.price.total_amount
+				});
+				resultComingSale.push(summComing);
+				var summSale = 0;
+				data2.forEach(function(item, i) {
+					summSale += item.price.total_amount
+				});
+				resultComingSale.push(summSale);
+
+				var sumComingSale = resultComingSale[1] - resultComingSale[0];
+				Session.set('sum', sumComingSale);
+
 				drawChart(results, results2, monthe);
 			});
 		});
@@ -378,12 +440,6 @@ Template.dashboard.rendered = function() {
 		/// End Диаграмма при изменении конечной даты
 
 	});
-
-
-
-
-	//session set прибыль =
-	//session get в helpers
 
 
 	// $(function(){

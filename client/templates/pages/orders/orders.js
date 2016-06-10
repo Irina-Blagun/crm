@@ -34,11 +34,11 @@ Template.orders.helpers({
                         }
                     }
                 },
-                { key: 'created', label: 'Открыт', fn: function(value){
+                { key: 'created', label: 'Открыт', sortByValue: true, sortOrder: 0, sortDirection: 'descending', fn: function(value){
                         return moment(value).format('LLL')
                     }
                 },
-                { key: 'closed', label: 'Закрыт', fn: function(value){
+                { key: 'closed', label: 'Закрыт', sortByValue: true, fn: function(value){
                         if(value) {
                             return moment(value).format('LLL')
                         }

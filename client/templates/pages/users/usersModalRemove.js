@@ -3,12 +3,13 @@ Template.usersRemove.events({
         event.preventDefault();
 
         if(this._id == Meteor.userId()){
-            throwMessage('danger', 'Нельзя удалить себя');
+            throwMessage('danger', 'Удаление невозможно');
             return
         }
 
         Meteor.call('users-remove', this._id, function(){
             Session.set('modal', null);
+            throwMessage('success', 'Пользователь удалён');
         })
     }
 });
