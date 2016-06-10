@@ -16,20 +16,21 @@
 
         font-weight: 300;
         color: #fff;
-        margin: 10px 0;
+        margin: 10px 10px;
 
         &--danger{
             box-shadow: 0px 0px 12px 0px rgba(255,32,0,0.50);
-            background: #ff333E;
+            //background: #ff333E;
+            background: rgb(255, 51, 62);
         }
 
         &--success{
-            //box-shadow: 0px 0px 12px 0px rgba(255,32,0,0.50);
+            box-shadow: 0px 0px 12px 0px rgba(111,183,0,0.50);
             background: rgb(111, 202, 54);
         }
 
         &--primary{
-            //box-shadow: 0px 0px 12px 0px rgba(255,32,0,0.50);
+            box-shadow: 0px 0px 12px 0px rgba(98, 134, 186, 0.5);
             background: rgb(98, 153, 248);
         }
 

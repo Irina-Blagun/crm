@@ -1,10 +1,11 @@
 <template name="storeSelect">
     <div class="store-select">
+        {{#if visible}}
         <select class="form-control" id="store-select" required>
             {{#each stores}}
                     <option value='{{_id}}' {{selected storeSelected}}>{{name}}</option>
             {{/each}}
         </select>
+        {{/if}}
     </div>
 </template>
-

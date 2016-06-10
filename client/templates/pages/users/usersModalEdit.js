@@ -1,10 +1,19 @@
 Template.usersEdit.helpers({
     allStores: function(){
-        return Stores.find();
+        return Stores.find({deleted: false});
     }
 });
 
 Template.usersEdit.events({
+    'change #checkAll': function(){
+        $('#checkAll').click(function () {
+            $('input[name=flag]').prop('checked', this.checked);
+        });
+    },
+    'change input[name=flag]': function(){
+            var check = ($('input[name=flag]').filter(":checked").length == $('input[name=flag]').length);
+            $('#checkAll').prop("checked", check);
+    },
     'submit #form-usersEdit': function(event, template){
         event.preventDefault();
 
@@ -28,10 +37,33 @@ Template.usersEdit.events({
 				user['profile.flags'] += Number(flag.value);
 			}
 		});
+        
 
-        Meteor.call('users-update', this._id, user, function(){
-            Session.set('modal', null);
-        })
+        var users = Users.find({'profile.deleted': false}).fetch();
+        var repeated = false;
+        var repeatedPhone = '';
+
+        users.forEach(function(item, i) {
+            if(item.profile.phone == template.find('#phone').value){
+                repeated = true;
+                repeatedPhone = item.profile.phone;
+            }
+        });
+
+        if(repeated == true && repeatedPhone != this.profile.phone){
+            throwMessage('danger', 'Пользователь с таким номером телефона уже существует');
+        } else if(stores == 0){
+            throwMessage('danger', 'Пользователю не назначен ни один магазин');
+        } else {
+            if (document.forms[0].checkValidity()) {
+                Meteor.call('users-update', this._id, user, function(){
+                    Session.set('modal', null);
+                    throwMessage('success', 'Изменения сохранены');
+                });
+            } else {
+                throwMessage('danger', 'Не все поля заполнены корректно');
+            }
+        }
     }
 });
 
@@ -50,6 +82,15 @@ Template.usersEdit.rendered = function(){
                 checkbox.checked = (user.profile.flags & flag) === flag;
             }
 		});
+        this.findAll('input[name=all]').forEach(function(all){
+            if(Meteor.isCompanyAdmin() && Meteor.userId() == user._id){
+                all.disabled = true;
+            }
+        });
+        if($('input[name=flag]').filter(":checked").length == $('input[name=flag]').length) {
+            var check = ($('input[name=flag]').filter(":checked").length == $('input[name=flag]').length);
+            $('#checkAll').prop("checked", check);
+        }
 	}
 
 	if(user.profile.stores && user.profile.stores.length){

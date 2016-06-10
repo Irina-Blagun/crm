@@ -4,26 +4,32 @@
             <li class="sidebar-nav__item {{activeRouteClass 'dashboard'}}">
                 <a href="{{pathFor 'dashboard'}}" class="sidebar-nav__link icon-grid"></a>
             </li>
-            <li class="sidebar-nav__item {{activeRouteClass 'stores'}}">
-                <a href="{{pathFor 'stores'}}" class="sidebar-nav__link icon-ic_shop_black_24px"></a>
-            </li>
-            <li class="sidebar-nav__item {{activeRouteClass 'providers'}}">
-                <a href="{{pathFor 'providers'}}" class="sidebar-nav__link icon-briefcase"></a>
-            </li>
-            <li class="sidebar-nav__item {{activeRouteClass 'users'}}">
-                <a href="{{pathFor 'users'}}" class="sidebar-nav__link icon-userlist"></a>
-            </li>
             <li class="sidebar-nav__item {{activeRouteClass 'productsAccounting'}}">
                 <a href="{{pathFor 'productsAccounting'}}" class="sidebar-nav__link icon-cart"></a>
             </li>
             <li class="sidebar-nav__item {{activeRouteClass 'orders'}}">
                 <a href="{{pathFor 'orders'}}" class="sidebar-nav__link icon-ic_receipt_black_24px"></a>
             </li>
+            {{#if access 512}}
+                <li class="sidebar-nav__item {{activeRouteClass 'storeSales'}}">
+                    <a href="{{pathFor 'storeSales'}}" class="sidebar-nav__link icon-ic_credit_card_black_24px"></a>
+                </li>
+            {{/if}}
+            {{#if access 1}}
+                <li class="sidebar-nav__item {{activeRouteClass 'users'}}">
+                    <a href="{{pathFor 'users'}}" class="sidebar-nav__link icon-userlist"></a>
+                </li>
+            {{/if}}
+            {{#if access 4}}
+                <li class="sidebar-nav__item {{activeRouteClass 'providers'}}">
+                    <a href="{{pathFor 'providers'}}" class="sidebar-nav__link icon-briefcase"></a>
+                </li>
+            {{/if}}
+            <li class="sidebar-nav__item {{activeRouteClass 'stores'}}">
+                <a href="{{pathFor 'stores'}}" class="sidebar-nav__link icon-ic_shop_black_24px"></a>
+            </li>
             <li class="sidebar-nav__item {{activeRouteClass 'units'}}">
                 <a href="{{pathFor 'units'}}" class="sidebar-nav__link icon-ic_timer_black_24px"></a>
-            </li>
-            <li class="sidebar-nav__item {{activeRouteClass 'storeSales'}}">
-                <a href="{{pathFor 'storeSales'}}" class="sidebar-nav__link icon-ic_credit_card_black_24px"></a>
             </li>
         </ul>
         <ul class="sidebar-nav">

@@ -6,7 +6,7 @@ Template.accountingSale.events({
             total_amount = Number(this.price.total_amount) - accounting.unformat(template.find('#total_amount').value);
 
         if(count < 0){
-            throwMessage('danger', 'Нельзя');
+            throwMessage('danger', 'В наличии нет такого количества товара');
             return
         }
 
@@ -34,13 +34,17 @@ Template.accountingSale.events({
             'sid': this.sid
         };
 
-        Meteor.call('products-update', this._id, product);
-
-        Meteor.call('accounting-create', accountOperation, function(){
-            Session.set('modal', null);
-        });
+        if (document.forms[0].checkValidity()) {
+            Meteor.call('products-update', this._id, product);
+            Meteor.call('accounting-create', accountOperation, function(){
+                Session.set('modal', null);
+                throwMessage('success', 'Продажа товара зафиксирована');
+            });
+        } else {
+            throwMessage('danger', 'Не все поля заполнены корректно');
+        }
     },
     'input input': function(event, template){
-        template.find('#total_amount').value = accounting.formatNumber((Number(this.price.price) * Number(template.find('#count').value)), 2, " ");
+        template.find('#total_amount').value = accounting.formatNumber((Number(this.price.price) * Number(template.find('#count').value)), 0, " ");
     }
 });

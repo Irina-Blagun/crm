@@ -8,7 +8,7 @@
                 {{> modal}}
             </div>
             <div class="app-page__controls">
-                {{#if access 2}}
+                {{#if admin}}
                     <button class="modal btn btn--success" data-modal-template="storesAdd" id="add">Добавить</button>
                     <button class="btn btn--primary" id="edit" disabled="{{buttonStateDisabled}}">Редактировать</button>
                     <button class="btn btn--danger" id="remove" disabled="{{buttonStateDisabled}}">Удалить</button>

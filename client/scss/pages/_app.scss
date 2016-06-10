@@ -149,7 +149,7 @@
     font-weight: 300;
     font-size: 22px;
     color: #fff;
-    width: 200px;
+    width: 240px;
     height: 90px;
     line-height: 60px;
     border-radius: 0;
@@ -206,6 +206,13 @@
     color: #b9b9b9;
 }
 
+.chart-title_bar{
+    text-align: center;
+    font-size: 14px;
+    color: #b9b9b9;
+    margin-left: 80px;
+}
+
 .chart-legend{
     @include flex-box();
     @include justify-content(center);
@@ -234,13 +241,42 @@
     }
 }
 
+.chart-legend-bar{
+    @include flex-box();
+    @include justify-content(center);
+    padding-top: 20px;
+    margin-left: 70px;
+
+    &__item{
+        margin: 0 10px;
+        @include flex-box();
+        @include align-items(center);
+
+        padding-left: 25px;
+
+        &-text{
+            font-size: 13px;
+            &:before{
+                content: '- ';
+            }
+        }
+
+        &-color{
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+    }
+}
+
 .reactive-table-filter{
     position: absolute;
     right: -15px;
-    top: 37px;
+    top: 36px;
 
     .reactive-table-input{
-        height: 46px !important;
+        height: 45px !important;
     }
 
     span{

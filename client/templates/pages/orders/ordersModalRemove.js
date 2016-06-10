@@ -12,6 +12,7 @@ Template.ordersRemove.events({
 
         Meteor.call('orders-remove', this._id, function(){
             Session.set('modal', null);
+            throwMessage('success', 'Заказ удалён');
         })
     }
 });

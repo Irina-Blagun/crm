@@ -16,18 +16,36 @@ Template.productsAdd.events({
             'sid': localStorage.getItem('store')
         };
 
+        var products = Products.find().fetch();
+        var repeated = false;
+
+        products.forEach(function(item, i) {
+            if(item.name == template.find('#name').value){
+                repeated = true;
+            }
+        });
+
+        if(repeated == true){
+            throwMessage('danger', 'Товар уже добавлен');
+        } else {
             if (document.forms[0].checkValidity()) {
                 Meteor.call('products-create', product, function(){
                     Session.set('modal', null);
+                    throwMessage('success', 'Товар добавлен');
                 });
-                throwMessage('success', 'Товар добавлен');
             } else {
                 throwMessage('danger', 'Не все поля заполнены корректно');
             }
+        }
 
     },
     'input input': function(event, template){
-        template.find('#price').value = accounting.formatNumber(Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(template.find('#markup').value)), 2, " ");
+        // if(localStorage.getItem('money') == 'old'){
+            price = Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(template.find('#markup').value));
+            template.find('#price').value = accounting.formatNumber((Math.round((price) / 100) * 100), 0, ' ');
+        // } else {
+        //     template.find('#price').value = accounting.formatNumber(Number(template.find('#purchase_price').value) + Number(template.find('#purchase_price').value / 100 * Number(template.find('#markup').value)), 2, " ");
+        // }
     }
 });
 

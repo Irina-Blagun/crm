@@ -7,7 +7,7 @@
         <div class="cd-modal__content">
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input class="form-control" type="email" id="email" value="{{emails.[0].address}}" placeholder="E-mail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                <input class="form-control" type="email" id="email" value="{{emails.[0].address}}" placeholder="E-mail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" disabled required>
             </div>
             <div class="form-group">
                 <label for="fio">ФИО</label>
@@ -33,8 +33,12 @@
             </div>
             <div class="form-group">
                 <label for="flag">Права</label>
-                <p style="margin-bottom: 8px"></p>
-                <p style="font-weight: bold">Пользователи</p>
+                <div class='all' style="float: right">
+                    <label>
+                        <input id="checkAll" name='all' type="checkbox"> Отметить все
+                    </label>
+                </div>
+                <p style="font-weight: bold; margin-top: 8px">Пользователи</p>
                 <div class="checkbox">
                     <label>
                         <input name="flag" type="checkbox" value="1"> Просмотр пользователей
@@ -60,7 +64,7 @@
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="flag" type="checkbox" value="16"> Управление категориями товаров
+                        <input name="flag" type="checkbox" value="16"> Формирование заказов
                     </label>
                 </div>
                 <div class="checkbox">

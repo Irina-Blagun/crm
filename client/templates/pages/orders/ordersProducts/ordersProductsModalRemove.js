@@ -4,6 +4,7 @@ Template.ordersProductRemove.events({
 
         Meteor.call('ordersProducts-remove', this._id, function(){
             Session.set('modal', null);
+            throwMessage('success', 'Товар удалён из заказа');
         })
     }
 });

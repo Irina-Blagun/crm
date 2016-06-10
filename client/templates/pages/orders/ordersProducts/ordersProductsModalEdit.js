@@ -7,9 +7,14 @@ Template.ordersProductEdit.events({
             'comment': template.find('#comment').value
         };
 
-        Meteor.call('ordersProducts-update', this._id, ordersProduct, function(){
-            Session.set('modal', null);
-        })
+        if (document.forms[0].checkValidity()) {
+            Meteor.call('ordersProducts-update', this._id, ordersProduct, function(){
+                Session.set('modal', null);
+                throwMessage('success', 'Изменения сохранены');
+            });
+        } else {
+            throwMessage('danger', 'Не все поля заполнены корректно');
+        }
     }
 });
 

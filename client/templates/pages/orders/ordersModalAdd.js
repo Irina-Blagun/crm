@@ -11,9 +11,14 @@ Template.ordersAdd.events({
             'sid': localStorage.getItem('store')
         };
 
-        Meteor.call('orders-create', order, function(){
-            Session.set('modal', null);
-        })
+        if (document.forms[0].checkValidity()) {
+            Meteor.call('orders-create', order, function(){
+                Session.set('modal', null);
+                throwMessage('success', 'Заказ добавлен');
+            });
+        } else {
+            throwMessage('danger', 'Не все поля заполнены корректно');
+        }
     }
 });
 

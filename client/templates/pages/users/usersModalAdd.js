@@ -1,14 +1,21 @@
 Template.usersAdd.helpers({
     allStores: function(){
-        return Stores.find();
+        return Stores.find({deleted: false});
     }
 });
 
-Template.usersAdd.onCreated = function(x,y){
-
-};
-
 Template.usersAdd.events({
+    'change #checkAll': function(){
+
+        $('#checkAll').click(function () {
+            $('input[name=flag]').prop('checked', this.checked);
+        });
+
+        $('input[name=flag]').change(function () {
+            var check = ($('input[name=flag]').filter(":checked").length == $('input[name=flag]').length);
+            $('#checkAll').prop("checked", check);
+        });
+    },
     'click button': function(event, template){
         event.preventDefault();
 
@@ -37,13 +44,32 @@ Template.usersAdd.events({
             }
         });
 
-        Meteor.call('users-create', user, function(){
-            Session.set('modal', null);
-        })
+        var users = Users.find({'profile.deleted': false}).fetch();
+        var repeatedPhone = false;
+
+        users.forEach(function(item, i) {
+            if(item.profile.phone == template.find('#phone').value){
+                repeatedPhone = true;
+            }
+        });
+
+        if(repeatedPhone == true){
+            throwMessage('danger', 'Пользователь с таким номером телефона уже существует');
+        } else if(stores == 0){
+            throwMessage('danger', 'Пользователю не назначен ни один магазин');
+        } else {
+            if (document.forms[0].checkValidity()) {
+                Meteor.call('users-create', user, function(err){
+                    if(err){
+                        throwMessage('danger', 'Пользователь с таким e-mail уже существует');
+                    } else {
+                        Session.set('modal', null);
+                        throwMessage('success', 'Пользователь добавлен');
+                    }
+                });
+            } else {
+                throwMessage('danger', 'Не все поля заполнены корректно');
+            }
+        }
     }
 });
-
-
-function checkFields(keys, fields){
-	
-}

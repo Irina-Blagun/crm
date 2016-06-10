@@ -17,20 +17,34 @@ Template.ordersProductsAdd.events({
             var ordersProductEdit = {
                 'count': countSum
             };
-            
-            Meteor.call('ordersProducts-update', order._id, ordersProductEdit, function(){
-                Session.set('modal', null);
-            })
+
+
+            if (document.forms[0].checkValidity()) {
+                Meteor.call('ordersProducts-update', order._id, ordersProductEdit, function(){
+                    Session.set('modal', null);
+                    throwMessage('success', 'Товар добавлен в заказ');
+                });
+            } else {
+                throwMessage('danger', 'Не все поля заполнены корректно');
+            }
         } else {
-            Meteor.call('ordersProducts-create', ordersProduct, function(){
-                Session.set('modal', null);
-            })
+
+            if (document.forms[0].checkValidity()) {
+                Meteor.call('ordersProducts-create', ordersProduct, function(){
+                    Session.set('modal', null);
+                    throwMessage('success', 'Товар добавлен в заказ');
+                });
+            } else {
+                throwMessage('danger', 'Не все поля заполнены корректно');
+            }
+
+
         }
     }
 });
 
 Template.ordersProductsAdd.helpers({
     orders: function(){
-        return Orders.find({sid: localStorage.getItem('store')});
+        return Orders.find({sid: localStorage.getItem('store'), status: 0});
     }
 });

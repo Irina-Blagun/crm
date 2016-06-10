@@ -12,8 +12,29 @@ Template.storesAdd.events({
             'short_name': short_name.toUpperCase()
         };
 
-        Meteor.call('stores-create', store, function(){
-            Session.set('modal', null);
+
+        var stores = Stores.find({deleted: false}).fetch();
+        var repeatedName = false;
+        var repeatedAddress = false;
+
+        stores.forEach(function(item, i) {
+            if(item.name == template.find('#name').value && item.address == template.find('#address').value){
+                repeatedName = true;
+                repeatedAddress = true;
+            }
         });
+
+        if(repeatedName == true && repeatedAddress == true){
+            throwMessage('danger', 'Магазин уже добавлен');
+        } else {
+            if (document.forms[0].checkValidity()) {
+                Meteor.call('stores-create', store, function(){
+                    Session.set('modal', null);
+                    throwMessage('success', 'Магазин добавлен');
+                });
+            } else {
+                throwMessage('danger', 'Не все поля заполнены корректно');
+            }
+        }
     }
 });

@@ -4,6 +4,7 @@ Template.accountingRemove.events({
         
         Meteor.call('accounting-remove', this.accounting._id, function(){
             Session.set('modal', null);
+            throwMessage('success', 'Учётная операция удалена');
         })
     }
 });
