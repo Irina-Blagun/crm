@@ -47,29 +47,42 @@ Template.dashboard.rendered = function() {
 
 		data.reduce(function (previousMonth, currentItem, index) {
 			var currentMonth = new Date(currentItem.created).getMonth();
-			if (currentMonth > fromDateMonth.getMonth() && index == 0 && data.length - 1 !== index) {
+			console.log('слово', currentMonth, fromDateMonth.getMonth(), index, data.length - 1);
+			if (currentMonth > fromDateMonth.getMonth() && index == 0) {
 				for (var i = 0; i < currentMonth - fromDateMonth.getMonth(); i++) {
 					results.push(0);
 					monthes.push(fromDateMonth.getMonth() + i);
 				}
+				console.log('1', monthes);
 			}
+
+
 			if (previousMonth && previousMonth !== currentMonth) {
 				results.push(summ);
 				monthes.push(previousMonth);
 				summ = 0;
+				console.log('2', monthes);
 			}
 			summ += currentItem.price.total_amount;
+			if(currentMonth == 0){
+				results.push(summ);
+				monthes.push(currentMonth);
+			}
 			if (data.length - 1 == index) {
 				if (results.length == 0) {
 					results.push(0);
 					monthes.push(currentMonth);
+					console.log('3', monthes);
 				}
 				results.push(summ);
 				monthes.push(currentMonth);
+				console.log('4', monthes);
 			}
 
 			return currentMonth;
 		}, null);
+		results.splice(0,1);
+		monthes.splice(0,1);
 		var monthName = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 		for (var i = 0; i < monthes.length; i++) {
 			var a = monthName[monthes[i]];
@@ -121,7 +134,10 @@ Template.dashboard.rendered = function() {
 			return currentMonth;
 		}, null);
 
+		results2.splice(0,1);
+
 		drawChart(results, results2, monthe);
+
 
 
 		// По магазинам

@@ -43,7 +43,7 @@ Template.movement.rendered = function() {
         results.push(resultSale);
         resultSale = 0;
 
-        if(results[0] !== 0 && results[1] !== 0) {
+        if(results[0] !== 0 || results[1] !== 0) {
             drawChartPie(results);
         } else {
             drawChartPie1();
@@ -100,7 +100,7 @@ Template.movement.rendered = function() {
                 results.push(resultSale);
                 resultSale = 0;
 
-                if(results[0] !== 0 && results[1] !== 0) {
+                if(results[0] !== 0 || results[1] !== 0) {
                     drawChartPie(results);
                 } else {
                     drawChartPie1();
@@ -159,7 +159,7 @@ Template.movement.rendered = function() {
                 results.push(resultSale);
                 resultSale = 0;
 
-                if(results[0] !== 0 && results[1] !== 0) {
+                if(results[0] !== 0 || results[1] !== 0) {
                     drawChartPie(results);
                 } else {
                     drawChartPie1();

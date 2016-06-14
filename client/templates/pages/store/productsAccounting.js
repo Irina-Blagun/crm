@@ -30,16 +30,16 @@ Template.productsAccounting.helpers({
                         }
                     }
                 },
-                { key: 'price.purchase_price', label: 'Закупочная цена', hidden: !Meteor.userCheckAccess(1), fn: function(value){
+                { key: 'price.purchase_price', label: 'Закупочная цена', hidden: !Meteor.userCheckAccess(256), fn: function(value){
                         return accounting.formatNumber(Number(value), 0, ' ')
                     }
                 },
-                { key: 'price.markup', label: 'Наценка', sortByValue: true, hidden: !Meteor.userCheckAccess(1) },
+                { key: 'price.markup', label: 'Наценка', sortByValue: true, hidden: !Meteor.userCheckAccess(256) },
                 { key: 'price.price', label: 'Цена', fn: function(value){
                         return accounting.formatNumber(Number(value), 0, ' ')
                     }
                 },
-                { key: 'price.total_amount', label: 'Общая стоимость', sortByValue: true, fn: function(value){
+                { key: 'price.total_amount', label: 'Общая стоимость', sortByValue: true, hidden: !Meteor.userCheckAccess(256), fn: function(value){
                         return accounting.formatNumber(Number(value), 0, ' ')
                     }
                 },

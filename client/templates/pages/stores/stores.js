@@ -11,7 +11,7 @@ Template.stores.helpers({
             fields: [
                 { key: 'name', label: 'Магазин', sortOrder: 0, sortDirection: 'ascending' },
                 { key: 'address', label: 'Адрес' },
-                { key: 'created', label: 'Дата создания', sortByValue: true, fn: function(value){
+                { key: 'created', label: 'Дата создания', sortByValue: true, hidden: Meteor.userCheckAdmin(), fn: function(value){
                         return moment(value).format('LLL')
                     }
                 }

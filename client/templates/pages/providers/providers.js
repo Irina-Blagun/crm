@@ -15,7 +15,7 @@ Template.providers.helpers({
                 { key: 'email', label: 'E-mail', hidden: !Meteor.userCheckAccess(2) },
                 { key: 'bank.name', label: 'Наименование банка', hidden: !Meteor.userCheckAccess(2) },
                 { key: 'bank.address', label: 'Адрес банка', hidden: !Meteor.userCheckAccess(2) },
-                { key: 'created', label: 'Дата добавления', sortByValue: true, fn: function(value){
+                { key: 'created', label: 'Дата добавления', sortByValue: true, hidden: Meteor.userCheckAdmin(), fn: function(value){
                         //return
                         return moment(value).format('LLL')
                     }
