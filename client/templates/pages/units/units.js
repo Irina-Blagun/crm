@@ -4,7 +4,7 @@ Template.units.helpers({
     },
     settings: function(){
         return {
-            rowsPerPage: 10,
+            rowsPerPage: 13,
             showFilter: false,
             showNavigation: 'auto',
             fields: [
