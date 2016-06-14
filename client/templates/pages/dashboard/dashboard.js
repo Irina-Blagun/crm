@@ -6,7 +6,7 @@ Template.dashboard.helpers({
 		} else if(sumComingSale < 0) {
 			return 'Убыток за выбранный период = ' + accounting.formatNumber(sumComingSale*[-1], 0, ' ') + ' Br'
 		} else {
-			return 
+			return ''
 		}
 	}
 });
@@ -47,42 +47,27 @@ Template.dashboard.rendered = function() {
 
 		data.reduce(function (previousMonth, currentItem, index) {
 			var currentMonth = new Date(currentItem.created).getMonth();
-			console.log('слово', currentMonth, fromDateMonth.getMonth(), index, data.length - 1);
-			if (currentMonth > fromDateMonth.getMonth() && index == 0) {
-				for (var i = 0; i < currentMonth - fromDateMonth.getMonth(); i++) {
-					results.push(0);
-					monthes.push(fromDateMonth.getMonth() + i);
-				}
-				console.log('1', monthes);
-			}
 
-
-			if (previousMonth && previousMonth !== currentMonth) {
+			if (previousMonth == currentMonth-1) {
 				results.push(summ);
 				monthes.push(previousMonth);
 				summ = 0;
 				console.log('2', monthes);
 			}
 			summ += currentItem.price.total_amount;
-			if(currentMonth == 0){
-				results.push(summ);
-				monthes.push(currentMonth);
-			}
+
 			if (data.length - 1 == index) {
 				if (results.length == 0) {
 					results.push(0);
 					monthes.push(currentMonth);
-					console.log('3', monthes);
 				}
 				results.push(summ);
 				monthes.push(currentMonth);
-				console.log('4', monthes);
 			}
 
 			return currentMonth;
 		}, null);
-		results.splice(0,1);
-		monthes.splice(0,1);
+
 		var monthName = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 		for (var i = 0; i < monthes.length; i++) {
 			var a = monthName[monthes[i]];
@@ -110,13 +95,8 @@ Template.dashboard.rendered = function() {
 
 		data2.reduce(function (previousMonth, currentItem, index) {
 			var currentMonth = new Date(currentItem.created).getMonth();
-			if (currentMonth > fromDateMonth.getMonth() && index == 0 && data2.length - 1 !== index) {
-				for (var i = 0; i < currentMonth - fromDateMonth.getMonth(); i++) {
-					results2.push(0);
-					monthes2.push(fromDateMonth.getMonth() + i);
-				}
-			}
-			if (previousMonth && previousMonth !== currentMonth) {
+
+			if (previousMonth == currentMonth-1) {
 				results2.push(summ2);
 				monthes2.push(previousMonth);
 				summ2 = 0;
@@ -133,8 +113,6 @@ Template.dashboard.rendered = function() {
 
 			return currentMonth;
 		}, null);
-
-		results2.splice(0,1);
 
 		drawChart(results, results2, monthe);
 
