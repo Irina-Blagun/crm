@@ -21,7 +21,7 @@ Template.users.helpers({
                 { key: 'profile.phone', label: 'Телефон', sortable: false },
                 { key: 'profile.flags', label: 'Права', hidden: true },
                 { key: 'profile.stores', label: 'Магазины', tmpl: Template.userStores, hidden: false },
-                { key: 'createdAt', label: 'Дата регистрации', sortByValue: true, fn: function(value){
+                { key: 'createdAt', label: 'Дата регистрации', sortByValue: true, hidden: Meteor.userCheckAdmin(), fn: function(value){
                         //return moment(value).format('DD MMM YYYY, HH:MM')
                         return moment(value).format('LLL')
                     }
