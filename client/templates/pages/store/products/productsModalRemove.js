@@ -5,11 +5,11 @@ Template.productsRemove.events({
         var accounting = Accounting.find({product_id: this._id}).fetch();
         var ordersProducts = OrdersProducts.find({product: this._id}).fetch();
 
-        accounting.forEach(function(item, i) {
+        accounting.forEach(function(item, i){
             Meteor.call('accounting-remove', item._id);
         });
 
-        ordersProducts.forEach(function(item, i) {
+        ordersProducts.forEach(function(item, i){
             Meteor.call('ordersProducts-remove', item._id);
         });
 

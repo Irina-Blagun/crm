@@ -6,7 +6,7 @@ Template.ordersEdit.events({
             'provider': template.find('#provider').value
         };
 
-        if (document.forms[0].checkValidity()) {
+        if(document.forms[0].checkValidity()){
             Meteor.call('orders-update', this._id, order, function(){
                 Session.set('modal', null);
                 throwMessage('success', 'Изменения сохранены');

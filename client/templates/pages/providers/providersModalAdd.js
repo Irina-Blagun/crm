@@ -21,7 +21,7 @@ Template.providersAdd.events({
         var repeatedName = false;
         var repeatedUnp = false;
 
-        providers.forEach(function(item, i) {
+        providers.forEach(function(item, i){
             if(item.phone == template.find('#phone').value){
                 repeatedPhone = true;
             }
@@ -45,7 +45,7 @@ Template.providersAdd.events({
                 } else if(repeatedPhone == true){
                         throwMessage('danger', 'Поставщик с таким номером телефона уже существует');
                     } else {
-                        if (document.forms[0].checkValidity()) {
+                        if(document.forms[0].checkValidity()){
                             Meteor.call('providers-create', provider, function(){
                                 Session.set('modal', null);
                                 throwMessage('success', 'Поставщик добавлен');
@@ -54,6 +54,5 @@ Template.providersAdd.events({
                             throwMessage('danger', 'Не все поля заполнены корректно');
                         }
                     }
-
     }
 });

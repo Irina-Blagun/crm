@@ -1,4 +1,4 @@
-Template.movement.rendered = function() {
+Template.movement.rendered = function(){
 
     toDate = new Date();
     year = toDate.getUTCFullYear();
@@ -6,7 +6,7 @@ Template.movement.rendered = function() {
     day = toDate.getUTCDate();
     dateMin = new Date(year, month - month, day - day + 1);
 
-    Deps.autorun(function () {
+    Deps.autorun(function(){
 
 /// Start При загрузке страницы
 
@@ -29,14 +29,14 @@ Template.movement.rendered = function() {
         var resultSale = 0;
         var results = [];
 
-        dataComing.forEach(function (item, i) {
+        dataComing.forEach(function(item, i){
             resultComing += item.price.total_amount;
         });
 
         results.push(resultComing);
         resultComing = 0;
 
-        dataSale.forEach(function (item, i) {
+        dataSale.forEach(function(item, i){
             resultSale += item.price.total_amount;
         });
 
@@ -60,12 +60,10 @@ Template.movement.rendered = function() {
                 locale: 'ru',
                 format: 'DD MMMM YYYY',
                 showTodayButton: true,
-                //showClear: true,
-                // defaultDate: new Date(),
                 maxDate: new Date(),
                 minDate: dateMin
             });
-            $("#datetimepicker1").on("dp.change", function (e) {
+            $("#datetimepicker1").on("dp.change", function(e){
                 $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
                 var formatDate = moment(e.date).format();
                 fromDateMonth = moment(formatDate).toDate();
@@ -86,21 +84,21 @@ Template.movement.rendered = function() {
                 var resultSale = 0;
                 var results = [];
 
-                dataComing.forEach(function (item, i) {
+                dataComing.forEach(function(item, i){
                     resultComing += item.price.total_amount;
                 });
 
                 results.push(resultComing);
                 resultComing = 0;
 
-                dataSale.forEach(function (item, i) {
+                dataSale.forEach(function(item, i){
                     resultSale += item.price.total_amount;
                 });
 
                 results.push(resultSale);
                 resultSale = 0;
 
-                if(results[0] !== 0 || results[1] !== 0) {
+                if(results[0] !== 0 || results[1] !== 0){
                     drawChartPie(results);
                 } else {
                     drawChartPie1();
@@ -122,12 +120,11 @@ Template.movement.rendered = function() {
                 // defaultDate: new Date(),
                 maxDate: new Date()
             });
-            $("#datetimepicker2").on("dp.change", function (e) {
+            $("#datetimepicker2").on("dp.change", function(e){
                 $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
                 var formatToDate = moment(e.date).format();
                 toDate = moment(formatToDate).toDate();
                 toDate.setHours(23, 59, 59, 999);
-
 
                 var dataComing = Accounting.find({
                     product_id: localStorage.getItem('product'),
@@ -145,21 +142,21 @@ Template.movement.rendered = function() {
                 var resultSale = 0;
                 var results = [];
 
-                dataComing.forEach(function (item, i) {
+                dataComing.forEach(function(item, i){
                     resultComing += item.price.total_amount;
                 });
 
                 results.push(resultComing);
                 resultComing = 0;
 
-                dataSale.forEach(function (item, i) {
+                dataSale.forEach(function(item, i){
                     resultSale += item.price.total_amount;
                 });
 
                 results.push(resultSale);
                 resultSale = 0;
 
-                if(results[0] !== 0 || results[1] !== 0) {
+                if(results[0] !== 0 || results[1] !== 0){
                     drawChartPie(results);
                 } else {
                     drawChartPie1();
@@ -167,14 +164,11 @@ Template.movement.rendered = function() {
 
             });
         });
-
         /// End Диаграмма при изменении конечной даты
-
-
-})
+    })
 };
 
-function drawChartPie(series) {
+function drawChartPie(series){
     var data = {
         series: series
     };
@@ -182,8 +176,8 @@ function drawChartPie(series) {
     var sum = function(a, b) { return a + b };
 
     new Chartist.Pie('.ct-chart', data, {
-        labelInterpolationFnc: function(value) {
-            if(value !== 0) {
+        labelInterpolationFnc: function(value){
+            if(value !== 0){
                 return accounting.formatNumber(value, 0, ' ') + ' Br ' + '(' + Math.round(value / data.series.reduce(sum) * 100) + '%)';
             } else {
                 return ''
@@ -192,13 +186,13 @@ function drawChartPie(series) {
     });
 }
 
-function drawChartPie1() {
+function drawChartPie1(){
     var data = {
         series: [1,1]
     };
 
     new Chartist.Pie('.ct-chart', data, {
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function(value){
             return 'Учётных операций не было'
         }
     });

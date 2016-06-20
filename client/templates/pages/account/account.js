@@ -5,7 +5,7 @@ Template.account.helpers({
 });
 
 Template.account.events({
-    'click #edit': function () {
+    'click #edit': function(){
         var user = Users.findOne({_id: Meteor.userId()});
             Session.set('modal', {
                 name: 'accountEdit',

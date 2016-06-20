@@ -18,7 +18,7 @@ Template.accountEdit.events({
             'profile.phone': template.find('#phone').value
         };
 
-        if (document.forms[0].checkValidity()) {
+        if (document.forms[0].checkValidity()){
             Meteor.call('users-update', this._id, user, function(){
                 Session.set('modal', null);
                 throwMessage('success', 'Данные изменены');

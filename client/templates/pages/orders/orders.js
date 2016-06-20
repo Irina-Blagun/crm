@@ -4,7 +4,7 @@ Template.orders.helpers({
     },
     ordersProducts: function(){
         var selectedItem = Session.get('selectedItem');
-        if(selectedItem) {
+        if(selectedItem){
             return OrdersProducts.find({order: Session.get('selectedItem')._id})
         } else {
             return []
@@ -89,7 +89,7 @@ Template.orders.events({
     'click #edit': function(){
         var selectedItem = Session.get('selectedItem');
         var order = Orders.findOne({_id: selectedItem._id});
-        if(selectedItem) {
+        if(selectedItem){
             Session.set('modal', {
                 name: 'ordersEdit',
                 data: {
@@ -107,7 +107,7 @@ Template.orders.events({
     'click #remove': function(){
         var selectedItem = Session.get('selectedItem');
         var order = Orders.findOne({_id: selectedItem._id});
-        if(selectedItem) {
+        if(selectedItem){
             Session.set('modal', {
                 name: 'ordersRemove',
                 data: {
@@ -124,7 +124,7 @@ Template.orders.events({
     },
     'click #removeAccounting': function(){
         var selectedItemOP = Session.get('selectedItemOP');
-        if (selectedItemOP) {
+        if(selectedItemOP){
             Session.set('modal', {
                 name: 'accountingRemove',
                 data: {
@@ -135,7 +135,7 @@ Template.orders.events({
     },
     'click #orders .reactive-table tbody tr': function(){
         var selectedItem = Session.get('selectedItem');
-        if (selectedItem && selectedItem._id == this._id) {
+        if(selectedItem && selectedItem._id == this._id){
             Session.set('selectedItem', null);
             Session.set('selectedItemOP', null);
         } else {
@@ -145,7 +145,7 @@ Template.orders.events({
     },
     'click #ordersProducts .reactive-table tbody tr': function(){
         var selectedItemOP = Session.get('selectedItemOP');
-        if (selectedItemOP && selectedItemOP._id == this._id) {
+        if(selectedItemOP && selectedItemOP._id == this._id){
             Session.set('selectedItemOP', null);
         } else {
             Session.set('selectedItemOP', this);
@@ -154,7 +154,7 @@ Template.orders.events({
     'click #editOrdersProduct': function(){
         var selectedItemOP = Session.get('selectedItemOP');
         var ordersProduct = OrdersProducts.findOne({_id: selectedItemOP._id});
-        if(selectedItemOP) {
+        if(selectedItemOP){
             Session.set('modal', {
                 name: 'ordersProductEdit',
                 data: {
@@ -172,7 +172,7 @@ Template.orders.events({
     'click #removeOrdersProduct': function(){
         var selectedItemOP = Session.get('selectedItemOP');
         var ordersProduct = OrdersProducts.findOne({_id: selectedItemOP._id});
-        if(selectedItemOP) {
+        if(selectedItemOP){
             Session.set('modal', {
                 name: 'ordersProductRemove',
                 data: {

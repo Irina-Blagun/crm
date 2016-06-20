@@ -1,5 +1,5 @@
 Template.storeSales.helpers({
-    store: function () {
+    store: function(){
         return Stores.findOne({_id: Session.get('store') || localStorage.getItem('store')})
     },
     accounting: function(){
@@ -9,7 +9,7 @@ Template.storeSales.helpers({
     resultSum: function(){
         var res = Accounting.find({sid: Session.get('store') || localStorage.getItem('store'), type: 'Продажа', created: {$lt: Session.get('toDate'), $gte: Session.get('fromDate')}});
         var resultSum = 0;
-        res.forEach(function(item, i) {
+        res.forEach(function(item, i){
             resultSum += item.price.total_amount
         });
         if(resultSum !== 0){
@@ -45,7 +45,7 @@ Template.storeSales.helpers({
 
 Template.storeSales.rendered = function(){
     Deps.autorun(function(){
-        $(function () {
+        $(function(){
             $('#datetimepicker1').datetimepicker({
                 locale: 'ru',
                 format: 'DD MMMM YYYY',
@@ -67,8 +67,7 @@ Template.storeSales.rendered = function(){
 
             resultSum = 20;
 
-
-            $("#datetimepicker1").on("dp.change", function(e) {
+            $("#datetimepicker1").on("dp.change", function(e){
 
                 var dateCal = moment(e.date).format();
                 dateCal = moment(dateCal).toDate();

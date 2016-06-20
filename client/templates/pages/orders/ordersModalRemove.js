@@ -4,7 +4,7 @@ Template.ordersRemove.events({
 
         var ordersProduct = OrdersProducts.find({order: this._id}).fetch();
 
-        ordersProduct.forEach(function(item, i) {
+        ordersProduct.forEach(function(item, i){
             Meteor.call('ordersProducts-remove', item._id, function(){
                 Session.set('modal', null);
             })

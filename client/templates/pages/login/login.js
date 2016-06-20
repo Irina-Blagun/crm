@@ -6,10 +6,9 @@ Template.login.events({
 			password = template.find('#password').value;
 
 		Meteor.loginWithPassword(email, password, function(err){
-			if (err) {
+			if(err){
 				throwMessage('danger', 'Неверный e-mail или пароль');
 			} else {
-				// localStorage.setItem('money', 'old');
 				Router.go('/');
 			}
 		});

@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <label for="name">Адрес</label>
-                <input class="form-control" type="text" id="address" value="{{address}}" placeholder="Минск, ул.Притыцкого, 20" pattern="[а-яА-Я_,.-\s]{3,40}\s(ул.|пр-т)\s[а-яА-Я0-9_,-\s]{3,40}" required>
+                <input class="form-control" type="text" id="address" value="{{address}}" placeholder="Минск, ул.Притыцкого, 20" pattern="[а-яёА-Я_,.-\s]{3,40}\s(ул.|пр-т)\s[а-яА-Я0-9_,-\s]{3,40}" required>
             </div>
             <div class="form-group">
                 <label for="unp">УНП</label>
@@ -27,11 +27,11 @@
             </div>
             <div class="form-group">
                 <label for="name">Название банка</label>
-                <input class="form-control" type="text" id="bank_name" value="{{bank.name}}" placeholder="Название" pattern="[А-ЯЁ][а-яё]+" required>
+                <input class="form-control" type="text" id="bank_name" value="{{bank.name}}" placeholder="Название" pattern="[а-яёА-ЯЁ-\s]{1,30}" required>
             </div>
             <div class="form-group">
                 <label for="name">Адрес банка</label>
-                <input class="form-control" type="text" id="bank_address" value="{{bank.address}}" placeholder="Минск, ул.Притыцкого, 20" pattern="[а-яА-Я_,.-\s]{3,40}\s(ул.|пр-т)\s[а-яА-Я0-9_,-\s]{3,40}" required>
+                <input class="form-control" type="text" id="bank_address" value="{{bank.address}}" placeholder="Минск, ул.Притыцкого, 20" pattern="[а-яёА-Я_,.-\s]{3,40}\s(ул.|пр-т)\s[а-яА-Я0-9_,-\s]{3,40}" required>
             </div>
         </div>
         <div class="cd-modal__footer">

@@ -5,7 +5,7 @@ Template.forgot.events({
         var email = template.find('#email').value;
 
         Accounts.forgotPassword({email: email}, function(err){
-            if (err) {
+            if(err){
                 throwMessage('danger', 'Ссылка не отправлена');
             } else {
                 throwMessage('success', 'Ссылка для восстановления пароля отправлена на указанный e-mail')

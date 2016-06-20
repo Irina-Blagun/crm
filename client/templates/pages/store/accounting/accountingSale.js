@@ -1,5 +1,5 @@
 Template.accountingSale.events({
-    'click button': function(event, template) {
+    'click button': function(event, template){
         event.preventDefault();
 
         var count = Number(this.count) - Number(template.find('#count').value),
@@ -34,7 +34,7 @@ Template.accountingSale.events({
             'sid': this.sid
         };
 
-        if (document.forms[0].checkValidity()) {
+        if(document.forms[0].checkValidity()){
             Meteor.call('products-update', this._id, product);
             Meteor.call('accounting-create', accountOperation, function(){
                 Session.set('modal', null);
