@@ -31,7 +31,7 @@ Template.productsEdit.events({
         var repeated = false;
         var repeatedItem = '';
 
-        products.forEach(function(item, i) {
+        products.forEach(function(item, i){
             if(item.name == template.find('#name').value){
                 repeated = true;
                 repeatedItem = item.name;
@@ -41,7 +41,7 @@ Template.productsEdit.events({
         if(repeated == true && repeatedItem != this.name){
             throwMessage('danger', 'Товар уже существует');
         } else {
-            if (document.forms[0].checkValidity()) {
+            if(document.forms[0].checkValidity()){
                 Meteor.call('products-update', this._id, product, function(){
                     Session.set('modal', null);
                     throwMessage('success', 'Изменения сохранены');
@@ -63,4 +63,4 @@ Template.productsEdit.helpers({
 
 Handlebars.registerHelper('selected', function(value){
     return this._id == value ? 'selected' : ''
-})
+});

@@ -9,8 +9,7 @@ Meteor.startup(function(){
 		Accounts.urls.enrollAccount = function(token){
 			return Meteor.absoluteUrl("enroll-account/" + token);
 		};
-
-
+	
 	Accounts.emailTemplates.siteName = "0c";
 
 	Accounts.emailTemplates.from = "0c <support@0c.by>";
@@ -32,8 +31,6 @@ Meteor.startup(function(){
 		return "\n\nЗдравствуйте, " + user.profile.first_name + "." +
 			"\n\nДля установки пароля перейдите по ссылке:\n\n" + url;
 	};
-
-
 });
 
 Meteor.publish('tree', function(){
@@ -45,20 +42,18 @@ Meteor.publish('company', function(cid){
 });
 
 Meteor.publish('stores', function(){
-	// if(this.userId) {
-		var user = Users.findOne(this.userId);
-		if (user && user.profile && user.profile.stores) {
-			var company = Companies.findOne({_id: user.profile.cid});
-			if (company.uid == user._id) {
-				return Stores.find();
-			}
-			return user.profile && Stores.find({_id: {$in: user.profile.stores}});
+	var user = Users.findOne(this.userId);
+	if(user && user.profile && user.profile.stores){
+		var company = Companies.findOne({_id: user.profile.cid});
+		if(company.uid == user._id){
+			return Stores.find();
 		}
-	// }
+		return user.profile && Stores.find({_id: {$in: user.profile.stores}});
+	}
 });
 
 Meteor.publish('allStores', function(){
-	if(this.userId) {
+	if(this.userId){
 		var user = Users.findOne({_id: this.userId});
 		return Stores.find({cid: user.profile.cid, deleted: false});
 	}
@@ -69,9 +64,8 @@ Meteor.publish('users', function(cid){
 });
 
 Meteor.publish('user', function(){
-	if (this.userId){
-		return Meteor.users.find({_id: this.userId},
-			{fields: {'createdAt': 1}});
+	if(this.userId){
+		return Meteor.users.find({_id: this.userId}, {fields: {'createdAt': 1}});
 	}
 });
 

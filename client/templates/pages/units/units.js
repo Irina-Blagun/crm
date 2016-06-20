@@ -25,13 +25,13 @@ Template.units.helpers({
 });
 
 Template.units.events({
-    'click #add': function () {
+    'click #add': function(){
         Session.set('selectedUnit', null);
     },
-    'click #edit': function () {
+    'click #edit': function(){
         var selectedUnit = Session.get('selectedUnit');
         var unit = Units.findOne({_id: selectedUnit._id});
-        if (selectedUnit) {
+        if(selectedUnit){
             Session.set('modal', {
                 name: 'unitsEdit',
                 data: {
@@ -42,10 +42,10 @@ Template.units.events({
             });
         }
     },
-    'click #remove': function () {
+    'click #remove': function(){
         var selectedUnit = Session.get('selectedUnit');
         var unit = Units.findOne({_id: selectedUnit._id});
-        if (selectedUnit) {
+        if(selectedUnit){
             Session.set('modal', {
                 name: 'unitsRemove',
                 data: {
@@ -58,7 +58,7 @@ Template.units.events({
     },
     'click #units .reactive-table tbody tr': function(){
         var selectedUnit = Session.get('selectedUnit');
-        if (selectedUnit && selectedUnit._id == this._id) {
+        if(selectedUnit && selectedUnit._id == this._id){
             Session.set('selectedUnit', null);
         } else {
             Session.set('selectedUnit', this);

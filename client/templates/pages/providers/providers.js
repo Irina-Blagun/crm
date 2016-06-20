@@ -4,7 +4,7 @@ Template.providers.helpers({
     },
     settings: function(){
         return {
-            rowsPerPage: 10,
+            rowsPerPage: 13,
             showFilter: false,
             showNavigation: 'auto',
             fields: [
@@ -15,8 +15,7 @@ Template.providers.helpers({
                 { key: 'email', label: 'E-mail', hidden: !Meteor.userCheckAccess(2) },
                 { key: 'bank.name', label: 'Наименование банка', hidden: !Meteor.userCheckAccess(2) },
                 { key: 'bank.address', label: 'Адрес банка', hidden: !Meteor.userCheckAccess(2) },
-                { key: 'created', label: 'Дата добавления', sortByValue: true, hidden: Meteor.userCheckAdmin(), fn: function(value){
-                        //return
+                { key: 'created', label: 'Дата добавления', sortByValue: true, hidden: !Meteor.userCheckAdmin(), fn: function(value){
                         return moment(value).format('LLL')
                     }
                 }
@@ -35,13 +34,13 @@ Template.providers.helpers({
 });
 
 Template.providers.events({
-    'click #add': function () {
+    'click #add': function(){
         Session.set('selectedProvider', null);
     },
-    'click #edit': function () {
+    'click #edit': function(){
         var selectedProvider = Session.get('selectedProvider');
         var provider = Providers.findOne({_id: selectedProvider._id});
-        if (selectedProvider) {
+        if(selectedProvider){
             Session.set('modal', {
                 name: 'providersEdit',
                 data: {
@@ -63,10 +62,10 @@ Template.providers.events({
             });
         }
     },
-    'click #remove': function () {
+    'click #remove': function(){
         var selectedProvider = Session.get('selectedProvider');
         var provider = Providers.findOne({_id: selectedProvider._id});
-        if (selectedProvider) {
+        if(selectedProvider){
             Session.set('modal', {
                 name: 'providersRemove',
                 data: {
@@ -90,7 +89,7 @@ Template.providers.events({
     },
     'click #providers .reactive-table tbody tr': function(){
         var selectedProvider = Session.get('selectedProvider');
-        if (selectedProvider && selectedProvider._id == this._id) {
+        if (selectedProvider && selectedProvider._id == this._id){
             Session.set('selectedProvider', null);
         } else {
             Session.set('selectedProvider', this);

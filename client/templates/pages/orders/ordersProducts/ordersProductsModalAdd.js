@@ -1,5 +1,5 @@
 Template.ordersProductsAdd.events({
-    'click button': function(event, template) {
+    'click button': function(event, template){
         event.preventDefault();
 
         var ordersProduct = {
@@ -18,8 +18,7 @@ Template.ordersProductsAdd.events({
                 'count': countSum
             };
 
-
-            if (document.forms[0].checkValidity()) {
+            if (document.forms[0].checkValidity()){
                 Meteor.call('ordersProducts-update', order._id, ordersProductEdit, function(){
                     Session.set('modal', null);
                     throwMessage('success', 'Товар добавлен в заказ');
@@ -28,8 +27,7 @@ Template.ordersProductsAdd.events({
                 throwMessage('danger', 'Не все поля заполнены корректно');
             }
         } else {
-
-            if (document.forms[0].checkValidity()) {
+            if(document.forms[0].checkValidity()){
                 Meteor.call('ordersProducts-create', ordersProduct, function(){
                     Session.set('modal', null);
                     throwMessage('success', 'Товар добавлен в заказ');
@@ -37,8 +35,6 @@ Template.ordersProductsAdd.events({
             } else {
                 throwMessage('danger', 'Не все поля заполнены корректно');
             }
-
-
         }
     }
 });

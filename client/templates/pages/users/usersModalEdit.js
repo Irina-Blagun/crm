@@ -6,7 +6,7 @@ Template.usersEdit.helpers({
 
 Template.usersEdit.events({
     'change #checkAll': function(){
-        $('#checkAll').click(function () {
+        $('#checkAll').click(function(){
             $('input[name=flag]').prop('checked', this.checked);
         });
     },
@@ -43,7 +43,7 @@ Template.usersEdit.events({
         var repeated = false;
         var repeatedPhone = '';
 
-        users.forEach(function(item, i) {
+        users.forEach(function(item, i){
             if(item.profile.phone == template.find('#phone').value){
                 repeated = true;
                 repeatedPhone = item.profile.phone;
@@ -55,7 +55,7 @@ Template.usersEdit.events({
         } else if(stores == 0){
             throwMessage('danger', 'Пользователю не назначен ни один магазин');
         } else {
-            if (document.forms[0].checkValidity()) {
+            if(document.forms[0].checkValidity()){
                 Meteor.call('users-update', this._id, user, function(){
                     Session.set('modal', null);
                     throwMessage('success', 'Изменения сохранены');
@@ -101,7 +101,7 @@ Template.usersEdit.rendered = function(){
                 store.checked = true;
                 store.disabled = true;
             } else {
-                store.checked = user.profile.stores.some(function (s) {
+                store.checked = user.profile.stores.some(function(s){
                     return store.value === s
                 });
             }

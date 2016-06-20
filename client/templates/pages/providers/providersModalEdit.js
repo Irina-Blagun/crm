@@ -21,7 +21,7 @@ Template.providersEdit.events({
         var repeatedPhoneValue = '';
         var repeatedEmailValue = '';
 
-        providers.forEach(function(item, i) {
+        providers.forEach(function(item, i){
             if(item.phone == template.find('#phone').value){
                 repeatedPhone = true;
                 repeatedPhoneValue = item.phone;
@@ -37,7 +37,7 @@ Template.providersEdit.events({
         } else if(repeatedPhone == true && repeatedPhoneValue != this.phone){
             throwMessage('danger', 'Поставщик с таким номером телефона уже существует');
         } else {
-            if (document.forms[0].checkValidity()) {
+            if(document.forms[0].checkValidity()){
                 Meteor.call('providers-update', this._id, provider, function(){
                     Session.set('modal', null);
                     throwMessage('success', 'Изменения сохранены');

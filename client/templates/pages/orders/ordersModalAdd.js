@@ -11,7 +11,7 @@ Template.ordersAdd.events({
             'sid': localStorage.getItem('store')
         };
 
-        if (document.forms[0].checkValidity()) {
+        if(document.forms[0].checkValidity()){
             Meteor.call('orders-create', order, function(){
                 Session.set('modal', null);
                 throwMessage('success', 'Заказ добавлен');

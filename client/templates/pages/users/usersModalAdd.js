@@ -7,11 +7,11 @@ Template.usersAdd.helpers({
 Template.usersAdd.events({
     'change #checkAll': function(){
 
-        $('#checkAll').click(function () {
+        $('#checkAll').click(function(){
             $('input[name=flag]').prop('checked', this.checked);
         });
 
-        $('input[name=flag]').change(function () {
+        $('input[name=flag]').change(function(){
             var check = ($('input[name=flag]').filter(":checked").length == $('input[name=flag]').length);
             $('#checkAll').prop("checked", check);
         });
@@ -47,7 +47,7 @@ Template.usersAdd.events({
         var users = Users.find({'profile.deleted': false}).fetch();
         var repeatedPhone = false;
 
-        users.forEach(function(item, i) {
+        users.forEach(function(item, i){
             if(item.profile.phone == template.find('#phone').value){
                 repeatedPhone = true;
             }
@@ -58,7 +58,7 @@ Template.usersAdd.events({
         } else if(stores == 0){
             throwMessage('danger', 'Пользователю не назначен ни один магазин');
         } else {
-            if (document.forms[0].checkValidity()) {
+            if(document.forms[0].checkValidity()){
                 Meteor.call('users-create', user, function(err){
                     if(err){
                         throwMessage('danger', 'Пользователь с таким e-mail уже существует');

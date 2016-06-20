@@ -1,7 +1,7 @@
 Template.productsAccounting.helpers({
     products: function(){
         var user = Users.findOne({_id: Meteor.userId()});
-        if(Session.get('store') || localStorage.getItem('store') !== {$in: user.profile.stores}) {
+        if(Session.get('store') || localStorage.getItem('store') !== {$in: user.profile.stores}){
             return Products.find({category: Session.get('category'), sid: Session.get('store') || localStorage.getItem('store')})
         } else {
             return
@@ -79,7 +79,7 @@ Template.productsAccounting.helpers({
                 },
                 { key: 'creator', label: 'Провёл', fn: function(value){
                         var user = Users.findOne({_id: value});
-                        return `${user.profile.last_name} ${user.profile.first_name} ${user.profile.path_name}`
+                        return user && `${user.profile.last_name} ${user.profile.first_name} ${user.profile.path_name}`
                     }
                 }
             ],
@@ -106,8 +106,7 @@ Template.productsAccounting.events({
     'click #edit': function(){
         var selectedItem = Session.get('selectedItem');
         var product = Products.findOne({_id: selectedItem._id});
-
-        if(selectedItem) {
+        if(selectedItem){
             Session.set('modal', {
                 name: 'productsEdit',
                 data: {
@@ -131,7 +130,7 @@ Template.productsAccounting.events({
     'click #remove': function(){
         var selectedItem = Session.get('selectedItem');
         var product = Products.findOne({_id: selectedItem._id});
-        if(selectedItem) {
+        if(selectedItem){
             Session.set('modal', {
                 name: 'productsRemove',
                 data: {
@@ -154,7 +153,7 @@ Template.productsAccounting.events({
     },
     'click #removeAccounting': function(){
         var selectedItemAcc = Session.get('selectedItemAcc');
-        if (selectedItemAcc) {
+        if(selectedItemAcc){
             Session.set('modal', {
                 name: 'accountingRemove',
                 data: {
@@ -165,16 +164,17 @@ Template.productsAccounting.events({
     },
     'click #products .reactive-table tbody tr': function(){
             var selectedItem = Session.get('selectedItem');
-            if (selectedItem && selectedItem._id == this._id) {
+            if(selectedItem && selectedItem._id == this._id){
                 Session.set('selectedItem', null);
                 Session.set('selectedItemAcc', null);
             } else {
                 Session.set('selectedItem', this);
+                Session.set('selectedItemAcc', null);
             }
     },
     'click #accounting .reactive-table tbody tr': function(){
         var selectedItemAcc = Session.get('selectedItemAcc');
-        if (selectedItemAcc && selectedItemAcc._id == this._id) {
+        if(selectedItemAcc && selectedItemAcc._id == this._id){
             Session.set('selectedItemAcc', null);
         } else {
             Session.set('selectedItemAcc', this);
@@ -183,7 +183,7 @@ Template.productsAccounting.events({
     'click #accountingComing': function(){
         var selectedItem = Session.get('selectedItem');
         var product = Products.findOne({_id: selectedItem._id});
-        if(selectedItem) {
+        if(selectedItem){
             Session.set('modal', {
                 name: 'accountingComing',
                 data: {
@@ -207,7 +207,7 @@ Template.productsAccounting.events({
     'click #accountingSale': function(){
         var selectedItem = Session.get('selectedItem');
         var product = Products.findOne({_id: selectedItem._id});
-        if(selectedItem) {
+        if(selectedItem){
             Session.set('modal', {
                 name: 'accountingSale',
                 data: {
@@ -231,7 +231,7 @@ Template.productsAccounting.events({
     'click #productOrder': function(){
         var selectedItem = Session.get('selectedItem');
         var product = Products.findOne({_id: selectedItem._id});
-        if(selectedItem) {
+        if(selectedItem){
             Session.set('modal', {
                 name: 'ordersProductsAdd',
                 data: {
@@ -256,7 +256,7 @@ Template.productsAccounting.events({
         var selectedItem = Session.get('selectedItem');
         var product = Products.findOne({_id: selectedItem._id});
         localStorage.setItem('product', product._id);
-        if(selectedItem) {
+        if(selectedItem){
             Session.set('modal', {
                 name: 'movement',
 				width: 600,
@@ -284,7 +284,6 @@ Template.productsAccounting.events({
     }
 });
 
-
 globalDep = new Tracker.Dependency();
 
 Template.productsAccounting.onRendered(function(){
@@ -304,14 +303,14 @@ Template.productsAccounting.onRendered(function(){
 		},
 		plugins : ['contextmenu', 'dnd', 'search', 'sort'],
         "contextmenu":{
-            "items": function($node) {
+            "items": function($node){
                 var tree = $("#tree").jstree(true);
                 return {
                     "Create": {
                         "separator_before": false,
                         "separator_after": false,
                         "label": "Добавить",
-                        "action": function (obj) {
+                        "action": function(obj){
                             $node = tree.create_node($node);
                             tree.edit($node);
                         }
@@ -320,7 +319,7 @@ Template.productsAccounting.onRendered(function(){
                         "separator_before": false,
                         "separator_after": false,
                         "label": "Переименовать",
-                        "action": function (obj) {
+                        "action": function(obj){
                             tree.edit($node);
                         }
                     },
@@ -328,27 +327,27 @@ Template.productsAccounting.onRendered(function(){
                         "separator_before": false,
                         "separator_after": false,
                         "label": "Удалить",
-                        "action": function (obj) {
+                        "action": function(obj){
                             tree.delete_node($node);
                         }
                     }
                 };
             }
         }
-	}).bind("select_node.jstree", function (e, data) {
+	}).bind("select_node.jstree", function(e, data){
 		Session.set('category', data.node.id);
-	}).bind("create_node.jstree", function (e, data) {
+	}).bind("create_node.jstree", function(e, data){
 		console.log(Session.get('store'));
 		Meteor.call('category-create', data, Session.get('store'));
-	}).bind("rename_node.jstree", function (e, data) {
+	}).bind("rename_node.jstree", function(e, data){
 		Meteor.call('category-rename', data);
-	}).bind("delete_node.jstree", function (e, data) {
+	}).bind("delete_node.jstree", function(e, data){
 		if(data.node.children.length){
 			return false;
 		}
 
 		Meteor.call('category-remove', data.node.id);
-	}).bind("move_node.jstree", function (e, data) {
+	}).bind("move_node.jstree", function (e, data){
 		Meteor.call('category-move', data);
 	});
 });

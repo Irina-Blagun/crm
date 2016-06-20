@@ -17,12 +17,10 @@ Template.users.helpers({
                         return `${value[0].address}`
                     }
                 },
-                // { key: 'profile.flags', label: 'Права', hidden: !Meteor.userCheckAccess(2) },
                 { key: 'profile.phone', label: 'Телефон', sortable: false },
                 { key: 'profile.flags', label: 'Права', hidden: true },
-                { key: 'profile.stores', label: 'Магазины', tmpl: Template.userStores, hidden: false },
-                { key: 'createdAt', label: 'Дата регистрации', sortByValue: true, hidden: Meteor.userCheckAdmin(), fn: function(value){
-                        //return moment(value).format('DD MMM YYYY, HH:MM')
+                { key: 'profile.stores', label: 'Магазины', sortable: false, tmpl: Template.userStores, hidden: false },
+                { key: 'createdAt', label: 'Дата регистрации', hidden: !Meteor.userCheckAdmin(), fn: function(value){
                         return moment(value).format('LLL')
                     }
                 }
@@ -41,13 +39,13 @@ Template.users.helpers({
 });
 
 Template.users.events({
-    'click #add': function () {
+    'click #add': function(){
         Session.set('selectedUser', null);
     },
-    'click #edit': function () {
+    'click #edit': function(){
         var selectedUser = Session.get('selectedUser');
         var user = Users.findOne({_id: selectedUser._id});
-        if (selectedUser) {
+        if(selectedUser){
             Session.set('modal', {
                 name: 'usersEdit',
                 data: {
@@ -72,10 +70,10 @@ Template.users.events({
             });
         }
     },
-    'click #remove': function () {
+    'click #remove': function(){
         var selectedUser = Session.get('selectedUser');
         var user = Users.findOne({_id: selectedUser._id});
-        if (selectedUser) {
+        if(selectedUser){
             Session.set('modal', {
                 name: 'usersRemove',
                 data: {
@@ -102,7 +100,7 @@ Template.users.events({
     },
     'click #users .reactive-table tbody tr': function(){
         var selectedUser = Session.get('selectedUser');
-        if (selectedUser && selectedUser._id == this._id) {
+        if(selectedUser && selectedUser._id == this._id){
             Session.set('selectedUser', null);
         } else {
             Session.set('selectedUser', this);
@@ -112,7 +110,7 @@ Template.users.events({
 
 
 Template.userStores.helpers({
-    stores: function () {
+    stores: function(){
         var stores = this.profile.stores;
         return Stores.find({deleted: false, _id: {$in: stores}}).fetch();
     }
