@@ -19,6 +19,9 @@ Template.ordersEdit.events({
 
 Template.ordersEdit.helpers({
     providers: function(){
-        return Providers.find({deleted: false});
+        return Providers.find({deleted: false}, {
+            sort: [
+                ["name", "asc"]
+            ]});
     }
 });

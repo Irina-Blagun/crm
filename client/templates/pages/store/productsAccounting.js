@@ -30,16 +30,16 @@ Template.productsAccounting.helpers({
                         }
                     }
                 },
-                { key: 'price.purchase_price', label: 'Закупочная цена', hidden: !Meteor.userCheckAccess(256), fn: function(value){
+                { key: 'price.purchase_price', label: 'Закупочная цена', hidden: !Meteor.userCheckAccess(8), fn: function(value){
                         return accounting.formatNumber(Number(value), 0, ' ')
                     }
                 },
-                { key: 'price.markup', label: 'Наценка', sortByValue: true, hidden: !Meteor.userCheckAccess(256) },
+                { key: 'price.markup', label: 'Наценка', sortByValue: true, hidden: !Meteor.userCheckAccess(8) },
                 { key: 'price.price', label: 'Цена', fn: function(value){
                         return accounting.formatNumber(Number(value), 0, ' ')
                     }
                 },
-                { key: 'price.total_amount', label: 'Общая стоимость', sortByValue: true, hidden: !Meteor.userCheckAccess(256), fn: function(value){
+                { key: 'price.total_amount', label: 'Общая стоимость', sortByValue: true, hidden: !Meteor.userCheckAccess(8), fn: function(value){
                         return accounting.formatNumber(Number(value), 0, ' ')
                     }
                 },
@@ -65,14 +65,14 @@ Template.productsAccounting.helpers({
                         return moment(value).format('LLL');
                 }
                 },
-                { key: 'provider', label: 'Поставщик', hidden: !Meteor.userCheckAccess(1), fn: function(value){
+                { key: 'provider', label: 'Поставщик', fn: function(value){
                         if(value) {
                             var provider = Providers.findOne({_id: value});
                             return provider.name
                         }
                     }
                 },
-                { key: 'count', label: 'Количество', hidden: !Meteor.userCheckAccess(1) },
+                { key: 'count', label: 'Количество' },
                 { key: 'price.total_amount', label: 'Общая стоимость', sortByValue: true, fn: function(value){
                         return accounting.formatNumber(Number(value), 0, ' ')
                     }

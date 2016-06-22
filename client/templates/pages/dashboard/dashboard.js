@@ -52,7 +52,6 @@ Template.dashboard.rendered = function(){
 				results.push(summ);
 				monthes.push(previousMonth);
 				summ = 0;
-				console.log('2', monthes);
 			}
 			summ += currentItem.price.total_amount;
 

@@ -47,6 +47,9 @@ Template.productsAdd.events({
 
 Template.productsAdd.helpers({
     units: function(){
-        return Units.find();
+        return Units.find({}, {
+            sort: [
+                ["name", "asc"]
+            ]});
     }
 });

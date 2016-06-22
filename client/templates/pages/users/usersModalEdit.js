@@ -1,6 +1,10 @@
 Template.usersEdit.helpers({
     allStores: function(){
-        return Stores.find({deleted: false});
+        // return Stores.find({deleted: false});
+        return Stores.find({deleted: false}, {
+            sort: [
+                ["name", "asc"]
+            ]});
     }
 });
 

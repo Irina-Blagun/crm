@@ -34,15 +34,21 @@ Template.accountingSale.events({
             'sid': this.sid
         };
 
-        if(document.forms[0].checkValidity()){
-            Meteor.call('products-update', this._id, product);
-            Meteor.call('accounting-create', accountOperation, function(){
-                Session.set('modal', null);
-                throwMessage('success', 'Продажа товара зафиксирована');
-            });
+        if(Number(template.find('#count').value) !== 0){
+            if(document.forms[0].checkValidity()){
+                Meteor.call('products-update', this._id, product);
+                Meteor.call('accounting-create', accountOperation, function(){
+                    Session.set('modal', null);
+                    throwMessage('success', 'Продажа товара зафиксирована');
+                });
+            } else {
+                throwMessage('danger', 'Не все поля заполнены корректно');
+            }
         } else {
-            throwMessage('danger', 'Не все поля заполнены корректно');
+            // TODO
+            throwMessage('danger', 'Количество');
         }
+
     },
     'input input': function(event, template){
         template.find('#total_amount').value = accounting.formatNumber((Number(this.price.price) * Number(template.find('#count').value)), 0, " ");

@@ -20,7 +20,7 @@ Template.users.helpers({
                 { key: 'profile.phone', label: 'Телефон', sortable: false },
                 { key: 'profile.flags', label: 'Права', hidden: true },
                 { key: 'profile.stores', label: 'Магазины', sortable: false, tmpl: Template.userStores, hidden: false },
-                { key: 'createdAt', label: 'Дата регистрации', hidden: !Meteor.userCheckAdmin(), fn: function(value){
+                { key: 'createdAt', label: 'Дата регистрации', hidden: true, fn: function(value){
                         return moment(value).format('LLL')
                     }
                 }

@@ -28,15 +28,20 @@ Template.accountingComing.events({
                 },
                 'sid': this.sid
             };
-            
-            if (document.forms[0].checkValidity()){
-                Meteor.call('products-update', this._id, product);
-                Meteor.call('accounting-create', accountOperation, function(){
-                    Session.set('modal', null);
-                });
-                throwMessage('success', 'Приход товара зафиксирован');
+
+            if(Number(template.find('#count').value) !== 0){
+                if (document.forms[0].checkValidity()){
+                    Meteor.call('products-update', this._id, product);
+                    Meteor.call('accounting-create', accountOperation, function(){
+                        Session.set('modal', null);
+                        throwMessage('success', 'Приход товара зафиксирован');
+                    });
+                } else {
+                    throwMessage('danger', 'Не все поля заполнены корректно');
+                }
             } else {
-                throwMessage('danger', 'Не все поля заполнены корректно');
+                // TODO
+                throwMessage('danger', 'Количество');
             }
         } else {
             throwMessage('danger', 'Не все поля заполнены корректно');
@@ -53,6 +58,9 @@ Template.accountingComing.helpers({
         return Units.findOne({id: this.unit});
     },
     providers: function(){
-        return Providers.find({deleted: false});
+        return Providers.find({deleted: false}, {
+            sort: [
+                ["name", "asc"]
+            ]});
 }
 });

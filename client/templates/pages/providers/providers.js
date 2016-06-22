@@ -13,9 +13,9 @@ Template.providers.helpers({
                 { key: 'unp', label: 'УНП' },
                 { key: 'phone', label: 'Телефон' },
                 { key: 'email', label: 'E-mail', hidden: !Meteor.userCheckAccess(2) },
-                { key: 'bank.name', label: 'Наименование банка', hidden: !Meteor.userCheckAccess(2) },
-                { key: 'bank.address', label: 'Адрес банка', hidden: !Meteor.userCheckAccess(2) },
-                { key: 'created', label: 'Дата добавления', sortByValue: true, hidden: !Meteor.userCheckAdmin(), fn: function(value){
+                { key: 'bank.name', label: 'Наименование банка', hidden: !Meteor.userCheckAccess(128) },
+                { key: 'bank.address', label: 'Адрес банка', hidden: !Meteor.userCheckAccess(128) },
+                { key: 'created', label: 'Дата добавления', sortByValue: true, hidden: true, fn: function(value){
                         return moment(value).format('LLL')
                     }
                 }
