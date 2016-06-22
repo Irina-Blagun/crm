@@ -8,10 +8,14 @@ Template.ordersProductEdit.events({
         };
 
         if(document.forms[0].checkValidity()){
-            Meteor.call('ordersProducts-update', this._id, ordersProduct, function(){
-                Session.set('modal', null);
-                throwMessage('success', 'Изменения сохранены');
-            });
+            if(Number(template.find('#count').value) == 0) {
+                throwMessage('danger', 'Количество'); //TODO
+            } else {
+                Meteor.call('ordersProducts-update', this._id, ordersProduct, function(){
+                    Session.set('modal', null);
+                    throwMessage('success', 'Изменения сохранены');
+                });
+            }
         } else {
             throwMessage('danger', 'Не все поля заполнены корректно');
         }

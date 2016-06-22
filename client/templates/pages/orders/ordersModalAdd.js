@@ -24,6 +24,9 @@ Template.ordersAdd.events({
 
 Template.ordersAdd.helpers({
     providers: function(){
-        return Providers.find({deleted: false});
+        return Providers.find({deleted: false}, {
+            sort: [
+                ["name", "asc"]
+            ]});
     }
 });

@@ -57,7 +57,10 @@ Template.productsEdit.helpers({
     units: function(){
         generalPrice = 0;
         total_amount = 0;
-        return Units.find();
+        return Units.find({}, {
+            sort: [
+                ["name", "asc"]
+            ]});
     }
 });
 
