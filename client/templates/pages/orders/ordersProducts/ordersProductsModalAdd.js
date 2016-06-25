@@ -21,7 +21,7 @@ Template.ordersProductsAdd.events({
 
             if(document.forms[0].checkValidity()){
                 if(Number(template.find('#count').value) == 0) {
-                    throwMessage('danger', 'Количество'); //TODO
+                    throwMessage('danger', 'Некорректное значение количества');
                 } else {
                     Meteor.call('ordersProducts-update', order._id, ordersProductEdit, function(){
                         Session.set('modal', null);
@@ -34,7 +34,7 @@ Template.ordersProductsAdd.events({
         } else {
             if(document.forms[0].checkValidity()){
                 if(Number(template.find('#count').value) == 0) {
-                    throwMessage('danger', 'Количество'); //TODO
+                    throwMessage('danger', 'Некорректное значение количества'); 
                 } else {
                     Meteor.call('ordersProducts-create', ordersProduct, function () {
                         Session.set('modal', null);

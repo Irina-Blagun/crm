@@ -239,7 +239,7 @@ Template.dashboard.rendered = function(){
 					results.push(0);
 					results.push(0);
 					results.push(summ);
-					monthe.push('', 'Учётных операций не было', '');
+					monthe.push('Учётных операций не было', '', '');
 				}
 
 				var data2 = Accounting.find({type: 'Продажа', created: {$lt: toDate, $gte: fromDateMonth}}, {
@@ -348,7 +348,7 @@ Template.dashboard.rendered = function(){
 					results.push(0);
 					results.push(0);
 					results.push(summ);
-					monthe.push('', 'Учётных операций не было', '');
+					monthe.push('Учётных операций не было', '', '');
 				}
 
 				var data2 = Accounting.find({type: 'Продажа', created: {$lt: toDate, $gte: fromDateMonth}}, {
