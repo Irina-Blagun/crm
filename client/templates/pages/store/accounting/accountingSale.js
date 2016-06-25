@@ -45,8 +45,7 @@ Template.accountingSale.events({
                 throwMessage('danger', 'Не все поля заполнены корректно');
             }
         } else {
-            // TODO
-            throwMessage('danger', 'Количество');
+            throwMessage('danger', 'Некорректное значение количества');
         }
 
     },

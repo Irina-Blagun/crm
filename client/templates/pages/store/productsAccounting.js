@@ -22,7 +22,8 @@ Template.productsAccounting.helpers({
             showNavigation: 'auto',
             fields: [
                 { key: 'name', label: 'Наименование' },
-                { key: 'count', label: 'Кол-во в наличии' },
+                // { key: 'count', label: 'Кол-во в наличии' },
+                { key: 'count', label: 'Кол-во' },
                 { key: 'unit', label: 'Ед. изм.', sortable: false, fn: function(value){
                         if(value){
                             var unit = Units.findOne({_id: value});

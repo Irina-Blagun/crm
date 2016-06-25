@@ -9,7 +9,7 @@ Template.ordersProductEdit.events({
 
         if(document.forms[0].checkValidity()){
             if(Number(template.find('#count').value) == 0) {
-                throwMessage('danger', 'Количество'); //TODO
+                throwMessage('danger', 'Некорректное значение количества'); 
             } else {
                 Meteor.call('ordersProducts-update', this._id, ordersProduct, function(){
                     Session.set('modal', null);
